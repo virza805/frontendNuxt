@@ -17,7 +17,9 @@
 
         <div class="min-w-max flex items-center">
           <nuxt-link to="/wishlist"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/heart.png" alt=""></span></nuxt-link>
+
           <nuxt-link class="relative mx-4" to="/cart"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/u_shopping-bag.png" alt=""></span> <span class="absolute bg-red-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">{{ count }}</span></nuxt-link>
+
           <nuxt-link to="/my-account" class="flex items-center"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user.png" alt=""></span> <span>Account</span></nuxt-link>
         </div>
 
@@ -97,11 +99,11 @@
               <nuxt-link class="p-4" to="/faq">FAQs</nuxt-link>
             </li>
             <li>
-              <nuxt-link class="p-4" to="/">Offers</nuxt-link>
+              <nuxt-link class="p-4" to="/offers">Offers</nuxt-link>
             </li>
           </ul>
         </div>
-        <nuxt-link to="/" class="min-w-max bs-dark-orange-color flex">
+        <nuxt-link to="/sp-offers" class="min-w-max bs-dark-orange-color flex">
           <img src="~/assets/img/u_percentage.png" class="mr-3" alt=""> Special Offers!
         </nuxt-link>
       </div>
