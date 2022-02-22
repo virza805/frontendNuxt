@@ -173,10 +173,10 @@
           <div style="height: 2px" class="w-full bg-gray-200"></div>
         </div>
 
-        <vue-slick-carousel class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
-          <!-- <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product"/> -->
+        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
+          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product"/>
 
-          <SingleProductBox v-for="item in 10" :product="item" />
+          <!-- <SingleProductBox v-for="product in 8" :key="product.id" :product="product" /> -->
 
 
         </vue-slick-carousel>
@@ -282,13 +282,16 @@
   import Footer from '../components/Footer.vue'
   import Header from '../components/Header.vue'
   import SingleProductBox from '../components/SingleProductBox.vue'
+
+  import dealsOfTheDayProducts from '../assets/css/deals-of-the-day-products.json'
+
   export default {
+    name: 'IndexPage',
     components: {
       Header,
       Footer,
       SingleProductBox
     },
-    name: 'IndexPage',
     data() {
       return {
         categoryCarouselSettings: {
@@ -299,8 +302,14 @@
           'slidesToShow': 4,
           'prevArrow': '>'
         },
+        dealsOfTheDayProducts: []
       }
     },
+    mounted() {
+      this.dealsOfTheDayProducts = dealsOfTheDayProducts;
+      console.log(this.dealsOfTheDayProducts)
+    }
+
   }
 
 </script>
