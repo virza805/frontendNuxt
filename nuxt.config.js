@@ -26,8 +26,9 @@ export default {
 
     // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
     plugins: [
-        {src: '~/plugins/vue-slick-carousel', ssr: false},
+        {src: '~/plugins/vue-slick-carousel', ssr: true},
         {src: '~/plugins/v-click-outside', ssr: false},
+        {src: '~/plugins/vue-toast-notification', ssr: false},
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components
@@ -40,7 +41,13 @@ export default {
     ],
 
     // Modules: https://go.nuxtjs.dev/config-modules
-    modules: [],
+    modules: [
+      // You can also pass plugin options
+      ["vue-toastification/nuxt", {
+        timeout: 1000,
+        draggable: true
+      }]
+    ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
     build: {}
