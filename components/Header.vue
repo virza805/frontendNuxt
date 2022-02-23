@@ -19,7 +19,7 @@
           <nuxt-link to="/wishlist"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/heart.png" alt=""></span></nuxt-link>
 
           <nuxt-link class="relative mx-4" to="/cart"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/u_shopping-bag.png" alt=""></span> <span class="absolute bg-red-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">5
-            <!-- {{ count }} -->
+            {{ count }}
 
           </span>
           </nuxt-link>
@@ -123,7 +123,8 @@ import Logo from "./Logo.vue";
     components:{Logo},
     data() {
       return {
-        allCategoryMenu: false
+        allCategoryMenu: false,
+        count: 0
       }
     },
     methods: {
@@ -132,10 +133,52 @@ import Logo from "./Logo.vue";
       },
       menuClose() {
         this.allCategoryMenu =  false
+      },
+      cartWatcher() {
+
+      const getProductsLocalStorage = JSON.parse(localStorage.getItem('cart'));
+      const getProductsStore = this.$store.getters["cart/getCart"];
+
+      let cart = [];
+      if(getProductsStore.length) {
+        cart = getProductsStore;
+      } else {
+        cart = getProductsLocalStorage;
+      }
+
+
+      if(cart.length) {
+        cart.forEach(item => {
+          this.count = (this.count + item.quantity);
+
+        });
+      }
+
+
       }
     },
     mounted() {
-      localStorage.setItem('cart', JSON.stringify([]))
+      
+
+      let getLocalStorageProducts = JSON.parse(localStorage.getItem('cart'));
+      if(getLocalStorageProducts === null) {
+        localStorage.setItem('cart', '[]');
+      }
+      // localStorage.setItem('cart', JSON.stringify([]))
+
+      this.cartWatcher();
+      this.$store.watch(
+        () => {
+          return this.$store.getters["cart/getCart"]
+        },
+        (val)=>{
+          this.cartWatcher();
+        },
+        {
+          deep:true
+        }
+      );
+
     }
   }
 
