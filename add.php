@@ -15,6 +15,7 @@
 //     return $value;
 // }
 
+# yarn install => For running
 # yarn dev => For running
 # https://github.com/raselupm/bengal-shop-frontend =>
 # https://www.figma.com/file/dGnV13M0DEXrcPYbpzgsjL/Bengal-Shop => Desight
