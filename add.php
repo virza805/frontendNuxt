@@ -25,5 +25,10 @@
 # =>
 #  yarn add vue-toastification => for Notification
 # =>
-# =>
+#========== => Satrt Backend <= ==========#
+/*
+yarn add --dev sass sass-loader@10 |=> for sass install https://nuxtjs.org/pt/docs/configuration-glossary/configuration-css#a-propriedade-css
+yarn install -D tailwindcss postcss@latest autoprefixer@latest @nuxt/postcss8 npx tailwindcss init |=> https://tailwindcss.com/docs/guides/nuxtjs
 
+
+*/
