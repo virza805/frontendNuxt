@@ -15,9 +15,11 @@
                 </li>
             </ul>
 
-            <div class="clock">
+<BackendDigitalClock></BackendDigitalClock>
+
+            <!-- <div class="clock">
                 <div id="clock">00:00:00</div>
-            </div>
+            </div> -->
 
             <ul>
                 <li class="fullScreen_on_off" id="fullScreen">
@@ -42,8 +44,9 @@
                     </div>
                 </div>
             </a>
+            <BackendLeftSidebarMenu></BackendLeftSidebarMenu>
             <!-- Sidebar user profile information the end-->
-            <div class="sidebar">
+            <!-- <div class="sidebar">
                 <ul class="left_sidebar">
                     <li class="  ">
                         <a href="#" class="dropdown-btn active"> Dashboard</a>
@@ -86,10 +89,12 @@
                     </li>
 
                 </ul>
-            </div>
-            <div class="analock_clock" style="display: flex; justify-content: center;">
+            </div> -->
+
+            <BackendClock></BackendClock>
+            <!-- <div class="analock_clock" style="display: flex; justify-content: center;">
                 <canvas id="canvas" width="130" height="130" style="text-align:center"></canvas>
-            </div>
+            </div> -->
             <!-- sidebar menu the end -->
         </aside>
 
@@ -109,11 +114,35 @@
   </div>
 </template>
 <script>
-
-
 export default {
+    head: {
+    title: "Dashboard",
+      script: [
+        {
+        type: 'text/javascript',
+        src: "/js/backend_left_sidebar_menu.js",
+        body: true,
+        async: true,
+        crossorigin: "anonymous"
+        },
+        {
+        type: 'text/javascript',
+        src: "/js/backend_layout_full_hight.js",
+        body: true,
+        async: true,
+        crossorigin: "anonymous"
+        },
+        {
+        type: 'text/javascript',
+        src: "/js/backend_left_sidebar_on_off.js",
+        body: true,
+        async: true,
+        crossorigin: "anonymous"
+        },
+      ],
+    }
 
-}
+  }
 </script>
 <style scoped>
 

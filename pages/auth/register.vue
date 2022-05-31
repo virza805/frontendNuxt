@@ -5,8 +5,11 @@
 </template>
 <script>
 export default {
-name: "Register Page",
-layout: 'backend'
+
+  head: {
+    title: "Signup",
+  },
+  layout: 'backend'
 }
 </script>
 

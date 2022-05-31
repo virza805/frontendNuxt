@@ -4,7 +4,8 @@ export default {
 
     // Global page headers: https://go.nuxtjs.dev/config-head
     head: {
-        title: 'bengal-shop-frontend',
+        // title: 'bengal-shop-frontend',
+        titleTemplate: '%s - Bengal Shop',
         htmlAttrs: {
             lang: 'en'
         },
@@ -14,9 +15,20 @@ export default {
             { hid: 'description', name: 'description', content: '' },
             { name: 'format-detection', content: 'telephone=no' }
         ],
+
+        script: [
+          // {
+          //   type: 'text/javascript',
+          //   src: "/digital_clock.js",
+          //   body: true,
+          //   async: true,
+          //   crossorigin: "anonymous"
+          // },
+        ],
+
         link: [
             { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-            // { rel: 'script', src: '~/assets/js/backend.js' },
+            // { rel: 'script', src: '~/assets/js/digital_clock.js' },
             { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500&display=swap' }
         ]
     },
