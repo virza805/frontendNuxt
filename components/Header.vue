@@ -26,8 +26,8 @@
 
           <nuxt-link to="/my-account" class="flex items-center"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user.png" alt=""></span> <span>Account </span></nuxt-link>
 
-          <nuxt-link to="/auth/register"> | Sing Up | </nuxt-link>
-          <NuxtLink to="/auth/login"> Login </NuxtLink>
+          <nuxt-link to="/auth/register" class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user-plus.svg" alt=""></nuxt-link>
+          <NuxtLink to="/auth/login" class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/log-in.svg" alt=""></NuxtLink>
         </div>
 
       </div>

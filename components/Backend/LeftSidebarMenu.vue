@@ -2,8 +2,9 @@
   <div class="sidebar">
     <ul class="left_sidebar">
       <li class="  ">
-        <a href="#" class="dropdown-btn active"> Dashboard</a>
-        <ul class="     dropdown-container">
+        <a href="#" class="dropdown-btn active"> Dashboard <img src="~/assets/img/chevron-down.png" alt=""></a>
+
+        <ul class="dropdown-container">
           <li class=" ">
             <a href="#" class="  ">Dashboard v1</a>
           </li>

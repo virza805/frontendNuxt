@@ -27,6 +27,7 @@
                     <button class="active_off" onclick="closeFullscreen();"><img src="~/assets/img/minimize-2.svg" alt="minimize"></button>
                 </li>
                 <li>
+                  <NuxtLink to="/auth/login" class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/log-out.svg" alt=""></NuxtLink>
                 </li>
                 <li>
                     <a class="backendLogo" href="#"><img src="~/assets/img/virzaOk.gif" alt=""></a>
