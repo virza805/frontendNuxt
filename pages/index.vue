@@ -30,7 +30,7 @@
           <div class="container">
             <div class="flex items-center">
               <div class="w-1/2 mr-6 font-size-22">
-                <p class="bs-dark-green-color  font-size-32 mb-4">Save up 30% off</p>
+                <p class="bs-dark-green-color font-size-32 mb-4">Save up 30% off</p>
                 <h2 class="text-5xl font-bold mb-6 text-gray-800">
                   Bengal Vegetable
                   farm Organic 100%

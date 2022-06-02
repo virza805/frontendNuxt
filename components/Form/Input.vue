@@ -1,19 +1,56 @@
 <template>
-  <div class="flex flex-col w-full">
-    <label for="name">Name</label>
+  <div>
+    <label for="email" class="text-sm">{{ label }}</label>
     <input
-      class="w-full rounded-sm bg-slate-50"
-      type="text"
-      name="name"
-      id="name"
-    >
-  </div>
-</template>
-<script>
-export default {
+      :class="{
+        'border-red-300' : hasError,
+        'border-gray-300' : !hasError,
+      }"
+      class="appearance-none rounded-lg relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+      id="email"
+      :value="value"
+      v-bind="$attrs"
+    />
 
-}
+    <p
+    :class="{
+      'text-red-500' : hasError,
+      'text-gray-500' : !hasError,
+    }"
+    class="text-red-500 text-sm"
+    >{{ helperText }}</p>
+  </div>
+
+</template>
+
+<script>
+  export default {
+    inheritAttrs: false,
+    props: {
+      label:{
+        type: String,
+        require: true,
+      },
+
+      helperText:{
+        type: String,
+        require: false,
+      },
+
+      hasError:{
+        type: Boolean,
+        require: false,
+      },
+
+      value:{
+        type: String,
+        require: false,
+      },
+    }
+
+  }
+
 </script>
-<style lang="">
+<style>
 
 </style>
