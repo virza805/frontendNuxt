@@ -2,6 +2,9 @@
   <div class="unknown_page">
     <h2>This {{ $route.params.slug }} page note found</h2>
     <h3>404</h3>
+     <div>
+      <img class="mx-auto" src="~/assets/img/virzaOk.gif" alt="" />
+    </div>
 
   </div>
 </template>

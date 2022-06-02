@@ -17,10 +17,6 @@
 
 <BackendDigitalClock></BackendDigitalClock>
 
-            <!-- <div class="clock">
-                <div id="clock">00:00:00</div>
-            </div> -->
-
             <ul>
                 <li class="fullScreen_on_off" id="fullScreen">
                     <button class="active_on" onclick="openFullscreen();"><img src="~/assets/img/maximize-2.svg" alt="maximize"></button>
@@ -46,62 +42,15 @@
                 </div>
             </a>
             <BackendLeftSidebarMenu></BackendLeftSidebarMenu>
-            <!-- Sidebar user profile information the end-->
-            <!-- <div class="sidebar">
-                <ul class="left_sidebar">
-                    <li class="  ">
-                        <a href="#" class="dropdown-btn active"> Dashboard</a>
-                        <ul class="     dropdown-container">
-                            <li class=" ">
-                                <a href="#" class="  ">Dashboard v1</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v2</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v3</a>
-                            </li>
-                        </ul>
-                    </li>
-
-
-                    <li class="  ">
-                        <a href="#" class="dropdown-btn active">Tanjil</a>
-                        <ul class="     dropdown-container">
-                            <li class=" ">
-                                <a href="#" class="  ">Dashboard v1</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v2</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v3</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v3</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v3</a>
-                            </li>
-                            <li class=" ">
-                                <a href="#" class="   ">Dashboard v3</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                </ul>
-            </div> -->
 
             <BackendClock></BackendClock>
-            <!-- <div class="analock_clock" style="display: flex; justify-content: center;">
-                <canvas id="canvas" width="130" height="130" style="text-align:center"></canvas>
-            </div> -->
+            
             <!-- sidebar menu the end -->
         </aside>
 
         <div class="backend_content_wrapper">
+            
             <Nuxt />
-
 
         </div>
 
