@@ -14,23 +14,48 @@
         <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Sign in to your account</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
           Or
-          {{ ' ' }}
+          {{ '' }}
           <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
         </p>
       </div>
+      <pre>
+        {{errors}}
+      </pre>
       <form
       class="mt-8 space-y-6"
       action="#"
       @submit.prevent="handleSubmit"
        method="POST">
         <input type="hidden" name="remember" value="true" />
-        <FormInput label="Username" helperText="This is a username input" />
-        <form-input
-          label="Email"
-          helperText="This is a email input"
+        <FormInput
+          label="Username"
           v-model="form.username"
-          :hasError="true"
-        />
+          :helperText="errors.username != undefined ? errors.username[0] : ''"
+         />
+        <form-input
+          type="email"
+          label="Email Address"
+          v-model="form.email"
+       />
+      <form-input
+        type="password"
+        label="Password"
+        v-model="form.password"
+       />
+      <form-input
+        type="password"
+        label="Confirm Password"
+        v-model="form.password_confirmation"
+        class="mb-10 "
+       />
+      <!-- <form-input
+        type="password"
+        label="Confirm Password"
+        :helperText="errorMsg('password_confirmation')"
+        :hasError="hasError('password_confirmation')"
+        v-model="form.password_confirmation"
+        class="mb-10 "
+       /> -->
 
         <div class="flex items-center justify-between">
           <div class="flex items-center">
@@ -46,12 +71,8 @@
 
 
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <LockClosedIcon class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
-            </span>
-            Sign in
-          </button>
+          <form-button>Sign in</form-button>
+
         </div>
       </form>
     </div>
@@ -70,13 +91,30 @@ export default {
     data() {
       return{
         form:{
-          username: "56458",
+          username: "",
           email: "",
           password: "",
           password_confirmation: "",
         },
+        errors: {},
       };
     },
+
+    methods: {
+      handleSubmit() {
+        // api call
+        this.$axios
+        .$post('/api/user/register', this.form)
+        .then((res) =>{
+          this.$router.push("/");
+        })
+        .catch((e) => {
+          console.log(e.response.data);
+
+          this.errors = e.response.data?.errors || {};
+        });
+      }
+    }
 };
 </script>
 

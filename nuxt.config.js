@@ -63,7 +63,7 @@ export default {
         ["vue-toastification/nuxt", {
             timeout: 1000,
             draggable: true
-        }]
+        }], '@nuxtjs/axios'
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -74,5 +74,11 @@ export default {
                 autoprefixer: {},
             },
         },
-    }
+    },
+
+  axios: {
+    // baseURL: "http://api.test",
+    baseURL: "http://127.0.0.1:8000",
+  },
+
 }

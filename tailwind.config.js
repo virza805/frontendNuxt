@@ -13,6 +13,8 @@ module.exports = {
                 primaryLight: "#EFF7FF",
                 primaryDark: "#4f86b5",
                 primaryDark2: "#4270a2",
+                primaryGreen: "#3fa248",
+                primaryLink: "#fb6565",
             },
         },
     },

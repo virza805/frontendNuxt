@@ -31,14 +31,14 @@
 
 
 # 10:52s / 1:17:56 |=> https://www.youtube.com/watch?v=mVIth8lmL80&list=PL03GdZZs-POWoSFFxqf15M-08tsY2fDiN&index=8
-# 14:01s / 20:23 |=> https://www.youtube.com/watch?v=r1_-NDsYXHA&list=PL03GdZZs-POVHXjxjyKegmsvOiQVXpb7O&index=28
+# 16:02s / 31:57 |=> https://www.youtube.com/watch?v=s91upWagr6s&list=PL03GdZZs-POVHXjxjyKegmsvOiQVXpb7O&index=29
 
 #========== => Satrt Backend <= ==========#
 /*
 yarn add --dev sass sass-loader@10 |=> for sass install https://nuxtjs.org/pt/docs/configuration-glossary/configuration-css#a-propriedade-css
 yarn install -D tailwindcss postcss@latest autoprefixer@latest @nuxt/postcss8 npx tailwindcss init |=> https://tailwindcss.com/docs/guides/nuxtjs
 
-
+yarn add @nuxtjs/axios |=> https://axios.nuxtjs.org/setup
 
 
 

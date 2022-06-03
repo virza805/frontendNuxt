@@ -2,12 +2,14 @@
   <div>
     <label for="email" class="text-sm">{{ label }}</label>
     <input
+      :type="type"
       :class="{
         'border-red-300' : hasError,
         'border-gray-300' : !hasError,
       }"
       class="appearance-none rounded-lg relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
       id="email"
+      @change="$emit('input', $event.target.value)"
       :value="value"
       v-bind="$attrs"
     />
@@ -37,14 +39,17 @@
         require: false,
       },
 
-      hasError:{
+      hasError: {
         type: Boolean,
         require: false,
       },
-
-      value:{
+      value: {
         type: String,
         require: false,
+      },
+      type: {
+        type: String,
+        default: 'text',
       },
     }
 
