@@ -2,7 +2,6 @@
   <div>
     <label for="email" class="text-sm">{{ label }}</label>
     <input
-      :type="type"
       :class="{
         'border-red-300' : hasError,
         'border-gray-300' : !hasError,
@@ -11,6 +10,7 @@
       id="email"
       @change="$emit('input', $event.target.value)"
       :value="value"
+      :type="type"
       v-bind="$attrs"
     />
 

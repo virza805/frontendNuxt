@@ -28,34 +28,34 @@
        method="POST">
         <input type="hidden" name="remember" value="true" />
         <FormInput
-          label="Username"
-          v-model="form.username"
-          :helperText="errors.username != undefined ? errors.username[0] : ''"
+          label="Name"
+          v-model="form.name"
+          :helperText="errorMsg('name')"
+          :hasError="hasError('name')"
          />
         <form-input
           type="email"
           label="Email Address"
           v-model="form.email"
+          :helperText="errorMsg('email')"
+          :hasError="hasError('email')"
        />
       <form-input
         type="password"
         label="Password"
         v-model="form.password"
+        :helperText="errorMsg('password')"
+        :hasError="hasError('password')"
        />
       <form-input
         type="password"
         label="Confirm Password"
         v-model="form.password_confirmation"
-        class="mb-10 "
-       />
-      <!-- <form-input
-        type="password"
-        label="Confirm Password"
         :helperText="errorMsg('password_confirmation')"
         :hasError="hasError('password_confirmation')"
-        v-model="form.password_confirmation"
         class="mb-10 "
-       /> -->
+       />
+
 
         <div class="flex items-center justify-between">
           <div class="flex items-center">
@@ -80,6 +80,7 @@
 </template>
 
 <script>
+import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
     head: {
@@ -87,11 +88,12 @@ export default {
     },
     layout: "sing_in_up",
     components: { Input },
+    mixins: [form],
 
     data() {
       return{
         form:{
-          username: "",
+          name: "",
           email: "",
           password: "",
           password_confirmation: "",
@@ -109,11 +111,13 @@ export default {
           this.$router.push("/");
         })
         .catch((e) => {
-          console.log(e.response.data);
+          // console.log(e.response.data);
 
           this.errors = e.response.data?.errors || {};
         });
-      }
+      },
+
+
     }
 };
 </script>
