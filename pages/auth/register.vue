@@ -71,7 +71,7 @@
 
 
         <div>
-          <form-button>Sign in</form-button>
+          <form-button :loading="loading">Sign in</form-button>
 
         </div>
       </form>
@@ -99,23 +99,47 @@ export default {
           password_confirmation: "",
         },
         errors: {},
+        loading: false,
       };
     },
 
     methods: {
-      handleSubmit() {
+      // From submit same work by then & catch
+     async handleSubmit() {
         // api call
-        this.$axios
-        .$post('/api/user/register', this.form)
-        .then((res) =>{
+        try {
+          this.loading = true;
+          const res = await this.$axios.$post('/api/user/register', this.form)
+          this.loading = false;
+
           this.$router.push("/");
-        })
-        .catch((e) => {
+          console.log(res);
+
+        } catch (e) {
           // console.log(e.response.data);
 
           this.errors = e.response.data?.errors || {};
-        });
+          this.loading = false;
+
+        }
+
       },
+
+// From submit same work by then & catch
+
+      // handleSubmit() {
+      //   // api call
+      //   this.$axios
+      //   .$post('/api/user/register', this.form)
+      //   .then((res) =>{
+      //     this.$router.push("/");
+      //   })
+      //   .catch((e) => {
+      //     // console.log(e.response.data);
+
+      //     this.errors = e.response.data?.errors || {};
+      //   });
+      // },
 
 
     }
