@@ -17,13 +17,13 @@ export default {
         ],
 
         script: [
-          // {
-          //   type: 'text/javascript',
-          //   src: "/digital_clock.js",
-          //   body: true,
-          //   async: true,
-          //   crossorigin: "anonymous"
-          // },
+            // {
+            //   type: 'text/javascript',
+            //   src: "/digital_clock.js",
+            //   body: true,
+            //   async: true,
+            //   crossorigin: "anonymous"
+            // },
         ],
 
         link: [
@@ -63,7 +63,7 @@ export default {
         ["vue-toastification/nuxt", {
             timeout: 1000,
             draggable: true
-        }], '@nuxtjs/axios'
+        }], '@nuxtjs/axios', '@nuxtjs/auth-next'
     ],
 
     // Build Configuration: https://go.nuxtjs.dev/config-build
@@ -76,9 +76,47 @@ export default {
         },
     },
 
-  axios: {
-    // baseURL: "http://api.test",
-    baseURL: "http://127.0.0.1:8000",
-  },
+    axios: {
+        // baseURL: "http://api.test",
+        baseURL: "http://127.0.0.1:8000",
+    },
+
+    auth: {
+        redirect: {
+            login: '/login',
+            logout: '/',
+        },
+
+        strategies: {
+            // 'laravelPassport': {
+            //     provider: 'laravel/passport',
+            //     endpoints: {
+            //         userInfo: { url: '/api/user/user', method: 'get' },
+            //         logout: { url: '/api/user/logout', method: 'get' },
+            //         login: { url: '/api/user/login', method: 'post' },
+            //     },
+            //     url: '...',
+            //     clientId: '...',
+            //     clientSecret: '...'
+            // },
+            local: {
+                token: {
+                    property: 'token',
+                    global: true,
+                    // required: true,
+                    // type: 'Bearer'
+                },
+                user: {
+                    property: "user", // data
+                    // autoFetch: true
+                },
+                endpoints: {
+                    login: { url: '/api/user/login', method: 'post' },
+                    logout: { url: '/api/user/logout', method: 'get' },
+                    user: { url: '/api/user/user', method: 'get' }
+                }
+            },
+        }
+    }
 
 }

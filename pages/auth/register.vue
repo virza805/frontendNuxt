@@ -18,9 +18,9 @@
           <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
         </p>
       </div>
-      <pre>
+      <!-- <pre>
         {{errors}}
-      </pre>
+      </pre> -->
       <form
       class="mt-8 space-y-6"
       action="#"
@@ -71,7 +71,7 @@
 
 
         <div>
-          <form-button :loading="loading">Sign in</form-button>
+          <form-button :loading="loading">Sign Up</form-button>
 
         </div>
       </form>
@@ -112,11 +112,24 @@ export default {
           const res = await this.$axios.$post('/api/user/register', this.form)
           this.loading = false;
 
+          // toast massage show
+
+          this.$store.commit("toaster/fire", {
+            text: "Successfully created a new account. please check your email to verify your account.",
+          });
+
           this.$router.push("/");
           console.log(res);
 
         } catch (e) {
           // console.log(e.response.data);
+
+          // toast massage show
+
+          this.$store.commit("toaster/fire", {
+            text: e.response.data.message,
+            type: "error",
+          });
 
           this.errors = e.response.data?.errors || {};
           this.loading = false;

@@ -1,5 +1,6 @@
 <template>
   <div class="text-center my-12">
+
     <pre>
       {{ error }}
     </pre>

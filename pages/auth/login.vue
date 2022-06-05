@@ -25,14 +25,23 @@
        method="POST">
         <input type="hidden" name="remember" value="true" />
         <div class="rounded-md shadow-sm -space-y-px">
-          <div>
-            <label for="email-address" class="sr-only">Email address</label>
-            <input id="email-address" name="email" type="email" autocomplete="email" required="" class="appearance-none rounded-sm relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm" placeholder="Email address" />
-          </div>
-          <div>
-            <label for="password" class="sr-only">Password</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required="" class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm" placeholder="Password" />
-          </div>
+          <form-input
+            type="email"
+            label="Email Address"
+            v-model="form.email"
+            :helperText="errorMsg('email')"
+            :hasError="hasError('email')"
+            placeholder="Email address"
+          />
+          <form-input
+            type="password"
+            label="Password"
+            v-model="form.password"
+            :helperText="errorMsg('password')"
+            :hasError="hasError('password')"
+            placeholder="Password"
+          />
+
         </div>
 
         <div class="flex items-center justify-between">
@@ -46,15 +55,8 @@
           </div>
         </div>
 
-        <FormInput />
-
         <div>
-          <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-            <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-              <LockClosedIcon class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" />
-            </span>
-            Sign in
-          </button>
+          <form-button :loading="loading">Sign in</form-button>
         </div>
       </form>
     </div>
@@ -62,16 +64,69 @@
 </template>
 
 <script>
+
+import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
     head: {
         title: "Login",
     },
     layout: "sing_in_up",
-    components: { Input }
-}
+    components: { Input },
+    mixins: [form],
+
+    data() {
+      return{
+        form:{
+          email: "",
+          password: "",
+        },
+        loading: false,
+      };
+    },
+
+    methods: {
+      // From submit async await
+     async handleSubmit() {
+        // api call
+        try {
+          this.loading = true;
+          let response = await this.$auth.loginWith('local', { data: this.form })
+          // this.$auth.loginWith('laravelPassport')
+          // let response = await this.$auth.loginWith('laravelPassport', { data: this.form })
+        console.log(response)
+          // await this.$auth.loginWith("local", { data: this.form });
+          this.loading = false;
+
+          // toast massage show
+          this.$store.commit("toaster/fire", {
+            text: "Successfully logged in",
+          });
+
+          this.$router.push("/backend");
+
+        } catch (errors) {
+
+          this.loading = false;
+
+          this.errors = errors.response.data?.errors || {};
+
+          this.$store.commit("toaster/fire", {
+            text: errors.response.data.message,
+            type: "error",
+          });
+
+
+        }
+
+      },
+
+
+    }
+};
 </script>
 
 <style scoped>
 
 </style>
+
