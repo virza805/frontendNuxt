@@ -9,11 +9,12 @@
 
 <script>
 export default {
+  middleware: 'auth',
   layout: 'backend',
 
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>
