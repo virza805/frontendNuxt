@@ -83,8 +83,10 @@ export default {
 
     auth: {
         redirect: {
-            login: '/login',
+            login: '/auth/login',
             logout: '/',
+            callback: '/auth/login',
+            home: '/backend'
         },
 
         strategies: {

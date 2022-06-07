@@ -68,6 +68,8 @@
 import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
+  middleware: 'guest',
+  // auth: 'guest',
     head: {
         title: "Login",
     },
@@ -103,7 +105,7 @@ export default {
             text: "Successfully logged in",
           });
 
-          this.$router.push("/backend");
+          // this.$router.push("/backend");
 
         } catch (errors) {
 

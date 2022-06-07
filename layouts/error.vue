@@ -1,5 +1,6 @@
 <template>
   <div class="text-center my-12">
+    <Toaster />
 
     <pre>
       {{ error }}
@@ -20,7 +21,7 @@
 
 <script>
 export default {
-  layout: 'backend',
+  // layout: 'backend',
   props:["error"]
 
 }

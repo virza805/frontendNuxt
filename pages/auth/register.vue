@@ -83,10 +83,11 @@
 import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
+    middleware: 'guest',
+    layout: "sing_in_up",
     head: {
         title: "Signup",
     },
-    layout: "sing_in_up",
     components: { Input },
     mixins: [form],
 
@@ -119,7 +120,6 @@ export default {
           });
 
           this.$router.push("/");
-          console.log(res);
 
         } catch (e) {
           // console.log(e.response.data);

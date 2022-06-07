@@ -1,10 +1,6 @@
 <template>
   <div>
     <Toaster />
-    <pre>
-      {{ $auth.user }}
-      {{ $auth.loggedIn }}
-    </pre>
     <div class="flex justify-center" >
       <BackendDigitalClock></BackendDigitalClock>
     </div>

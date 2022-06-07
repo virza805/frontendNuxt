@@ -1,10 +1,6 @@
 <template>
   <div>
     <Toaster />
-    <pre>
-      {{ $auth.user }}
-      {{ $auth.loggedIn }}
-    </pre>
     <Header />
       <Nuxt />
     <Footer />

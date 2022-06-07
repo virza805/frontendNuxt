@@ -35,7 +35,7 @@
                 src="~/assets/img/log-out.svg" alt=""></NuxtLink>
           </li>
           <li>
-            <a class="backendLogo" href="#"><img src="~/assets/img/virzaOk.gif" alt=""></a>
+            <a class="backendLogo" href="/"><img src="~/assets/img/virzaOk.gif" alt=""></a>
           </li>
         </ul>
       </nav>
@@ -61,7 +61,7 @@
 
     <pre>
       <!-- {{ user }} -->
-      {{ this.$auth.user }}
+      {{ $auth.user.name }}
       {{ $auth.user }}
       {{ $auth.loggedIn }}
     </pre>
@@ -82,6 +82,7 @@
 import form from '../pages/mixins/form';
 import Toaster from '../components/Toaster.vue';
   export default {
+    middleware: 'auth',
     head: {
         title: "Dashboard",
         script: [{
@@ -112,31 +113,33 @@ import Toaster from '../components/Toaster.vue';
     },
     mixins: [form],
     components: { Toaster },
-methods: {
- async handleLogout() {
-     try {
-       this.loading = true;
-       await this.$axios.get("api/user/logout");
+    methods: {
+    async handleLogout() {
+        try {
+          this.loading = true;
+          await this.$axios.get("api/user/logout");
+          // this.$router.push("/auth/login");
+          this.loading = false;
 
-       this.errors = errors.response.data?.errors || {};
+          // toast massage show
           this.$store.commit("toaster/fire", {
-            text: errors.response.data.message,
-        });
-
-       this.loading = false;
-     } catch (error) {
-       this.loading = false;
-       console.log(error.response.data);
-       this.errors = errors.response.data?.errors || {};
-
-          this.$store.commit("toaster/fire", {
-            text: errors.response.data.message,
+            text: "Successfully logout.",
             type: "error",
           });
-     }
 
-  }
-},
+        } catch (e) {
+          // toast massage show
+          this.$store.commit("toaster/fire", {
+            text: e.response.data.message,
+            type: "error",
+          });
+
+          this.errors = e.response.data?.errors || {};
+          this.loading = false;
+        }
+
+      }
+    },
 
 }
 </script>

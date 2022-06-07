@@ -1,6 +1,6 @@
 <template lang="">
   <div class="unknown_page">
-    <h2>This {{ $route.params.slug }} page note found</h2>
+    <h2>This <b class="text-red-400">{{ $route.params.slug }}</b>  page note found</h2>
     <h3>404</h3>
      <div>
       <img class="mx-auto" src="~/assets/img/virzaOk.gif" alt="" />
