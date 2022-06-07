@@ -90,17 +90,7 @@ export default {
         },
 
         strategies: {
-            // 'laravelPassport': {
-            //     provider: 'laravel/passport',
-            //     endpoints: {
-            //         userInfo: { url: '/api/user/user', method: 'get' },
-            //         logout: { url: '/api/user/logout', method: 'get' },
-            //         login: { url: '/api/user/login', method: 'post' },
-            //     },
-            //     url: '...',
-            //     clientId: '...',
-            //     clientSecret: '...'
-            // },
+
             local: {
                 token: {
                     property: 'access_token',

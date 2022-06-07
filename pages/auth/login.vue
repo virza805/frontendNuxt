@@ -93,11 +93,8 @@ export default {
         // api call
         try {
           this.loading = true;
-          let response = await this.$auth.loginWith('local', { data: this.form })
-          // this.$auth.loginWith('laravelPassport')
-          // let response = await this.$auth.loginWith('laravelPassport', { data: this.form })
-        console.log(response)
-          // await this.$auth.loginWith("local", { data: this.form });
+          await this.$auth.loginWith('local', { data: this.form });
+
           this.loading = false;
 
           // toast massage show
@@ -107,17 +104,15 @@ export default {
 
           // this.$router.push("/backend");
 
-        } catch (errors) {
-
-          this.loading = false;
-
-          this.errors = errors.response.data?.errors || {};
+        } catch (e) {
 
           this.$store.commit("toaster/fire", {
-            text: errors.response.data.message,
+            text: e.response.data.message,
             type: "error",
           });
 
+          this.errors = e.response.data?.errors || {};
+          this.loading = false;
 
         }
 

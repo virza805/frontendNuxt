@@ -12,7 +12,7 @@
           </li>
           <!-- <li><span onclick="backendSidebarOnOffFunction()" id="togglebutton">Show/hide</span></li> -->
           <li>
-            <nuxt-link class="" to="/backend/profile">My Profile</nuxt-link>
+            <!-- <nuxt-link class="" to="/backend/profile">My Profile</nuxt-link> -->
           </li>
           <li>
             <nuxt-link class="" to="/backend/setting">Setting</nuxt-link>
@@ -66,15 +66,7 @@
       </aside>
 
       <div class="backend_content_wrapper">
-<h4 class="text-green-600 " v-if=" $auth.user.role == 1"> Admin</h4>
-<h4 class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</h4>
-<h4 class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</h4>
-<h4 class="text-green-600 " v-if=" $auth.user.role == 4"> User</h4>
-    <pre>
-      <!-- {{ user }} -->
 
-      {{ $auth.user }}
-    </pre>
         <Nuxt />
 
       </div>
