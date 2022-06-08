@@ -2,14 +2,14 @@
   <div class="sidebar">
     <ul class="left_sidebar">
       <li class="  ">
-        <a href="#" class="dropdown-btn active"> Dashboard <img src="~/assets/img/chevron-down.png" alt=""></a>
+        <nuxtLink to="#" class="dropdown-btn active">Dashboard<img src="~/assets/img/chevron-down.png" alt=""></nuxtLink>
 
         <ul class="dropdown-container">
           <li class=" ">
-            <a href="#" class="  ">Dashboard v1</a>
+            <nuxtLink to="/backend" > Dashboard </nuxtLink>
           </li>
           <li class=" ">
-            <a href="#" class="   ">Dashboard v2</a>
+            <nuxt-link class="" to="/backend/profile">My Profile</nuxt-link>
           </li>
           <li class=" ">
             <a href="#" class="   ">Dashboard v3</a>
@@ -19,7 +19,7 @@
 
 
       <li class="  ">
-        <a href="#" class="dropdown-btn active">Tanjil</a>
+        <a href="#" class="dropdown-btn active">Tanjil 	&dArr;</a>
         <ul class="     dropdown-container">
           <li class=" ">
             <a href="#" class="  ">Dashboard v1</a>

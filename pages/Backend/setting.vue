@@ -27,10 +27,10 @@
         <div class="w-full lg:w-2/5 lg:order-1 order-2">
           <p><b>Name : </b>{{ $auth.user.name }}</p>
           <p><b>User Role : </b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
           </p>
           <p><b>User Id : </b>{{ $auth.user.id }}</p>
         </div>
@@ -41,144 +41,125 @@
 
         </div>
 
-        <div class="w-full lg:w-2/5 order-3" >
+        <div class="w-full lg:w-2/5 order-3">
           <p><b>Email : </b>{{ $auth.user.email }}</p>
-          <p><b>Email Verified : </b>{{ $auth.user.email_verified_at }}</p>
+          <p><b>Email Verified : </b><b class="text-red-600 " v-if=" $auth.user.email_verified_at == null"> False</b> <b class="text-green-600 " v-if=" $auth.user.email_verified_at !== null"> Verified</b>
+          </p>
           <p><b>Created at : </b>{{ $auth.user.created_at }}</p>
         </div>
       </div>
 
     </div>
 
-<div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-20 ">
-    <div class="max-w-md w-full space-y-8">
-      <div>
-        <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-800">Update your account info.</h2>
+    <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 mb-20 ">
+      <div class="max-w-md w-full space-y-8">
+        <div>
+          <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
+          <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-800">Update your account info.</h2>
 
-      </div>
-      <!-- <pre>
+        </div>
+        <!-- <pre>
         {{errors}}
       </pre> -->
-      <form
-      class="mt-8 space-y-6"
-      action="#"
-      @submit.prevent="handleSubmit"
-       method="POST">
-        <input type="hidden" name="remember" value="true" />
-        <FormInput
-          label="Name"
-          v-model="form.name"
-          :helperText="errorMsg('name')"
-          :hasError="hasError('name')"
-         />
-        <form-input
-          type="email"
-          label="Email Address"
-          v-model="form.email"
-          :helperText="errorMsg('email')"
-          :hasError="hasError('email')"
-       />
+        <form class="mt-8 space-y-6" action="#" @submit.prevent="handleSubmit" method="POST">
+          <input type="hidden" name="remember" value="true" />
+          <FormInput label="Name" v-model="form.name" :helperText="errorMsg('name')" :hasError="hasError('name')" />
+          <form-input type="email" label="Email Address" v-model="form.email" :helperText="errorMsg('email')"
+            :hasError="hasError('email')" />
 
 
- <div class="col-span-6 sm:col-span-3">
-                  <label for="country" class="block text-sm font-medium text-gray-700">User Role</label>
-                  <select id="country" name="country" autocomplete="country-name" class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-                    <option> Select user role</option>
-                    <option>Admin</option>
-                    <option>Manager</option>
-                    <option>Editor</option>
-                    <option>user</option>
-                  </select>
-                </div>
-
-
-
-      <form-input
-        type="password"
-        label="Password"
-        v-model="form.password"
-        :helperText="errorMsg('password')"
-        :hasError="hasError('password')"
-       />
-      <form-input
-        type="password"
-        label="Confirm Password"
-        v-model="form.password_confirmation"
-        :helperText="errorMsg('password_confirmation')"
-        :hasError="hasError('password_confirmation')"
-        class="mb-10 "
-       />
-
-
-        <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-            <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
+          <div class="col-span-6 sm:col-span-3">
+            <label for="country" class="block text-sm font-medium text-gray-700">User Role</label>
+            <select id="country" name="country" autocomplete="country-name"
+              class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+              <option> Select user role</option>
+              <option>Admin</option>
+              <option>Manager</option>
+              <option>Editor</option>
+              <option>user</option>
+            </select>
           </div>
 
-          <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot your password? </a>
+
+
+          <form-input type="password" label="Password" v-model="form.password" :helperText="errorMsg('password')"
+            :hasError="hasError('password')" />
+          <form-input type="password" label="Confirm Password" v-model="form.password_confirmation"
+            :helperText="errorMsg('password_confirmation')" :hasError="hasError('password_confirmation')"
+            class="mb-10 " />
+
+
+          <div class="flex items-center justify-between">
+            <div class="flex items-center">
+              <input id="remember-me" name="remember-me" type="checkbox"
+                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
+              <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
+            </div>
+
+            <div class="text-sm">
+              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot your password? </a>
+            </div>
           </div>
-        </div>
 
 
 
-        <div>
-          <form-button :loading="loading">Update</form-button>
+          <div>
+            <form-button :loading="loading">Update</form-button>
 
-        </div>
-      </form>
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
 
   </div>
 </template>
 <script>
-import form from '../mixins/form';
-import Input from '../../components/Form/Input.vue';
+  import form from '../mixins/form';
+  import Input from '../../components/Form/Input.vue';
 
-export default {
-  middleware: 'auth',
-  layout: 'backend',
-  head: {
-    title: "Setting",
-  },
-  components: { Input },
-  mixins: [form],
+  export default {
+    middleware: ['auth', 'email-verified'],
+    layout: 'backend',
+    head: {
+      title: "Setting",
+    },
+    components: {
+      Input
+    },
+    mixins: [form],
 
-  data() {
-    return{
-      form:{
-        name: "",
-        email: "",
-        password: "",
-        password_confirmation: "",
-      },
-      errors: {},
-      loading: false,
-    };
-  },
+    data() {
+      return {
+        form: {
+          name: "",
+          email: "",
+          password: "",
+          password_confirmation: "",
+        },
+        errors: {},
+        loading: false,
+      };
+    },
 
 
-  methods: {
+    methods: {
       // From submit same work by then & catch
-    async handleSubmit() {
+      async handleSubmit() {
         // api call
-      try {
-        this.loading = true;
-        const res = await this.$axios.$post('/api/user/upDATE', this.form)
-        this.loading = false;
+        try {
+          this.loading = true;
+          const res = await this.$axios.$post('/api/user/upDATE', this.form)
+          this.loading = false;
 
           // toast massage show
 
-        this.$store.commit("toaster/fire", {
-          text: "Successfully update your account.",
-        });
+          this.$store.commit("toaster/fire", {
+            text: "Successfully update your account.",
+          });
 
-        this.$router.push("/");
+          this.$router.push("/");
 
-      } catch (e) {
+        } catch (e) {
           // toast massage show
 
           this.$store.commit("toaster/fire", {
@@ -186,16 +167,16 @@ export default {
             type: "error",
           });
 
-          this.errors = e.response.data?.errors || {};
+          this.errors = e.response.data ?.errors || {};
           this.loading = false;
 
-      }
+        }
 
-    },
+      },
+
+    }
 
   }
-
-}
 
 </script>
 

@@ -1,36 +1,37 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
   <div>
-    <div class="bg-gray-50">
-      <div class=" ">
-        <div class="w-full">
-          <img src="~/assets/img/cover.jpg" alt="">
+    <div class="min-h-full flex items-center justify-center py-12 lg:px-4 sm:px-6 lg:px-8 mb-20 ">
+      <div class="flex flex-wrap flex-col-reverse lg:flex-row space-y-8 mx-auto">
+
+        <div class="w-full lg:w-1/2 p-3 mb-10 border-2 border-dashed rounded-sm border-primary -ml-2 mr-2">
+          <div>
+          <img class="w-56 mx-auto" src="~/assets/img/Thanks.jpg" alt="Thanks" />
+          <p class="text-center"><b>Login : </b>{{ $auth.loggedIn }}</p>
+</div>
+<div>
+          <p><b>Name : </b>{{ $auth.user.name }}</p>
+          <p><b>User Role : </b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
+          </p>
+          <p><b>User Id : </b>{{ $auth.user.id }}</p>
+
+          <p><b>Email : </b>{{ $auth.user.email }}</p>
+          <p><b>Email Verified : </b><b class="text-red-600 " v-if=" $auth.user.email_verified_at == null"> False</b> <b class="text-green-600 " v-if=" $auth.user.email_verified_at !== null"> Verified</b>
+          </p>
+          <p><b>Created at : </b>{{ $auth.user.created_at }}</p>
+</div>
+
         </div>
-      </div>
-    </div>
 
-    <div class="bg-gray-50">
-      <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
-<div class="basis-1/4">
-    <p>Name: </p>
-    <p>Email: </p>
-  </div>
-  <div class="basis-1/2">
-    <div class="rounded-md shadow">
-            <img src="~/assets/img/Thanks.jpg" alt="Admin Img" style="opacity:1; width: 150px;">
-          </div>
-  </div>
-  <div class="basis-1/4">
+        <div class="w-full lg:w-1/2 p-3 mb-10 border-2 border-dashed rounded-sm border-primary -mr-2 ml-2">
+          <img class="w-full mx-auto" src="~/assets/img/cover.jpg" alt="Thanks" />
 
-          <div class="rounded-md shadow border">
-.services_text .box-body {
-    color: #5f5e5e;
-}
-            <p>Name: </p>
-            <p>Email: </p>
-          </div>
-  </div>
 
+        </div>
 
 
       </div>
