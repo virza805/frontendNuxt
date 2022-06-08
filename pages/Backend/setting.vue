@@ -68,7 +68,7 @@
             :hasError="hasError('email')" />
 
 
-          <div class="col-span-6 sm:col-span-3">
+          <!-- <div class="col-span-6 sm:col-span-3">
             <label for="country" class="block text-sm font-medium text-gray-700">User Role</label>
             <select id="country" name="country" autocomplete="country-name"
               class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
@@ -78,28 +78,20 @@
               <option>Editor</option>
               <option>user</option>
             </select>
-          </div>
+          </div> -->
+
+          <form-input type="text" label="User Role" v-model="form.role"
+            :helperText="errorMsg('role')" :hasError="hasError('role')"
+            class="mb-10 " />
 
 
 
           <form-input type="password" label="Password" v-model="form.password" :helperText="errorMsg('password')"
             :hasError="hasError('password')" />
-          <form-input type="password" label="Confirm Password" v-model="form.password_confirmation"
-            :helperText="errorMsg('password_confirmation')" :hasError="hasError('password_confirmation')"
-            class="mb-10 " />
 
 
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input id="remember-me" name="remember-me" type="checkbox"
-                class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-              <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
-            </div>
 
-            <div class="text-sm">
-              <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot your password? </a>
-            </div>
-          </div>
+
 
 
 
@@ -134,7 +126,7 @@
           name: "",
           email: "",
           password: "",
-          password_confirmation: "",
+          role: "",
         },
         errors: {},
         loading: false,
@@ -148,7 +140,10 @@
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/upDATE', this.form)
+          const res = await this.$axios.$post('/api/user/update-profile', this.form);
+
+          // await this.$auth.fetchUser();
+
           this.loading = false;
 
           // toast massage show
@@ -157,7 +152,7 @@
             text: "Successfully update your account.",
           });
 
-          this.$router.push("/");
+          // this.$router.push("/");
 
         } catch (e) {
           // toast massage show
@@ -174,7 +169,20 @@
 
       },
 
-    }
+      getUser() {
+        let user = this.$store.state.auth.user;
+
+        this.form.name = user.name;
+        this.form.email = user.email;
+        this.form.role = user.role;
+        this.form.password = user.password;
+      }
+
+    },
+
+    mounted(){
+      this.getUser();
+    },
 
   }
 

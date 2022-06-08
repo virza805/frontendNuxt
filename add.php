@@ -31,7 +31,7 @@
 
 
 # 10:52s / 1:17:56 |=> https://www.youtube.com/watch?v=mVIth8lmL80&list=PL03GdZZs-POWoSFFxqf15M-08tsY2fDiN&index=8
-# 00:00s / 00:00 |=> 33 & 35 <=| https://www.youtube.com/watch?v=spN-QjjQp30&list=PL03GdZZs-POVHXjxjyKegmsvOiQVXpb7O&index=35
+# 01:12s / 17:13 |=> 10, 12 & 13 <=| https://www.youtube.com/watch?v=5IUR4-SkpH0&list=PLXuHNPzyZJcHgqxdy3PY9MyEZ7jy9feOv&index=12
 
 #========== => Satrt Backend <= ==========#
 /*
