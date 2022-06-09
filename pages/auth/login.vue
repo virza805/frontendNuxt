@@ -51,7 +51,7 @@
           </div>
 
           <div class="text-sm">
-            <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> Forgot your password? </a>
+            <nuxt-link to="/auth/forgot-password" class="font-medium text-green-600 hover:text-green-800"> Forgot your password? </nuxt-link>
           </div>
         </div>
 

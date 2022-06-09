@@ -11,7 +11,7 @@
     <div class="max-w-md w-full space-y-8">
       <div>
         <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" />
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Sign in to your account</h2>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Enter your New Password</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
           Or
           {{ '' }}
@@ -27,12 +27,7 @@
       @submit.prevent="handleSubmit"
        method="POST">
         <input type="hidden" name="remember" value="true" />
-        <FormInput
-          label="Name"
-          v-model="form.name"
-          :helperText="errorMsg('name')"
-          :hasError="hasError('name')"
-         />
+
         <form-input
           type="email"
           label="Email Address"
@@ -40,6 +35,13 @@
           :helperText="errorMsg('email')"
           :hasError="hasError('email')"
        />
+       <FormInput
+          label="Token"
+          v-model="form.token"
+          :helperText="errorMsg('token')"
+          :hasError="hasError('token')"
+        />
+
       <form-input
         type="password"
         label="Password"
@@ -71,7 +73,7 @@
 
 
         <div>
-          <form-button :loading="loading">Sign Up</form-button>
+          <form-button :loading="loading">Submit</form-button>
 
         </div>
       </form>
@@ -86,7 +88,7 @@ export default {
     middleware: 'guest',
     layout: "sing_in_up",
     head: {
-        title: "Signup",
+        title: "ResetPassword",
     },
     components: { Input },
     mixins: [form],
@@ -94,7 +96,7 @@ export default {
     data() {
       return{
         form:{
-          name: "",
+          token: "",
           email: "",
           password: "",
           password_confirmation: "",
@@ -110,16 +112,16 @@ export default {
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/register', this.form)
+          const res = await this.$axios.$post('/api/user/reset-password', this.form)
           this.loading = false;
 
           // toast massage show
 
           this.$store.commit("toaster/fire", {
-            text: "Successfully created a new account. please check your email to verify your account.",
+            text: "Successfully reset your account password. Please try your account login check .",
           });
 
-          this.$router.push("/");
+          this.$router.push("/auth/login");
 
         } catch (e) {
           // console.log(e.response.data);
@@ -137,22 +139,6 @@ export default {
         }
 
       },
-
-// From submit same work by then & catch
-
-      // handleSubmit() {
-      //   // api call
-      //   this.$axios
-      //   .$post('/api/user/register', this.form)
-      //   .then((res) =>{
-      //     this.$router.push("/");
-      //   })
-      //   .catch((e) => {
-      //     // console.log(e.response.data);
-
-      //     this.errors = e.response.data?.errors || {};
-      //   });
-      // },
 
 
     }
