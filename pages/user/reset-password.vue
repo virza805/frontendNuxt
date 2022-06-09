@@ -141,7 +141,20 @@ export default {
       },
 
 
-    }
+    },
+
+    mounted() {
+      // Recive url info.
+      let emails = this.$route.query.email;
+      let tok = this.$route.query.token;
+
+      if (tok) {
+        this.form.token = tok;
+      }else {
+        this.$router.push("/");
+      }
+      this.form.email =  emails;
+    },
 };
 </script>
 
