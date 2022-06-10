@@ -43,6 +43,33 @@ yarn add --exact @nuxtjs/auth-next |=> https://auth.nuxtjs.org/guide/setup
 
 go to nuxt.config.js |=> https://auth.nuxtjs.org/schemes/local
 
+#========== => ## Send mail from Laravel to user with quee Backend <= ==========#
+
+php artisan make:model Contact -mc
+php artisan migrate || php artisan migrate:fresh --seed
+
+|-> .env file config then
+php artisan make:mail ContactMail |-> set mail connect
+|-> views/emails/contact-mail.blade.php for mail body create must be use html table
+|-> ContactController.php to control mail
+
+## Send mail from Laravel to user via Queue
+
+php artisan queue:table
+php artisan migrate
+go to .env |-> QUEUE_CONNECTION=database
+
+
+# php artisan passport:keys => if download github file then run this
+# php artisan passport:client --personal => if some error show like this {
+    “RuntimeException: Personal access client not found. Please create one. in file D:\Wynch\vendor\laravel\passport\src\ClientRepository.php on line 122”
+}
+
+
+
+
+php artisan make:job ProcessContactMail
+php artisan queue:listen => must be run  if not run this|| php artisan queue:work
 
 
 

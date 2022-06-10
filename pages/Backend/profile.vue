@@ -6,24 +6,25 @@
 
         <div class="w-full lg:w-1/2 p-3 mb-10 border-2 border-dashed rounded-sm border-primary -ml-2 mr-2">
           <div>
-          <img class="w-56 mx-auto" src="~/assets/img/Thanks.jpg" alt="Thanks" />
-          <p class="text-center"><b>Login : </b>{{ $auth.loggedIn }}</p>
-</div>
-<div>
-          <p><b>Name : </b>{{ $auth.user.name }}</p>
-          <p><b>User Role : </b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
-          </p>
-          <p><b>User Id : </b>{{ $auth.user.id }}</p>
+            <img class="w-56 mx-auto" src="~/assets/img/Thanks.jpg" alt="Thanks" />
+            <p class="text-center"><b>Login : </b>{{ $auth.loggedIn }}</p>
+          </div>
+          <div>
+            <p><b>Name : </b>{{ $auth.user.name }}</p>
+            <p><b>User Role : </b>
+              <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
+              <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
+              <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
+              <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
+            </p>
+            <p><b>User Id : </b>{{ $auth.user.id }}</p>
 
-          <p><b>Email : </b>{{ $auth.user.email }}</p>
-          <p><b>Email Verified : </b><b class="text-red-600 " v-if=" $auth.user.email_verified_at == null"> False</b> <b class="text-green-600 " v-if=" $auth.user.email_verified_at !== null"> Verified</b>
-          </p>
-          <p><b>Created at : </b>{{ $auth.user.created_at }}</p>
-</div>
+            <p><b>Email : </b>{{ $auth.user.email }}</p>
+            <p><b>Email Verified : </b><b class="text-red-600 " v-if=" $auth.user.email_verified_at == null"> False</b>
+              <b class="text-green-600 " v-if=" $auth.user.email_verified_at !== null"> Verified</b>
+            </p>
+            <p><b>Created at : </b>{{ $auth.user.created_at }}</p>
+          </div>
 
         </div>
 
