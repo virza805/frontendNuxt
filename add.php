@@ -65,9 +65,6 @@ go to .env |-> QUEUE_CONNECTION=database
     “RuntimeException: Personal access client not found. Please create one. in file D:\Wynch\vendor\laravel\passport\src\ClientRepository.php on line 122”
 }
 
-
-
-
 php artisan make:job ProcessContactMail
 php artisan queue:listen => must be run  if not run this|| php artisan queue:work
 

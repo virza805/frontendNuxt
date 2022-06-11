@@ -37,6 +37,9 @@
 import Sidebar from "../components/Sidebar";
 import SingleProductBox from "../components/SingleProductBox";
 export default {
+  head: {
+    title: "Category",
+  },
   name: "category",
   components: {SingleProductBox, Sidebar}
 }

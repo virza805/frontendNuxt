@@ -4,6 +4,9 @@
 
 <script>
 export default {
+  head: {
+    title: "My Account",
+  },
 
 }
 </script>

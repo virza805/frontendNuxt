@@ -8,7 +8,7 @@
       <div class="w-full lg:w-5/6 flex flex-wrap flex-col-reverse lg:flex-row">
 
         <div class="w-1/2 lg:w-1/4 p-3  border-1 rounded-sm border-gray-100 -ml-1 mr-1 text-center">
-          <a href="mailto:virza.bd@gmail.com">
+          <a href="mailto:virza.bd@gmail.com" target="_blank">
             <img class="w-12 mx-auto" src="~/assets/img/mail.svg" alt="Phone">
             <p class="text-center mt-6">virza.bd@gmail.com</p>
           </a>
@@ -22,14 +22,14 @@
         </div>
 
         <div class="w-1/2 lg:w-1/4 p-3  border-1 rounded-sm border-gray-100 -ml-1 mr-1 text-center">
-          <a href="https://vir-za.com/">
+          <a href="https://vir-za.com/"  target="_blank">
             <img class="w-12 mx-auto" src="~/assets/img/globe.svg" alt="Phone">
             <p class="text-center mt-6">vir-za.com</p>
           </a>
         </div>
 
         <div class="w-1/2 lg:w-1/4 p-3  border-1 rounded-sm border-gray-100 -ml-1 mr-1 text-center">
-          <a href="https://www.google.com.bd/maps/@23.8512289,90.2821869,16z?hl=en&authuser=0">
+          <a href="https://www.google.com.bd/maps/@23.8512289,90.2821869,16z?hl=en&authuser=0" target="_blank">
             <img class="w-12 mx-auto" src="~/assets/img/map.svg" alt="Phone">
             <p class="text-center mt-6">Saver, Dhaka - 1340, Bangladesh.</p>
           </a>

@@ -286,6 +286,9 @@
   import dealsOfTheDayProducts from '../assets/css/deals-of-the-day-products.json'
 
   export default {
+    head: {
+      title: "Home",
+    },
     name: 'IndexPage',
     components: {
       Header,
