@@ -71,8 +71,82 @@ php artisan queue:listen => must be run  if not run this|| php artisan queue:wor
 
 #   |=> https://feathericons.com/
 
+# php artisan make:model TaskList -a => for new table in database
+
+# php artisan migrate =>
 
 
+
+
+
+
+
+
+
+
+
+[ubermenu config_id="main" menu="1390"]
+
+[fibosearch]
+
+logo_menu
+search_menu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.logo_menu .et_pb_column.et_pb_column_1_2 {
+    width: 50%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.logo_menu {
+    display: flex;
+    align-items: center;
+}
+
+.logo_menu .et_pb_module.et_pb_icon.et_pb_icon_0_tb_header {
+    margin: 0;
+    padding: 0;
+}
+
+.logo_menu .et_pb_module.et_pb_menu.et_pb_menu_0_tb_header.et_pb_bg_layout_light.et_pb_text_align_left.et_dropdown_animation_fade.et_pb_menu--without-logo.et_pb_menu--style-left_aligned {
+    margin: 0;
+    padding: 0;
+    margin-bottom: -24px !important;
+}
+
+.logo_menu .et_pb_menu__wrap {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
 
 
 
