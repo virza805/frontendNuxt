@@ -19,26 +19,15 @@
 
 
       <li class="  ">
-        <a href="#" class="dropdown-btn active">Tanjil 	&dArr;</a>
+        <a href="#" class="dropdown-btn active">Task List 	&dArr;</a>
         <ul class="     dropdown-container">
           <li class=" ">
-            <a href="#" class="  ">Dashboard v1</a>
+            <nuxt-link to="/backend/taskList"> All Task</nuxt-link>
           </li>
           <li class=" ">
-            <a href="#" class="   ">Dashboard v2</a>
+            <nuxt-link to="/backend/addTask"> Add Task</nuxt-link>
           </li>
-          <li class=" ">
-            <a href="#" class="   ">Dashboard v3</a>
-          </li>
-          <li class=" ">
-            <a href="#" class="   ">Dashboard v3</a>
-          </li>
-          <li class=" ">
-            <a href="#" class="   ">Dashboard v3</a>
-          </li>
-          <li class=" ">
-            <a href="#" class="   ">Dashboard v3</a>
-          </li>
+
         </ul>
       </li>
 
