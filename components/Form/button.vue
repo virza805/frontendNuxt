@@ -1,5 +1,5 @@
 <template>
-  <button class="flex" v-bind="$attrs" @click="$emit('click', $event)">
+  <button class="flex capitalize" v-bind="$attrs" @click="$emit('click', $event)">
     <svg
     v-if="loading"
     class="animate-spin mr-2 h-5 w-5 text-white"
@@ -29,7 +29,7 @@ export default {
 
 <style scoped lang="scss">
 button {
-  @apply text-sm bg-primaryGreen transition duration-300 text-white px-2 py-1 rounded uppercase;
+  @apply text-sm bg-primaryGreen transition duration-300 text-white px-2 pt-1 pb-0 rounded;
   &:hover {
     @apply bg-opacity-75;
   }
