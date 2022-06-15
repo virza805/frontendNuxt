@@ -7,25 +7,24 @@
     <body class="h-full">
     ```
   -->
-  <div class="flex flex-column items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+  <div class="taskList flex flex-col py-12 px-4">
     <!-- Show Task List Start now -->
+    <h2 class="text-4xl text-red-500 font-bold text-center">{{ $auth.user.name }} Task List Show </h2>
+    <p class="text-center text-base">Your role is <UserRole /></p>
 
-
-    <div class="d-flex justify-content-between flex-wrap">
-
-      <h4>user {{ $auth.user.name }} <span><span style="font-size:10px ">User role</span>
-          <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
-          <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
-          <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
-          <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
-        </span> Task List</h4>
-
+    <div class="flex">
       <!-- <input
                 type="text"
                 class="form-control w-50"
                 @keyup="search($event.target.value)"
                 placeholder="search.."
               /> -->
+      <input
+        type="text"
+        class="form-control w-50"
+        placeholder="search.."
+      />
+      <button class="btn btn-success">Delete Selected</button>
 
       <!-- <button
               v-if="selected_data.length > 0"
@@ -37,7 +36,7 @@
 
 
 
-    <h2 class="mt-14 text-4xl text-red-500 font-bold text-center">Show Task List</h2>
+   
     <div class="flex items-center justify-center py-12 lg:px-4 sm:px-6 mb-20 ">
       <div class="w-5/6 lg:w-11/12 flex flex-wrap flex-col-reverse lg:flex-row ">
 

@@ -3,7 +3,7 @@
 
   <div id="logo_left"   v-bind="$attrs">
   <div class="drop_btn drop_con">{{ title }}</div>
-                <h2 class="d-inline">
+                <h2 class="d-inline text-center">
                     <span>T</span>
                     <span>A</span>
                     <span>N</span>

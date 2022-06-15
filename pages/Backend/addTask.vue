@@ -10,12 +10,14 @@
   <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" />
+        <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
+        <Tanvir />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Add Task</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
+          <TextSlid />
           Or
           {{ ' ' }}
-          <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
+          <!-- <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a> -->
         </p>
       </div>
       <form
@@ -41,6 +43,9 @@
             :hasError="hasError('email')"
             placeholder="Description"
           />
+          <textarea rows="10" cols="20" name="comment" form="usrform">
+Enter text here...</textarea>
+
           <form-input
 
             label="Date"
