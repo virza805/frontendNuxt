@@ -35,16 +35,16 @@
             :hasError="hasError('title')"
             placeholder="Title"
           />
-          <form-input
+          <form-textarea
 
             label="Description"
             v-model="form.dec"
             :helperText="errorMsg('dec')"
             :hasError="hasError('dec')"
-            placeholder="Description"
-          />
-          <!-- <textarea rows="10" cols="20" name="comment" form="usrform">
-Enter text here...</textarea> -->
+            placeholder="Enter text here..."
+            rows="4"
+            cols="20"
+          ></form-textarea>
 
           <form-input
             type="date"
