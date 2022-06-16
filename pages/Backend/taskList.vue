@@ -52,7 +52,7 @@
         <div class="w-full p-3 mb-10 border-2 border-dashed rounded-sm border-green-400 -ml-2 mr-2">
           <div>
 
-            <h2 class="my-4 flex items-center font-bold text-center"><nuxt-link to="/addTask" class=" bg-green-800 text-white py-4 px-8">+ Add Task</nuxt-link> <img class=""
+            <h2 class="my-4 flex items-center font-bold text-center"><nuxt-link to="/Backend/addTask" class=" bg-green-800 text-white py-4 px-8">+ Add Task</nuxt-link> <img class=""
                 src="~/assets/img/carousel-img-2.png" alt="fish"></h2>
 
 
@@ -67,13 +67,33 @@
                   <!-- <th>Image</th> -->
                   <th>Title</th>
                   <th>Description</th>
-                  <th>End Date</th>
+                  <th>endDate</th>
                   <th class="text-center col-span-3">
                     Action
                   </th>
                 </tr>
               </thead>
               <tbody class="bg-green-50 p-2 ">
+                <tr  v-for="book in task_list.data" :key="book.id" class="border border-b border-green-200 ">
+                  <td class="table-td"><input type="checkbox" name="" id=""></td>
+                  <td class="table-td">2</td>
+                  <td class="table-td pl-2">{{ book.title }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer</td>
+                  <td class="table-td">16-12-1961</td>
+                  <td>
+                    <div class="flex my-1 lg:justify-between px-2">
+                      <!-- <a href="#" v-if="book.success_task" class="btn-success mx-1 ">Done</a> -->
+
+                      <nuxt-link to="/backend/taskEdit" class="bg-blue-600 py-1 px-2 rounded text-center text-yellow-50 ">Done</nuxt-link>
+                      <!-- <a href="#" v-else @click.prevent="success_task(book)" class="btn-primary mx-1">Not done yet</a> -->
+                      <!-- <nuxt-link to="/backend/taskEdit">Not done yet</nuxt-link> -->
+
+                      <!-- <router-link :to="{name: 'taskEdit', params:{id: book.id}}" class="btn-warning mx-1"> Edit</router-link> -->
+                      <nuxt-link to="/backend/taskEdit" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
+                      <form-button class="bg-red-600 text-white " :loading="loading">Delete</form-button>
+                    </div>
+                  </td>
+                </tr>
                 <tr class="border border-b border-green-200 ">
                   <td class="table-td"><input type="checkbox" name="" id=""></td>
                   <td class="table-td">2</td>
@@ -81,7 +101,7 @@
                   <td class="table-td py-1 border-l border-green-200 px-2 ">Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer</td>
                   <td class="table-td">16-12-1961</td>
                   <td>
-                    <div class="flex justify-between px-2">
+                    <div class="flex my-1 lg:justify-between px-2">
                       <!-- <a href="#" v-if="book.success_task" class="btn-success mx-1 ">Done</a> -->
 
                       <nuxt-link to="/backend/taskEdit" class="bg-blue-600 py-1 px-2 rounded text-center text-yellow-50 ">Done</nuxt-link>
@@ -173,6 +193,7 @@
 
     data() {
       return {
+      task_list: {},
         form: {
           email: "",
           password: "",
@@ -183,7 +204,31 @@
 
     methods: {
       // From submit async await
+      async handleShow(){
+      try {
+       await this.$axios.$get('/api/user/task-list')
 
+       .then((res) =>{
+          // this.task_list = response.data;
+          this.task_list  = res.data;
+        })
+       console.log(this.task_list);
+
+      } catch  (e) {
+          // console.log(e.response.data);
+
+          // toast massage show
+
+          this.$store.commit("toaster/fire", {
+            text: e.response.data.message,
+            type: "error",
+          });
+
+          this.errors = e.response.data?.errors || {};
+          this.loading = false;
+
+        }
+      }
     }
   };
 

@@ -30,42 +30,42 @@
           <form-input
 
             label="Title"
-            v-model="form.email"
-            :helperText="errorMsg('email')"
-            :hasError="hasError('email')"
+            v-model="form.title"
+            :helperText="errorMsg('title')"
+            :hasError="hasError('title')"
             placeholder="Title"
           />
           <form-input
 
             label="Description"
-            v-model="form.email"
-            :helperText="errorMsg('email')"
-            :hasError="hasError('email')"
+            v-model="form.dec"
+            :helperText="errorMsg('dec')"
+            :hasError="hasError('dec')"
             placeholder="Description"
           />
-          <textarea rows="10" cols="20" name="comment" form="usrform">
-Enter text here...</textarea>
+          <!-- <textarea rows="10" cols="20" name="comment" form="usrform">
+Enter text here...</textarea> -->
 
           <form-input
-
+            type="date"
             label="Date"
-            v-model="form.email"
-            :helperText="errorMsg('email')"
-            :hasError="hasError('email')"
+            v-model="form.c_date"
+            :helperText="errorMsg('c_date')"
+            :hasError="hasError('c_date')"
             placeholder="Date"
           />
           <form-input
             type="date"
             label="End Date"
-            v-model="form.password"
-            :helperText="errorMsg('password')"
-            :hasError="hasError('password')"
+            v-model="form.date"
+            :helperText="errorMsg('date')"
+            :hasError="hasError('date')"
             placeholder="End Date"
           />
 
         </div>
 
-        <div class="flex items-center justify-between">
+        <!-- <div class="flex items-center justify-between">
           <div class="flex items-center">
             <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
             <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
@@ -74,7 +74,7 @@ Enter text here...</textarea>
           <div class="text-sm">
             <nuxt-link to="/auth/forgot-password" class="font-medium text-green-600 hover:text-green-800"> Forgot your password? </nuxt-link>
           </div>
-        </div>
+        </div> -->
 
         <div>
           <form-button :loading="loading">Submit Now</form-button>
@@ -96,16 +96,18 @@ export default {
     head: {
         title: "Add Task",
     },
-    // layout: "sing_in_up",
     components: { Input },
     mixins: [form],
 
     data() {
       return{
         form:{
-          email: "",
-          password: "",
+          title: "",
+          dec: "",
+          c_date: "",
+          date: "",
         },
+        errors: {},
         loading: false,
       };
     },
@@ -116,18 +118,21 @@ export default {
         // api call
         try {
           this.loading = true;
-          await this.$auth.loginWith('local', { data: this.form });
-
+          const res = await this.$axios.$post('/api/user/store', this.form)
           this.loading = false;
 
           // toast massage show
+
           this.$store.commit("toaster/fire", {
-            text: "Successfully logged in",
+            text: "Successfully created a new Task for your account.",
           });
 
-          // this.$router.push("/backend");
+          this.$router.push("/backend/taskList");
 
         } catch (e) {
+          // console.log(e.response.data);
+
+          // toast massage show
 
           this.$store.commit("toaster/fire", {
             text: e.response.data.message,
