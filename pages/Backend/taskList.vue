@@ -73,13 +73,14 @@
                   </th>
                 </tr>
               </thead>
+
               <tbody class="bg-green-50 p-2 ">
-                <tr  v-for="book in task_list.data" :key="book.id" class="border border-b border-green-200 ">
+                <tr  v-for="book in data" :key="book.id" class="border border-b border-green-200 ">
                   <td class="table-td"><input type="checkbox" name="" id=""></td>
-                  <td class="table-td">2</td>
+                  <td class="table-td">{{ book.id }}</td>
                   <td class="table-td pl-2">{{ book.title }}</td>
-                  <td class="table-td py-1 border-l border-green-200 px-2 ">Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer Malcolm Lockyer</td>
-                  <td class="table-td">16-12-1961</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ book.dec }}</td>
+                  <td class="table-td">{{ book.c_date }}</td>
                   <td>
                     <div class="flex my-1 lg:justify-between px-2">
                       <!-- <a href="#" v-if="book.success_task" class="btn-success mx-1 ">Done</a> -->
@@ -193,7 +194,8 @@
 
     data() {
       return {
-      task_list: {},
+      task_list: '',
+      data: '',
         form: {
           email: "",
           password: "",
@@ -202,34 +204,43 @@
       };
     },
 
-    methods: {
-      // From submit async await
-      async handleShow(){
-      try {
-       await this.$axios.$get('/api/user/task-list')
+    async fetch() {
+      const res = await this.$axios.$get('/api/user/task-list')
+      this.data = res.data
+      // console.log( this.data );
+    },
+      // onMounted(async()=> {});
 
-       .then((res) =>{
-          // this.task_list = response.data;
-          this.task_list  = res.data;
-        })
-       console.log(this.task_list);
+    // methods: {
+    //   // From submit async await
+    //   async handleShow(){
+    //   try {
+    //   this.task_list = await this.$axios.get('/api/user/task-list', this.task_list)
 
-      } catch  (e) {
-          // console.log(e.response.data);
+    //       // this.task_list  = res.data;
 
-          // toast massage show
+    //   //  .then((res) =>{
+    //   //     // this.task_list = response.data;
+    //   //     this.task_list  = res.data;
+    //   //   })
+    //    console.log(this.task_list);
 
-          this.$store.commit("toaster/fire", {
-            text: e.response.data.message,
-            type: "error",
-          });
+    //   } catch  (e) {
+    //       // console.log(e.response.data);
 
-          this.errors = e.response.data?.errors || {};
-          this.loading = false;
+    //       // toast massage show
 
-        }
-      }
-    }
+    //       this.$store.commit("toaster/fire", {
+    //         text: e.response.data.message,
+    //         type: "error",
+    //       });
+
+    //       this.errors = e.response.data?.errors || {};
+    //       this.loading = false;
+
+    //     }
+    //   }
+    // }
   };
 
 
