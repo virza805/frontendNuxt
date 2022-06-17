@@ -12,7 +12,7 @@
       <div>
         <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
         <Tanvir />
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Add Task</h2>
+        <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Now You can Edit your Task</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
           <TextSlid />
           Or
@@ -77,7 +77,7 @@
         </div> -->
 
         <div>
-          <form-button :loading="loading">Submit Now</form-button>
+          <form-button :loading="loading">Update Task</form-button>
         </div>
       </form>
     </div>
@@ -94,7 +94,7 @@ export default {
     middleware: 'auth',
     layout: 'backend',
     head: {
-        title: "Add Task",
+        title: "Edit Task",
     },
     components: { Input },
     mixins: [form],
@@ -118,7 +118,7 @@ export default {
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/task/store', this.form)
+          const res = await this.$axios.$post('/api/user/task/update', this.form)
           this.loading = false;
 
           // toast massage show

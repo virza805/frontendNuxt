@@ -15,12 +15,6 @@
     </p>
 
     <div class="flex justify-between">
-      <!-- <input
-                type="text"
-                class="form-control w-50"
-                @keyup="search($event.target.value)"
-                placeholder="search.."
-              /> -->
 
       <form-button
       class="bg-red-600"
@@ -29,13 +23,6 @@
       @click.prevent="delete_multiple()"
       >Delete Selected ( {{ selected_data.length }} )</form-button>
 
-
-              <!-- <input
-                type="text"
-                class="form-control border border-green-300 w-50"
-                @keyup="search($event.target.value)"
-                placeholder="search.."
-              /> -->
 
       <label class="relative block">
         <span class="sr-only">Search</span>
@@ -51,17 +38,10 @@
       </label>
 
 
-      <nuxt-link to="/Backend/addTask" class=" bg-green-800 text-white py-1 px-8">+ Add Task</nuxt-link>
-      <!-- <button
-              v-if="selected_data.length > 0"
-              @click.prevent="delete_multiple()"
-              class="btn btn-success">Delete Selected ( {{ selected_data.length }} )</button> -->
+      <nuxt-link to="/Backend/addTask" class=" bg-green-500 text-white py-1 px-8">+ Add Task</nuxt-link>
+
 
     </div>
-
-
-
-
 
     <div class="flex items-center justify-center py-12 lg:px-4 sm:px-6 mb-20 ">
       <div class="w-5/6 lg:w-11/12 flex flex-wrap flex-col-reverse lg:flex-row ">
@@ -76,7 +56,6 @@
               <thead class="bg-green-200 ">
                 <tr>
                   <th>
-                    <!-- <input type="checkbox" name="" id=""> -->
                     <input type="checkbox" @change.prevent="check_all()" id="check_all" class="form-check" >
                   </th>
                   <th>#</th>
@@ -102,13 +81,9 @@
                   <td class="table-td">{{ book.c_date }}</td>
                   <td>
                     <div class="flex my-1 lg:justify-between px-2">
-                      <!-- <a href="#" v-if="book.success_task" class="btn-success mx-1 ">Done</a> -->
+                      <p v-if="book.success_task"  class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 ">☻ Done</p>
+                      <form-button v-else @click.prevent="success_task(book)" class="bg-blue-600 text-white " :loading="loading">Not done yet</form-button>
 
-                      <nuxt-link to="/backend/taskEdit" class="bg-blue-600 py-1 px-2 rounded text-center text-yellow-50 ">Done</nuxt-link>
-                      <!-- <a href="#" v-else @click.prevent="success_task(book)" class="btn-primary mx-1">Not done yet</a> -->
-                      <!-- <nuxt-link to="/backend/taskEdit">Not done yet</nuxt-link> -->
-
-                      <!-- <router-link :to="{name: 'taskEdit', params:{id: book.id}}" class="btn-warning mx-1"> Edit</router-link> -->
                       <nuxt-link to="/backend/taskEdit" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
                       <form-button @click.prevent="delete_book(book,index)" class="bg-red-600 text-white " :loading="loading">Delete</form-button>
                     </div>
@@ -116,52 +91,6 @@
                 </tr>
 
               </tbody>
-
-
-              <!-- <div v-for="task in task_list" :key="task.id">
-                <p>tavni {{ task.title }}</p>
-              </div> -->
-
-              <!-- <tbody>
-                <tr v-for="(book, index) in task_list.data" :key="book.id">
-
-                   click | focus | change -->
-              <!-- <td>
-                    <input v-if="selected_data.includes(book.id)" checked type="checkbox" @change="add_to_selected(book.id)" class="form-check" >
-                    <input v-else type="checkbox" @change="add_to_selected(book.id)" class="form-check" >
-                  </td>
-
-                  <td>{{ book.id }}</td> -->
-              <!-- <td>
-                    <img
-                      v-if="book.image.split('/')[0] === 'upload'"
-                      :src="`${get_server_url}/${book.image}`"
-                      style="height: 70px"
-                      alt="image"
-                    />
-                    <img
-                      v-else
-                      :src="`http://${book.image}`"
-                      style="height: 70px"
-                      alt="image"
-                    />
-                  </td> -->
-              <!-- <td>{{ book.title }}</td>
-                  <td>{{ book.dec }}</td>
-                  <td>{{ book.c_date }}</td>
-                  <td>
-                    <div class="d-flex justify-content-end">
-                      <a href="#" v-if="book.success_task" class="btn btn-sm btn-success mx-1 "><i class="fa fa-check" aria-hidden="true"></i> Done</a>
-					  <a href="#" v-else @click.prevent="success_task(book)" class="btn btn-sm btn-primary mx-1"><i class="fa fa-question" aria-hidden="true"></i> Not done yet</a>
-
-                      <router-link :to="{name: 'taskEdit', params:{id: book.id}}" class="btn btn-sm btn-warning mx-1"><i class="fa fa-pencil" aria-hidden="true"></i> Edit</router-link>
-                      <p @click.prevent="delete_book(book,index)" class="btn btn-sm btn-danger mx-1"><i class="fa fa-trash" aria-hidden="true"></i> Delete</p>
-                    </div>
-                  </td>
-                </tr>
-              </tbody> -->
-
-
             </table>
 
           </div>
@@ -209,12 +138,9 @@
         loading: false,
       };
     },
-    // computed: {
-    // ...mapGetters(),
-    // },
 
     // async fetch() {
-    //   const res = await this.$axios.$get('/api/user/task-list')
+    //   const res = await this.$axios.$get('/api/user/task/task-list')
     //   this.data = res.data
     //   // console.log( this.data );
     // },
@@ -225,7 +151,7 @@
 
     methods: {
       async getData() {
-        let r = await this.$axios.$get('/api/user/task-list')
+        let r = await this.$axios.$get('/api/user/task/task-list')
         this.task_list = r.data;
         // console.log(this.task_list);
       },
@@ -235,7 +161,7 @@
     async delete_book(book,index) {
       let con = confirm('Sure want to delete??');
       if(con) {
-         await this.$axios.$post('/api/user/delete', {id: book.id})
+         await this.$axios.$post('/api/user/task/delete', {id: book.id})
           // this.task_list.data.splice(index,1);
           this.getData(); // for show only 5 data
           // toast massage show
@@ -246,46 +172,7 @@
       }
       // console.log(index);
 
-      // try {
-      //     this.loading = true;
-      //     const res = await this.$axios.$post('/api/user/delete', {id: book.id})
-      //     // this.task_list.data.splice(index,1);
-      //     this.getData(); // for show only 5 data
-      //     this.loading = false;
-
-      //     // toast massage show
-      //     this.$store.commit("toaster/fire", {
-      //       text: "Successfully Delete.",
-      //     });
-
-      // } catch (e) {
-      //     this.$store.commit("toaster/fire", {
-      //       text: e.response.data.message,
-      //       type: "error",
-      //     });
-
-      //     this.errors = e.response.data?.errors || {};
-      //     this.loading = false;
-
-      // }
-
     },
-
-    // delete_book: function(book,index) {
-    //   let con = confirm('Sure want to delete??');
-    //   console.log(index);
-    //   if(con){
-    //     window.axios.post('/task/delete', {id: book.id})
-    //     .then(res=>{
-    //       console.log(res.data);
-    //       // this.task_list.data.splice(index,1);
-    //       this.getData(); // for show only 10 data
-    //     })
-    //   }
-    // },
-
-
-
 
 
     add_to_selected: function(id) {
@@ -315,7 +202,7 @@
       let con = confirm('Are you Sure want to delete all selected item ??');
       if(con) {
         this.loading = true;
-         await this.$axios.$post('/api/user/delete-multi', { ids: this.selected_data })
+         await this.$axios.$post('/api/user/task/delete-multi', { ids: this.selected_data })
           this.selected_data = [];
           // this.task_list.data.splice(index,1);
           this.getData(); // for show only 5 data
@@ -330,22 +217,6 @@
           });
       }
 
-
-
-
-      // let con = confirm('Sure want to delete??');
-      // // console.log(index);
-      // if(con){
-      //   window.axios.post('/task/delete-multi', { ids: this.selected_data })
-      //   .then((res)=>{
-      //     console.log(res.data);
-      //     this.selected_data = [];
-      //     // this.task_list.data.splice(index,1);
-      //     this.getData(); // for show only 10 data
-      //     window.$('#check_all').prop('checked',false);
-      //   })
-      // }
-
     },
 
     search(key){
@@ -354,73 +225,41 @@
       this.getData();
     },
 
-    success_task: function (book) {
-  			let con = confirm('sure');
-  			con &&
-  			window.axios.post(`/task/success-task`, {id: book.id})
-  			.then((res) => {
-  				console.log(res.data);
+    async success_task(book){
+
+      let con = confirm('are you Sure this task done??');
+      if(con) {
+          this.loading = true;
+          await this.$axios.$post(`/api/user/task/success-task`, {id: book.id})
   				book.success_task = 1;
-  		  });
-  	  }
+          this.loading = false;
+
+          // toast massage show
+          this.$store.commit("toaster/fire", {
+            text: "This task Complete",
+          });
+
+      }
+
 
     },
-      // onMounted(async()=> {});
 
-    // methods: {
-    //   // From submit async await
-    //   async handleShow(){
-    //   try {
-    //   this.task_list = await this.$axios.get('/api/user/task-list', this.task_list)
 
-    //       // this.task_list  = res.data;
 
-    //   //  .then((res) =>{
-    //   //     // this.task_list = response.data;
-    //   //     this.task_list  = res.data;
-    //   //   })
-    //    console.log(this.task_list);
 
-    //   } catch  (e) {
-    //       // console.log(e.response.data);
+  },
 
-    //       // toast massage show
-
-    //       this.$store.commit("toaster/fire", {
-    //         text: e.response.data.message,
-    //         type: "error",
-    //       });
-
-    //       this.errors = e.response.data?.errors || {};
-    //       this.loading = false;
-
-    //     }
-    //   }
-    // }
   };
 
 
 
 
-
-  //   data: function(){
-  //   return{
-  //     task_list: {},
-  //     page: 1,
-  //     per_page: 0,
-  //     total: 0,
-  //     pagination_option: {
-  //       edgeNavigation: true,
-  //     },
-  //     search_key: '',
-
-  //     selected_data: [],
-  //   }
-  // },
-
 </script>
 
 <style scoped>
+button.bg-blue-600  {
+    background: #0392cf;
+}
 button.flex.capitalize.bg-red-600 {
     background: #ad0101;
 }
