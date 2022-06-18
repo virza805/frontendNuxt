@@ -124,7 +124,7 @@ export default {
           // toast massage show
 
           this.$store.commit("toaster/fire", {
-            text: "Successfully created a new Task for your account.",
+            text: "Successfully update Task for you.",
           });
 
           this.$router.push("/backend/taskList");
@@ -146,8 +146,23 @@ export default {
 
       },
 
+      async getEditTask(){
+        let editTaskId = this.$route.query.id;
+        let editData = await this.$axios.$get('/api/user/task/get/'+editTaskId)
 
-    }
+        this.form.title = editData.title;
+        this.form.dec = editData.dec;
+        this.form.c_date = editData.c_date;
+        this.form.date = editData.date;
+
+      },
+
+
+    },
+
+    mounted() {
+      this.getEditTask();
+    },
 };
 </script>
 

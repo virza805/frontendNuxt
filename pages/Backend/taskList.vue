@@ -84,7 +84,9 @@
                       <p v-if="book.success_task"  class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 ">☻ Done</p>
                       <form-button v-else @click.prevent="success_task(book)" class="bg-blue-600 text-white " :loading="loading">Not done yet</form-button>
 
-                      <nuxt-link to="/backend/taskEdit" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
+                      <nuxt-link :to="`/backend/editTask/?id=${book.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
+
+
                       <form-button @click.prevent="delete_book(book,index)" class="bg-red-600 text-white " :loading="loading">Delete</form-button>
                     </div>
                   </td>
