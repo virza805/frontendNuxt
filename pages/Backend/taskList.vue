@@ -78,7 +78,7 @@
                   <td class="table-td">{{ book.id }}</td>
                   <td class="table-td pl-2">{{ book.title }}</td>
                   <td class="table-td py-1 border-l border-green-200 px-2 ">{{ book.dec }}</td>
-                  <td class="table-td">{{ book.c_date }}</td>
+                  <td class="table-td">{{ book.date }}</td>
                   <td>
                     <div class="flex my-1 lg:justify-between px-2">
                       <p v-if="book.success_task"  class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 ">☻ Done</p>

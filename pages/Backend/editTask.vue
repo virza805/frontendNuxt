@@ -47,15 +47,15 @@
           ></form-textarea>
 
           <form-input
-            type="date"
-            label="Date"
+
+            label="Create Date"
             v-model="form.c_date"
             :helperText="errorMsg('c_date')"
             :hasError="hasError('c_date')"
             placeholder="Date"
           />
           <form-input
-            type="date"
+
             label="End Date"
             v-model="form.date"
             :helperText="errorMsg('date')"
@@ -118,9 +118,9 @@ export default {
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/task/update', this.form)
+          let editTaskIds = this.$route.query.id;
+          const res = await this.$axios.$put('/api/user/task/update/'+editTaskIds, this.form)
           this.loading = false;
-
           // toast massage show
 
           this.$store.commit("toaster/fire", {
@@ -130,16 +130,16 @@ export default {
           this.$router.push("/backend/taskList");
 
         } catch (e) {
-          // console.log(e.response.data);
+          console.log(e.response.data);
 
           // toast massage show
 
           this.$store.commit("toaster/fire", {
-            text: e.response.data.message,
+            text: e.response.data.err_message,
             type: "error",
           });
 
-          this.errors = e.response.data?.errors || {};
+          this.errors = e.response.data?.data || {};
           this.loading = false;
 
         }
