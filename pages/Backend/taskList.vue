@@ -51,7 +51,6 @@
 
             <h2 class="my-4 flex items-center font-bold text-center"><img class=" mx-auto" src="~/assets/img/carousel-img-2.png" alt="fish"></h2>
 
-
             <table class="table-auto taskList">
               <thead class="bg-green-200 ">
                 <tr>
@@ -68,7 +67,17 @@
                   </th>
                 </tr>
               </thead>
+<div v-if="load" class="">
+<Tanvir >
+  <span>L</span>
+  <span>O</span>
+  <span>D</span>
+  <span>i</span>
+  <span>N</span>
+  <span>G</span>
+</Tanvir>
 
+</div>
               <tbody class="bg-green-50 p-2 ">
                 <tr  v-for="(book, index) in task_list" :key="book.id" class="border border-b border-green-200 ">
                   <td class="table-td">
@@ -95,6 +104,11 @@
               </tbody>
             </table>
 
+ <!-- {{ getData }} -->
+<!-- <Pagination :data="task_list" @pagination-change-page="getData"></Pagination> -->
+<pagination  v-model="page" :records="total" :per-page="per_page" @paginate="getData"></pagination>
+
+
           </div>
 
         </div>
@@ -116,6 +130,8 @@
 // import { mapGetters } from "vuex";
   import form from '../mixins/form';
   import Input from '../../components/Form/Input.vue';
+  // import LaravelVuePagination from 'laravel-vue-pagination';
+  import Pagination from 'vue-pagination-2';
   export default {
     // middleware: ['auth'],
     middleware: 'auth',
@@ -123,13 +139,26 @@
     head: {
       title: "Show Task List",
     },
-    components: { Input },
+    components: {
+      Input,
+      Pagination
+      // 'Pagination': LaravelVuePagination
+    },
     mixins: [form],
 
     data() {
       return {
         task_list: {},
-        data: '',
+        // current_page: 1,
+        page: 1,
+	data: [],
+	// from: 1,
+	// last_page: 1,
+	// next_page_url: null,
+	per_page: 0,
+	// prev_page_url: null,
+	// to: 1,
+	total: 0,
         search_key: '',
         selected_data: [],
         form: {
@@ -138,6 +167,7 @@
         },
         errors: {},
         loading: false,
+        load: false,
       };
     },
 
@@ -151,11 +181,22 @@
       this.getData();
     },
 
+	// mounted() {
+	// 	// Fetch initial results
+	// 	this.getData();
+	// },
     methods: {
-      async getData() {
-        let r = await this.$axios.$get('/api/user/task/task-list')
+      async getData(page = 1) {
+        this.load = true;
+        let r = await this.$axios.$get('/api/user/task/task-list?page='+ page)
         this.task_list = r.data;
-        // console.log(this.task_list);
+        this.total = r.total;
+        this.per_page = r.per_page;
+
+        // console.log(r.data);
+        // console.log(r.total);
+        // console.log(r.current_page);
+        this.load = false;
       },
 
 
@@ -245,9 +286,6 @@
 
 
     },
-
-
-
 
   },
 

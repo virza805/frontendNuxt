@@ -45,6 +45,7 @@ export default {
         { src: '~/plugins/vue-slick-carousel', ssr: true },
         { src: '~/plugins/v-click-outside', ssr: false },
         { src: '~/plugins/vue-toast-notification', ssr: false },
+        { src: '~/plugins/Pagination', ssr: false },
     ],
 
     // Auto import components: https://go.nuxtjs.dev/config-components

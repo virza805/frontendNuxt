@@ -450,5 +450,60 @@ a.backendLogo img {
 
 
 /**********************************************
+>>>>>>>>>>>>> Start Now Pagination Css <<<<<<<
+***********************************************/
+
+.VuePagination {
+    @apply text-center
+}
+
+.VuePagination ul {
+    @apply flex items-center justify-center content-center flex-wrap mt-6
+}
+
+.VuePagination ul li {
+    @apply my-3 mx-0
+}
+
+.VuePagination ul a {
+    padding: 4px 8px;
+    border: 1px solid #d9e9d2;
+    background: #ffffff9e;
+    transition: 0.5s;
+}
+
+.VuePagination ul li:hover a {
+    background: green;
+    color: #fff !important;
+    transition: 0.4s;
+}
+
+.VuePagination ul a.active {
+    background: #008c00;
+    color: white !important;
+}
+
+.VuePagination p {
+    font-size: 15px;
+    line-height: 1.7;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+
+.VuePagination ul a.page-link[disabled="disabled"] {
+    cursor: not-allowed;
+}
+
+.VuePagination ul a.page-link {
+    cursor: pointer;
+}
+
+
+/**********************************************
+>>>>>>>>>>>>> The End Pagination Css <<<<<<<<<<
+***********************************************/
+
+
+/**********************************************
 >>>>>>>>>>>>> The End Backend Css <<<<<<<<<<<<<
 ***********************************************/
