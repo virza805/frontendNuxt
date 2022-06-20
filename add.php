@@ -77,7 +77,7 @@ php artisan queue:listen => must be run  if not run this|| php artisan queue:wor
 
 yarn add vue-pagination-2 => https://github.com/matfish2/vue-pagination-2
 
-
+npm install --save vue-pagination-2
 
 
 

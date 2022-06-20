@@ -59,10 +59,13 @@
           <form class="mt-8 space-y-6" action="#" @submit.prevent="handleSubmit" method="POST">
             <input type="hidden" name="remember" value="true" />
             <FormInput label="Name" v-model="form.name" :helperText="errorMsg('name')" :hasError="hasError('name')" />
+
             <form-input type="email" label="Email Address" v-model="form.email" :helperText="errorMsg('email')"
               :hasError="hasError('email')" />
+
             <form-input type="number" label="Phone number" v-model="form.phone" :helperText="errorMsg('phone')"
               :hasError="hasError('phone')" />
+
             <form-input type="text" label="Enter your message" v-model="form.message"
               :helperText="errorMsg('message')" :hasError="hasError('message')"
               class="mb-10 " />

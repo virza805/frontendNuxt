@@ -12,7 +12,7 @@
             <nuxt-link class="" to="/backend/profile">My Profile</nuxt-link>
           </li>
           <li class=" ">
-            <a href="#" class="   ">Dashboard v3</a>
+            <nuxt-link to="/backend/contactMessage"> All contactEmail</nuxt-link>
           </li>
         </ul>
       </li>

@@ -1,7 +1,7 @@
 <template lang="">
 
   <div>
-  
+
 <div class="hero_title" v-bind="$attrs">
   <div class=" ">{{ title }}</div>
   <h2>
@@ -26,7 +26,7 @@ export default {
     head: {
       script: [{
         type: 'text/javascript',
-        src: "https://cdn.jsdelivr.net/npm/typed.js@2.0.11",
+        src: "/js/typed.js",
         body: true,
         async: true,
         crossorigin: "anonymous"
