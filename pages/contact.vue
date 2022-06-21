@@ -66,12 +66,22 @@
             <form-input type="number" label="Phone number" v-model="form.phone" :helperText="errorMsg('phone')"
               :hasError="hasError('phone')" />
 
-            <form-input type="text" label="Enter your message" v-model="form.message"
-              :helperText="errorMsg('message')" :hasError="hasError('message')"
-              class="mb-10 " />
+          <form-textarea
+
+            label="Description"
+            v-model="form.message"
+            :helperText="errorMsg('message')"
+            :hasError="hasError('message')"
+            placeholder="Enter your message here..."
+            rows="4"
+            cols="10"
+          ></form-textarea>
 
             <div>
-              <form-button class="px-4" :loading="loading">Send <img class="ml-2" src="~/assets/img/arrow-right.png" alt="arrow"></form-button>
+              <form-button class="px-4" :loading="loading"><MailIcon size="20" class="mr-1"></MailIcon> Send <img class="ml-2" src="~/assets/img/arrow-right.png" alt="arrow"></form-button>
+              
+              
+              
             </div>
           </form>
 
@@ -90,6 +100,7 @@
 
 
 <script>
+import { MailIcon } from 'vue-feather-icons'
   import form from '../pages/mixins/form';
   import Input from '../components/Form/Input.vue';
   export default {
@@ -99,7 +110,8 @@
       title: "Contact",
     },
     components: {
-      Input
+      Input,
+      MailIcon
     },
     mixins: [form],
 
