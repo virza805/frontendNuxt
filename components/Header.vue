@@ -5,7 +5,7 @@
       <div class="flex justify-between items-center py-6">
         <Logo />
 
-        <div class="w-96">
+        <div class="w-96 md:block hidden">
           <div class="border border-gray-100 p-1 flex rounded-full items-center">
             <div class="min-w-max px-3">
               <img src="~/assets/img/search.png" alt="">
@@ -16,25 +16,35 @@
         </div>
 
         <div class="min-w-max flex items-center">
-          <nuxt-link to="/wishlist"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/heart.png" alt=""></span></nuxt-link>
+          <nuxt-link to="/wishlist"><span
+              class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
+                src="~/assets/img/heart.png" alt=""></span></nuxt-link>
 
-          <nuxt-link class="relative mx-4" to="/cart"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/u_shopping-bag.png" alt=""></span> <span class="absolute bg-red-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">
-            {{ count }}
+          <nuxt-link class="relative mx-4" to="/cart"><span
+              class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
+                src="~/assets/img/u_shopping-bag.png" alt=""></span> <span
+              class="absolute bg-red-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">
+              {{ count }}
 
-          </span>
+            </span>
           </nuxt-link>
 
-          <nuxt-link to="/my-account" class="flex items-center"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user.png" alt=""></span> <span>Account </span></nuxt-link>
+          <!-- <nuxt-link to="/my-account" class="flex items-center"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user.png" alt=""></span> <span>Account </span></nuxt-link> -->
 
-          <nuxt-link to="/auth/register" class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user-plus.svg" alt=""></nuxt-link>
-          <NuxtLink to="/auth/login" class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/log-in.svg" alt=""></NuxtLink>
+          <nuxt-link to="/auth/register"
+            class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
+              src="~/assets/img/user-plus.svg" alt=""></nuxt-link>
+          <NuxtLink to="/auth/login"
+            class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
+              src="~/assets/img/log-in.svg" alt=""></NuxtLink>
         </div>
 
       </div>
 
-      <div class="flex items-center">
-        <div v-click-outside="menuClose" class="w-96 relative">
-          <div @click.prevent="menuClick" class="bs-dark-green-bg relative z-20 flex rounded-full px-4 py-2 cursor-pointer">
+      <div class="flex justify-between px-3 md:px-0 md:items-center">
+        <div v-click-outside="menuClose" class="w-72 md:w-96 relative">
+          <div @click.prevent="menuClick"
+            class="bs-dark-green-bg relative z-20 flex rounded-full px-4 py-2 cursor-pointer">
             <div class="min-w-max">
               <img src="~/assets/img/menu-right.png" alt="">
             </div>
@@ -46,7 +56,8 @@
             </div>
           </div>
 
-          <div  v-bind:class="allCategoryMenu ? 'block visible' : 'hidden visible' " class="absolute bs-dark-green-bg z-10 w-full -mt-5 pt-6 pb-4 rounded-b-2xl">
+          <div v-bind:class="allCategoryMenu ? 'block visible' : 'hidden visible' "
+            class="absolute bs-dark-green-bg z-10 w-full -mt-5 pt-6 pb-4 rounded-b-2xl">
             <ul>
               <li>
                 <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Fruits</nuxt-link>
@@ -85,10 +96,7 @@
           </div>
         </div>
 
-
-
-
-        <div class="w-full">
+        <div class="w-full md:block hidden">
           <ul class="flex justify-center">
             <li>
               <nuxt-link class="p-4" to="/">Home</nuxt-link>
@@ -110,20 +118,76 @@
             </li>
           </ul>
         </div>
-        <nuxt-link to="/sp-offers" class="min-w-max bs-dark-orange-color flex">
+        <nuxt-link to="/sp-offers" class="min-w-max bs-dark-orange-color md:flex hidden">
           <img src="~/assets/img/u_percentage.png" class="mr-3" alt=""> Special Offers!
         </nuxt-link>
+
+        <Dropdown title="MENU" class="cursor-pointer menu-icon block md:hidden">
+          <!-- <menu-icon size='30'></menu-icon> -->
+
+          <div class="flex flex-col items-center">
+
+            <div class="w-full mb-4">
+              <div class="border border-gray-400 p-1 flex rounded-full items-center my-3">
+
+                <input type="search" class="bg-transparent w-full px-3 py-1 focus:outline-none"
+                  placeholder="Search.. .">
+                <button class=" px-4 rounded-full py-1 text-green-600" type="submit">
+                  <SearchIcon size='20'></SearchIcon>
+                </button>
+              </div>
+
+              <ul class="flex flex-col justify-center">
+                <li>
+                  <nuxt-link class="p-4" to="/">Home</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link class="p-4" to="/category">Categories</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link class="p-4" to="/about">About</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link class="p-4" to="/contact">Contact</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link class="p-4" to="/faq">FAQs</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link class="p-4" to="/offers">Offers</nuxt-link>
+                </li>
+                <li>
+                  <nuxt-link to="/sp-offers" class="min-w-max bs-dark-orange-color flex text-left">
+                    <img src="~/assets/img/u_percentage.png" class="mr-3" alt=""> Special Offers!
+                  </nuxt-link>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+
+        </Dropdown>
+
       </div>
+
 
     </div>
   </div>
 </template>
 
 <script>
-import Logo from "./Logo.vue";
+  import {
+    MenuIcon,
+    SearchIcon
+  } from 'vue-feather-icons'
+  import Logo from "./Logo.vue";
   export default {
     name: 'Header',
-    components:{Logo},
+    components: {
+      Logo,
+      MenuIcon,
+      SearchIcon
+    },
     data() {
       return {
         allCategoryMenu: false,
@@ -135,27 +199,27 @@ import Logo from "./Logo.vue";
         this.allCategoryMenu = !this.allCategoryMenu;
       },
       menuClose() {
-        this.allCategoryMenu =  false
+        this.allCategoryMenu = false
       },
       cartWatcher() {
 
-      const getProductsLocalStorage = JSON.parse(localStorage.getItem('cart'));
-      const getProductsStore = this.$store.getters["cart/getCart"];
+        const getProductsLocalStorage = JSON.parse(localStorage.getItem('cart'));
+        const getProductsStore = this.$store.getters["cart/getCart"];
 
-      let cart = [];
-      if(getProductsStore.length) {
-        cart = getProductsStore;
-      } else {
-        cart = getProductsLocalStorage;
-      }
+        let cart = [];
+        if (getProductsStore.length) {
+          cart = getProductsStore;
+        } else {
+          cart = getProductsLocalStorage;
+        }
 
 
-      if(cart.length) {
-        cart.forEach(item => {
-          this.count = (this.count + item.quantity);
+        if (cart.length) {
+          cart.forEach(item => {
+            this.count = (this.count + item.quantity);
 
-        });
-      }
+          });
+        }
 
 
       }
@@ -164,7 +228,7 @@ import Logo from "./Logo.vue";
 
 
       let getLocalStorageProducts = JSON.parse(localStorage.getItem('cart'));
-      if(getLocalStorageProducts === null) {
+      if (getLocalStorageProducts === null) {
         localStorage.setItem('cart', '[]');
       }
       // localStorage.setItem('cart', JSON.stringify([]))
@@ -174,11 +238,10 @@ import Logo from "./Logo.vue";
         () => {
           return this.$store.getters["cart/getCart"]
         },
-        (val)=>{
+        (val) => {
           this.cartWatcher();
-        },
-        {
-          deep:true
+        }, {
+          deep: true
         }
       );
 
@@ -186,6 +249,27 @@ import Logo from "./Logo.vue";
   }
 
 </script>
+<style>
+  .menu-icon ul li{
+    margin: 4px 0;
+  }
+  .menu-icon {
+    position: relative;
+    z-index: 1;
+    padding-left: 5px;
+  }
+
+  .menu-icon .dropdown-con {
+    position: absolute;
+    right: 0;
+    top: 60px;
+    width: 300px;
+    background: #d2f0df;
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+</style>
 <style scoped>
   .hmenu {
     display: flex;

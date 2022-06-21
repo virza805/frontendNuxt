@@ -1,8 +1,8 @@
 <template>
   <div>
     <div class="container">
-      <div class="flex -mx-4 mb-10">
-        <div class="w-1/4 px-4 flex items-center">
+      <div class="flex flex-wrap md:-mx-4 mb-10">
+        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
             <img width="80" src="~/assets/img/customer-support.png" alt="">
           </div>
@@ -11,7 +11,7 @@
             Contact us 24 hours
           </div>
         </div>
-        <div class="w-1/4 px-4 flex items-center">
+        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
             <img width="80" src="~/assets/img/authentic-products.png" alt="">
           </div>
@@ -20,7 +20,7 @@
             Contact us 24 hours
           </div>
         </div>
-        <div class="w-1/4 px-4 flex items-center">
+        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
             <img width="80" src="~/assets/img/secure-payment.png" alt="">
           </div>
@@ -29,7 +29,7 @@
             Contact us 24 hours
           </div>
         </div>
-        <div class="w-1/4 px-4 flex items-center">
+        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
             <img width="80" src="~/assets/img/best-price.png" alt="">
           </div>
@@ -44,52 +44,53 @@
     <div class="bg-gray-200 pt-20">
       <div class="container">
         <div class="lg:flex flex-wrap">
-          <div class="w-full lg:w-1/4 my-5 pr-10">
+          <div class="w-full p-1 lg:w-1/4 my-5">
             <Logo />
-            <p class="my-4">
+            <p class="my-4  text-sm  md:pr-10">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nihil enim illum, omnis dicta itaque?
-              Velit, eveniet odit? Laudantium praesentium.
+              Velit.
             </p>
             <!-- <div class="flex">
               <a href="/" class="mr-4"><img src="~/assets/img/playstore.png" alt=""></a>
               <a href="/"><img src="~/assets/img/appstore.png" alt=""></a>
             </div> -->
           </div>
-          <div class="w-full lg:w-1/4 my-5">
-            <h3 class="text-2xl mb-6 pl-7">Quick Links</h3>
-            <ul class="leading-loose">
+          <div class="w-full p-1 lg:pl-14 lg:w-1/4 my-5">
+            <h3 class="text-2xl mb-6">Quick Links</h3>
+            <ul class="leading-loose text-sm ">
               <li>
-                <nuxt-link class="p-4" to="/">About Karte</nuxt-link>
+                <nuxt-link class="mt-2" to="/">About Karte</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Contact</nuxt-link>
+                <nuxt-link class="mt-2" to="/">Contact</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Terms & Conditions</nuxt-link>
+                <nuxt-link class="mt-2" to="/">Terms & Conditions</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Category</nuxt-link>
+                <nuxt-link class="mt-2" to="/">Category</nuxt-link>
               </li>
             </ul>
           </div>
-          <div class="w-full lg:w-1/4 my-5">
-            <h3 class="text-2xl mb-6 pl-7">Contact Info.</h3>
-            <ul class="leading-loose">
+          <div class="w-full p-1 lg:w-1/4 my-5">
+            <h3 class="text-2xl mb-6">Contact Info.</h3>
+            <ul class="leading-loose text-sm ">
               <li>
-                <a class=" ml-6 my-5 flex items-center hover:text-green-600 " href="tel:01795815660" target="_blank">
-                  <PhoneCallIcon size="20" class="text-primaryGreen mr-1"></PhoneCallIcon> 
+                <a class="mt-2 flex items-center hover:text-green-600 " href="tel:01795815660" target="_blank">
+                  <PhoneCallIcon size="20" class="text-primaryGreen mr-1"></PhoneCallIcon>
                   <p class="">01795815660</p>
                 </a>
               </li>
               <li>
-                <a class=" ml-6 my-5 flex items-center hover:text-green-600 " href="mailto:viza.bd@gmail.com" target="_blank">
-                  <MailIcon size="20" class="text-primaryGreen mr-1"></MailIcon> 
+                <a class="mt-2 flex items-center hover:text-green-600 " href="mailto:viza.bd@gmail.com" target="_blank">
+                  <MailIcon size="20" class="text-primaryGreen mr-1"></MailIcon>
                   <p class="">viza.bd@gmail.com</p>
                 </a>
               </li>
               <li>
-                <a class=" ml-6 my-5 flex items-start hover:text-green-600 " href="https://www.google.com.bd/maps/@23.8512289,90.2821869,16z?hl=en&authuser=0" target="_blank">
-                  <HomeIcon size="20" class="text-primaryGreen mr-1"></HomeIcon> 
+                <a class="mt-2 flex items-start hover:text-green-600 "
+                  href="https://www.google.com.bd/maps/@23.8512289,90.2821869,16z?hl=en&authuser=0" target="_blank">
+                  <HomeIcon size="30" class="text-primaryGreen mt-2 mr-1"></HomeIcon>
                   <p class="">East Rajation Saver, Dhaka - 1340, Bangladesh.</p>
                 </a>
               </li>
@@ -98,31 +99,37 @@
               </li>
             </ul>
           </div>
-          <div class="w-full lg:w-1/4 my-5">
-            <h3 class="text-2xl mb-6 pl-7 flex "><ClockIcon size="24" class="text-primaryGreen mr-1"></ClockIcon> Opening Hours</h3>
-            <ul class="leading-loose">
+          <div class="w-full p-1 lg:w-1/4 my-5">
+            <h3 class="text-2xl mb-6 flex  items-start ">
+              <ClockIcon size="24" class="text-primaryGreen mt-2 mr-1"></ClockIcon> Opening Hours
+            </h3>
+            <ul class="leading-loose text-sm ">
               <li>
-                <nuxt-link class="p-4" to="/">Monday - Thursday: 9AM – 5PM</nuxt-link>
+                <nuxt-link class="mt-2" to="/">Monday - Thursday: 9AM – 5PM</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Friday: 9AM – 5PM</nuxt-link>
+                <nuxt-link class="mt-2" to="/">Friday: 9AM – 5PM</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Saturday - Sunday: Closed</nuxt-link>
+                <nuxt-link class="mt-2" to="/">Saturday - Sunday: Closed</nuxt-link>
               </li>
             </ul>
             <div class="flex flex-wrap">
-              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="https://www.google.com.bd/" target="_blank">
-                <FacebookIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></FacebookIcon> 
+              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="https://www.google.com.bd/" target="_blank">
+                <FacebookIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+                </FacebookIcon>
               </a>
-              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="https://www.google.com.bd/" target="_blank">
-                <LinkedinIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></LinkedinIcon> 
+              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="https://www.google.com.bd/" target="_blank">
+                <LinkedinIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+                </LinkedinIcon>
               </a>
-              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="https://www.google.com.bd/" target="_blank">
-                <TwitterIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></TwitterIcon> 
+              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="https://www.google.com.bd/" target="_blank">
+                <TwitterIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+                </TwitterIcon>
               </a>
-              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="vir-za.com" target="_blank">
-                <GlobeIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></GlobeIcon> 
+              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="vir-za.com" target="_blank">
+                <GlobeIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+                </GlobeIcon>
               </a>
             </div>
           </div>
@@ -131,39 +138,45 @@
       </div>
 
       <div class="container border-t border-gray-50">
-          <div class="w-full text-center py-4 text-xs">@2022 Copyright All Right Reserved by Bengal Shop</div>
+        <div class="w-full text-center py-4 text-xs">@2022 Copyright All Right Reserved by Bengal Shop</div>
       </div>
     </div>
 
-<!-- Product details modal StartNow -->
+    <!-- Product details modal StartNow -->
     <div v-if="modal" class="fixed w-full h-full min-h-screen z-30 top-0 left-0">
       <div @click.prevent="modalClose" class="absolute bg-black opacity-60 h-full w-full top-0 left-0"></div>
       <div class="bs-modal-body bg-white rounded-2xl p-8 relative mx-auto z-30 my-10 relative">
-        <svg @click.prevent="modalClose" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 absolute right-5 top-5 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg @click.prevent="modalClose" xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6 absolute right-5 top-5 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
 
 
         <div class="flex -mx-8">
           <div class="w-1/2 px-8">
-            <img :src="product.image"/>
+            <img :src="product.image" />
           </div>
           <div class="w-1/2 px-8">
-            <p class="text-sm mb-3"><span class="uppercase text-gray-400 pr-6">Status</span> <span class="bs-dark-green-color">In Stock</span></p>
+            <p class="text-sm mb-3"><span class="uppercase text-gray-400 pr-6">Status</span> <span
+                class="bs-dark-green-color">In Stock</span></p>
             <!-- <h3 class="text-2xl">{{product}}</h3> -->
             <h3 class="text-2xl">{{product.name}}</h3>
             <p class="text-xs text-gray-400 mb-4 mt-2"><b>7</b> items available.</p>
-            <p class="text-2xl font-bold">${{ product.sale }} <del class="font-normal text-gray-400">${{ product.price }}</del></p>
+            <p class="text-2xl font-bold">${{ product.sale }} <del
+                class="font-normal text-gray-400">${{ product.price }}</del></p>
             <div class="flex my-6">
               <input type="number" class="w-10 border border-gray-200 mr-5 text-center" value="1">
               <button class="bs-button">Add to cart</button>
             </div>
 
             <div class="flex border-b border-gray-200 justify-between text-sm pb-3 mb-8">
-              <p class="flex items-center"><img src="~/assets/img/heart.png" class="w-4 mr-3" alt=""> Add to favourites</p>
+              <p class="flex items-center"><img src="~/assets/img/heart.png" class="w-4 mr-3" alt=""> Add to favourites
+              </p>
               <p class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-3" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                 </svg>
                 Share
               </p>
@@ -171,16 +184,22 @@
 
             <div class="text-xs leading-loose">
               <p><span class="uppercase text-gray-400 w-20 inline-block">Sku:</span>
-              {{ product.sku }}
+                {{ product.sku }}
               </p>
               <p><span class="uppercase text-gray-400 w-20 inline-block">category:</span>
 
-                <span v-for="item in product.categories" ><nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span class="comma">, </span></span>
+                <span v-for="item in product.categories">
+                  <nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span
+                    class="comma">, </span>
+                </span>
               </p>
 
               <p><span class="uppercase text-gray-400 w-20 inline-block">tags:</span>
 
-                <span v-for="item in product.tags" ><nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span class="comma">, </span></span>
+                <span v-for="item in product.tags">
+                  <nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span
+                    class="comma">, </span>
+                </span>
               </p>
             </div>
           </div>
@@ -188,17 +207,36 @@
       </div>
     </div>
 
-<!-- The End Product details modal -->
+    <!-- The End Product details modal -->
 
   </div>
 </template>
 
 <script>
-import Logo from "./Logo.vue";
-import { MailIcon, PhoneCallIcon, ClockIcon, HomeIcon, FacebookIcon, LinkedinIcon, TwitterIcon, GlobeIcon } from 'vue-feather-icons'
+  import Logo from "./Logo.vue";
+  import {
+    MailIcon,
+    PhoneCallIcon,
+    ClockIcon,
+    HomeIcon,
+    FacebookIcon,
+    LinkedinIcon,
+    TwitterIcon,
+    GlobeIcon
+  } from 'vue-feather-icons'
   export default {
     name: "Footer",
-    components: {Logo, MailIcon, PhoneCallIcon, ClockIcon, HomeIcon, FacebookIcon, LinkedinIcon, TwitterIcon, GlobeIcon },
+    components: {
+      Logo,
+      MailIcon,
+      PhoneCallIcon,
+      ClockIcon,
+      HomeIcon,
+      FacebookIcon,
+      LinkedinIcon,
+      TwitterIcon,
+      GlobeIcon
+    },
     data() {
       return {
         modal: false,
@@ -215,12 +253,11 @@ import { MailIcon, PhoneCallIcon, ClockIcon, HomeIcon, FacebookIcon, LinkedinIco
         () => {
           return this.$store.getters["product-details-modal/getModal"]
         },
-        (val)=>{
+        (val) => {
           this.modal = val.modal
           this.product = val.product
-        },
-        {
-          deep:true
+        }, {
+          deep: true
         }
       );
     }

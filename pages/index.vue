@@ -144,8 +144,8 @@
       </div>
 
       <div class="container">
-        <div class="flex -mx-6 mb-14">
-          <div class="w-1/2 px-6">
+        <div class="flex flex-wrap md:-mx-6 mb-14">
+          <div class="w-full my-2 md:w-1/2 px-6">
             <div class="promo-bg-1 bg-cover bg-gray-500 bg-center p-12 rounded">
               <div class="w-2/3">
                 <p class="bs-dark-orange-color text-2xl mb-6">Buy 1 Get 1</p>
@@ -154,7 +154,7 @@
               </div>
             </div>
           </div>
-          <div class="w-1/2 px-6">
+          <div class="w-full my-2 md:w-1/2 px-6">
             <div class="promo-bg-2 bg-cover bg-gray-500 bg-center p-12 rounded">
               <div class="w-2/3">
                 <p class="bs-dark-orange-color text-2xl mb-6">Buy 1 Get 1</p>
@@ -232,8 +232,8 @@
           </template>-->
         </vue-slick-carousel>
 
-        <div class="flex -mx-6 mb-12">
-          <div class="w-1/3 px-6">
+        <div class="flex flex-wrap md:-mx-6 mb-12">
+          <div class="w-full my-2 md:w-1/3 px-6">
             <div class="cta-1 flex p-6 rounded-xl">
               <div class="w/1-2">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">Fresh Fruits Collection</h3>
@@ -246,7 +246,7 @@
             </div>
           </div>
 
-          <div class="w-1/3 px-6">
+          <div class="w-full my-2 md:w-1/3 px-6">
             <div class="cta-2 flex p-6 rounded-xl">
               <div class="w/1-2">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">Vegetable Collection</h3>
@@ -259,7 +259,7 @@
             </div>
           </div>
 
-          <div class="w-1/3 px-6">
+          <div class="w-full my-2 md:w-1/3 px-6">
             <div class="cta-3 flex p-6 rounded-xl">
               <div class="w/1-2">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">Grocery Items</h3>
