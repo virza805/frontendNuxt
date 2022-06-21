@@ -79,7 +79,8 @@ yarn add vue-pagination-2 => https://github.com/matfish2/vue-pagination-2
 
 npm install --save vue-pagination-2
 
-
+yarn add vue-feather-icons |=> https://www.npmjs.com/package/vue-feather-icons
+https://vue-feather-icons.egoist.sh/
 
 
 
