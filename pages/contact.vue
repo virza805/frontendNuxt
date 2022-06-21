@@ -39,7 +39,10 @@
     </div>
     <!-- Contact with me The End -->
 
-    <h2 class=" text-4xl mt-10 text-green-800 font-bold text-center">Get in Touch</h2>
+    <h2 class=" text-4xl mt-10 text-green-800 font-bold text-center"> 
+
+      <a href="https://github.com/virza805/frontendNuxt/commit/cc9f43ffc7968e8d15084320a67d19fd191a7ede" target="_blank" rel="noopener noreferrer"><MailIcon size="20" class="mr-1"></MailIcon> Get in Touch</a>
+    </h2>
     <div class="flex items-center justify-center py-12 lg:px-4 sm:px-6 mb-20 ">
 
 <!-- map & Contact from Start now -->

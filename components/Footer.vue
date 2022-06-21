@@ -41,29 +41,25 @@
       </div><!-- end 1 -->
 
     </div>
-    <div class="bg-gray-200 py-20">
+    <div class="bg-gray-200 pt-20">
       <div class="container">
-        <div class="flex">
-          <div class="w-3/5 pr-10">
+        <div class="lg:flex flex-wrap">
+          <div class="w-full lg:w-1/4 my-5 pr-10">
             <Logo />
-            <p class="my-8">
+            <p class="my-4">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nihil enim illum, omnis dicta itaque?
-              Velit, eveniet odit? Laudantium praesentium consequuntur doloremque culpa ipsum non cupiditate delectus
-              suscipit perspiciatis amet.
+              Velit, eveniet odit? Laudantium praesentium.
             </p>
-            <div class="flex">
+            <!-- <div class="flex">
               <a href="/" class="mr-4"><img src="~/assets/img/playstore.png" alt=""></a>
               <a href="/"><img src="~/assets/img/appstore.png" alt=""></a>
-            </div>
+            </div> -->
           </div>
-          <div class="w-1/5">
-            <h3 class="text-2xl mb-6 pl-7">About Us</h3>
+          <div class="w-full lg:w-1/4 my-5">
+            <h3 class="text-2xl mb-6 pl-7">Quick Links</h3>
             <ul class="leading-loose">
               <li>
                 <nuxt-link class="p-4" to="/">About Karte</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="p-4" to="/">Career</nuxt-link>
               </li>
               <li>
                 <nuxt-link class="p-4" to="/">Contact</nuxt-link>
@@ -76,42 +72,68 @@
               </li>
             </ul>
           </div>
-          <div class="w-1/5">
-            <h3 class="text-2xl mb-6 pl-7">Info</h3>
+          <div class="w-full lg:w-1/4 my-5">
+            <h3 class="text-2xl mb-6 pl-7">Contact Info.</h3>
             <ul class="leading-loose">
               <li>
-                <nuxt-link class="p-4" to="/">Information</nuxt-link>
+                <a class=" ml-6 my-5 flex items-center hover:text-green-600 " href="tel:01795815660" target="_blank">
+                  <PhoneCallIcon size="20" class="text-primaryGreen mr-1"></PhoneCallIcon> 
+                  <p class="">01795815660</p>
+                </a>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Shopping</nuxt-link>
+                <a class=" ml-6 my-5 flex items-center hover:text-green-600 " href="mailto:viza.bd@gmail.com" target="_blank">
+                  <MailIcon size="20" class="text-primaryGreen mr-1"></MailIcon> 
+                  <p class="">viza.bd@gmail.com</p>
+                </a>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Payment</nuxt-link>
+                <a class=" ml-6 my-5 flex items-start hover:text-green-600 " href="https://www.google.com.bd/maps/@23.8512289,90.2821869,16z?hl=en&authuser=0" target="_blank">
+                  <HomeIcon size="20" class="text-primaryGreen mr-1"></HomeIcon> 
+                  <p class="">East Rajation Saver, Dhaka - 1340, Bangladesh.</p>
+                </a>
               </li>
               <li>
-                <nuxt-link class="p-4" to="/">Return</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="p-4" to="/">Blog</nuxt-link>
+                <!-- <a  class="underline text-primaryGreen " :href="`tel:`+book.phone" target="_blank">{{ book.phone }}</a> -->
               </li>
             </ul>
           </div>
+          <div class="w-full lg:w-1/4 my-5">
+            <h3 class="text-2xl mb-6 pl-7 flex "><ClockIcon size="24" class="text-primaryGreen mr-1"></ClockIcon> Opening Hours</h3>
+            <ul class="leading-loose">
+              <li>
+                <nuxt-link class="p-4" to="/">Monday - Thursday: 9AM – 5PM</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link class="p-4" to="/">Friday: 9AM – 5PM</nuxt-link>
+              </li>
+              <li>
+                <nuxt-link class="p-4" to="/">Saturday - Sunday: Closed</nuxt-link>
+              </li>
+            </ul>
+            <div class="flex flex-wrap">
+              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="https://www.google.com.bd/" target="_blank">
+                <FacebookIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></FacebookIcon> 
+              </a>
+              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="https://www.google.com.bd/" target="_blank">
+                <LinkedinIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></LinkedinIcon> 
+              </a>
+              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="https://www.google.com.bd/" target="_blank">
+                <TwitterIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></TwitterIcon> 
+              </a>
+              <a class="p-1 text-2xl my-5 ml-2 flex items-start " href="vir-za.com" target="_blank">
+                <GlobeIcon size="30" class="text-primaryGreen hover:text-red-400 bg-gray-100 p-1 "></GlobeIcon> 
+              </a>
+            </div>
+          </div>
 
         </div>
       </div>
 
-      <div class="container mt-6">
-        <div class="flex items-center">
-          <div class="w-1/5"><img src="~/assets/img/social.png" alt=""></div>
-          <div class="w-3/5 text-center">@2022 Copyright All Right Reserved by Bengal Shop</div>
-          <div class="w-1/5">
-            <img src="~/assets/img/payments.png" alt="">
-          </div>
-        </div>
-        <!-- <img src="~/assets/img/footer-last.png" alt=""> -->
+      <div class="container border-t border-gray-50">
+          <div class="w-full text-center py-4 text-xs">@2022 Copyright All Right Reserved by Bengal Shop</div>
       </div>
     </div>
-
 
 <!-- Product details modal StartNow -->
     <div v-if="modal" class="fixed w-full h-full min-h-screen z-30 top-0 left-0">
@@ -173,9 +195,10 @@
 
 <script>
 import Logo from "./Logo.vue";
+import { MailIcon, PhoneCallIcon, ClockIcon, HomeIcon, FacebookIcon, LinkedinIcon, TwitterIcon, GlobeIcon } from 'vue-feather-icons'
   export default {
     name: "Footer",
-    components: {Logo},
+    components: {Logo, MailIcon, PhoneCallIcon, ClockIcon, HomeIcon, FacebookIcon, LinkedinIcon, TwitterIcon, GlobeIcon },
     data() {
       return {
         modal: false,
