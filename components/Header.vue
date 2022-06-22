@@ -122,10 +122,10 @@
           <img src="~/assets/img/u_percentage.png" class="mr-3" alt=""> Special Offers!
         </nuxt-link>
 
-        <Dropdown title="MENU" class="cursor-pointer menu-icon block md:hidden">
+        <Dropdown title="MENU" class="cursor-pointer menu-icon block md:hidden  z-50 ">
           <!-- <menu-icon size='30'></menu-icon> -->
 
-          <div class="flex flex-col items-center">
+          <div class="flex z-50 flex-col items-center">
 
             <div class="w-full mb-4">
               <div class="border border-gray-400 p-1 flex rounded-full items-center my-3">

@@ -296,10 +296,42 @@
     data() {
       return {
         categoryCarouselSettings: {
+          responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToScroll: 3,
+                    slidesToShow: 3
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToScroll: 2,
+                    slidesToShow: 2
+                }
+            }
+        ],
           'slidesToShow': 6,
           'prevArrow': '>'
         },
         productCarouselSettings: {
+          responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToScroll: 2,
+                    slidesToShow: 2
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToScroll: 1,
+                    slidesToShow: 1
+                }
+            }
+        ],
           'slidesToShow': 4,
           'prevArrow': '>'
         },
