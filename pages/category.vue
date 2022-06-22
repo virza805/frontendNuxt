@@ -5,7 +5,10 @@
         <Sidebar/>
       </div>
       <div class="w-3/4">
-        <div class="h-60 bg-gray-50 mb-6"></div>
+        <div class="w-full p-3 mb-10 border-2 border-dashed shadow-sm rounded-2xl border-green-100 ">
+          <img class="w-full mx-auto rounded-2xl" src="~/assets/img/cover.jpg" alt="Thanks" />
+        </div>
+
         <div class="flex justify-between items-center mb-8">
           <h3 class="text-3xl">Category heading</h3>
           <div class="min-w-max flex items-center">

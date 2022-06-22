@@ -115,20 +115,28 @@
               </li>
             </ul>
             <div class="flex flex-wrap">
-              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="https://www.google.com.bd/" target="_blank">
-                <FacebookIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+              <a class="socilLink" href="https://www.facebook.com/virza.bd/" target="_blank">
+                <FacebookIcon size="30" class="socilIcon">
                 </FacebookIcon>
               </a>
-              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="https://www.google.com.bd/" target="_blank">
-                <LinkedinIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+              <a class="socilLink " href="https://www.linkedin.com/in/1mdalamin1/" target="_blank">
+                <LinkedinIcon size="30" class="socilIcon">
                 </LinkedinIcon>
               </a>
-              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="https://www.google.com.bd/" target="_blank">
-                <TwitterIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+              <a class="socilLink " href="https://twitter.com/1mdalamin1" target="_blank">
+                <TwitterIcon size="30" class="socilIcon">
                 </TwitterIcon>
               </a>
-              <a class="p-1 text-2xl my-5 ml-1 flex items-start " href="vir-za.com" target="_blank">
-                <GlobeIcon size="30" class="text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1 ">
+              <a class="socilLink " href="https://www.instagram.com/1mdalamin1/" target="_blank">
+                <InstagramIcon size="30" class="socilIcon">
+                </InstagramIcon>
+              </a>
+              <a class="socilLink " href="https://github.com/1mdalamin1" target="_blank">
+                <GithubIcon size="30" class="socilIcon">
+                </GithubIcon>
+              </a>
+              <a class="socilLink " href="https://vir-za.com/" target="_blank">
+                <GlobeIcon size="30" class="socilIcon">
                 </GlobeIcon>
               </a>
             </div>
@@ -138,14 +146,14 @@
       </div>
 
       <div class="container border-t border-gray-50">
-        <div class="w-full text-center py-4 text-xs">@2022 Copyright All Right Reserved by Bengal Shop</div>
+        <div class="w-full text-center py-4 text-xs"><a href="https://vue-feather-icons.egoist.sh/" target="_blank">@</a>2022 Copyright All Right Reserved by Bengal Shop</div>
       </div>
     </div>
 
     <!-- Product details modal StartNow -->
     <div v-if="modal" class="fixed w-full h-full min-h-screen z-30 top-0 left-0">
       <div @click.prevent="modalClose" class="absolute bg-black opacity-60 h-full w-full top-0 left-0"></div>
-      <div class="bs-modal-body bg-white rounded-2xl p-8 relative mx-auto z-30 my-10 relative">
+      <div class="bs-modal-body bg-white rounded-2xl p-8 relative mx-auto z-30 my-10">
         <svg @click.prevent="modalClose" xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6 absolute right-5 top-5 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -222,7 +230,10 @@
     FacebookIcon,
     LinkedinIcon,
     TwitterIcon,
-    GlobeIcon
+    InstagramIcon,
+    GithubIcon,
+    GlobeIcon,
+    ActivityIcon
   } from 'vue-feather-icons'
   export default {
     name: "Footer",
@@ -235,7 +246,10 @@
       FacebookIcon,
       LinkedinIcon,
       TwitterIcon,
-      GlobeIcon
+      InstagramIcon,
+      GithubIcon,
+      GlobeIcon,
+      ActivityIcon
     },
     data() {
       return {
@@ -269,5 +283,10 @@
 </script>
 
 <style scoped>
-
+.socilLink{
+  @apply p-1 text-2xl my-5 ml-1 flex items-start
+}
+.socilIcon {
+  @apply text-primaryGreen hover:bg-red-400 hover:text-white bg-gray-100 p-1
+}
 </style>
