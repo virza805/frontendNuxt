@@ -83,6 +83,25 @@ yarn add vue-feather-icons |=> https://www.npmjs.com/package/vue-feather-icons
 https://vue-feather-icons.egoist.sh/
 
 
+#========== => ## Footer Backend <= ==========#
+
+php artisan make:model Footer -mc
+php artisan migrate || php artisan migrate:fresh --seed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

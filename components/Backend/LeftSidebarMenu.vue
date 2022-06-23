@@ -31,6 +31,19 @@
         </ul>
       </li>
 
+      <li class="  ">
+        <a href="#" class="dropdown-btn active">Footer Data	&dArr;</a>
+        <ul class="     dropdown-container">
+          <li class=" ">
+            <nuxt-link to="/backend/showFooter"> Show Footer Data</nuxt-link>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/addFooter"> Add Footer</nuxt-link>
+          </li>
+
+        </ul>
+      </li>
+
     </ul>
   </div>
 </template>
