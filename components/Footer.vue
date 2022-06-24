@@ -80,22 +80,25 @@
             <h3 class="text-2xl mb-6">Contact Info.</h3>
             <ul class="leading-loose text-sm ">
               <li>
-                <a class="mt-2 flex items-center hover:text-green-600 " href="tel:01795815660" target="_blank">
+                <a class="mt-2 flex items-center hover:text-green-600 "  :href="`tel:`+footer_data_list.phone" target="_blank">
                   <PhoneCallIcon size="20" class="text-primaryGreen mr-1"></PhoneCallIcon>
-                  <p class="">01795815660</p>
+                  <!-- <p class="">01795815660</p> -->
+                  <p class=""> {{ footer_data_list.phone }} </p>
                 </a>
               </li>
               <li>
-                <a class="mt-2 flex items-center hover:text-green-600 " href="mailto:viza.bd@gmail.com" target="_blank">
+                <a class="mt-2 flex items-center hover:text-green-600 "    :href="`mailto:`+footer_data_list.email" target="_blank">
                   <MailIcon size="20" class="text-primaryGreen mr-1"></MailIcon>
-                  <p class="">viza.bd@gmail.com</p>
+                  <!-- <p class="">viza.bd@gmail.com</p> -->
+                  <p class="">{{ footer_data_list.email }}</p>
                 </a>
               </li>
               <li>
                 <a class="mt-2 flex items-start hover:text-green-600 "
-                  href="https://www.google.com.bd/maps/@23.8512289,90.2821869,16z?hl=en&authuser=0" target="_blank">
+                  :href="footer_data_list.instagram" target="_blank">
                   <HomeIcon size="30" class="text-primaryGreen mt-2 mr-1"></HomeIcon>
-                  <p class="">East Rajation Saver, Dhaka - 1340, Bangladesh.</p>
+                  <!-- <p class="">East Rajation Saver, Dhaka - 1340, Bangladesh.</p> -->
+                  <p class="">{{ footer_data_list.address }}</p>
                 </a>
               </li>
               <li>
@@ -123,23 +126,23 @@
                 <FacebookIcon size="30" class="socilIcon">
                 </FacebookIcon>
               </a>
-              <a class="socilLink " href="https://www.linkedin.com/in/1mdalamin1/" target="_blank">
+              <a class="socilLink " :href="footer_data_list.linkedin" target="_blank">
                 <LinkedinIcon size="30" class="socilIcon">
                 </LinkedinIcon>
               </a>
-              <a class="socilLink " href="https://twitter.com/1mdalamin1" target="_blank">
+              <a class="socilLink " :href="footer_data_list.twitter" target="_blank">
                 <TwitterIcon size="30" class="socilIcon">
                 </TwitterIcon>
               </a>
-              <a class="socilLink " href="https://www.instagram.com/1mdalamin1/" target="_blank">
+              <a class="socilLink " :href="footer_data_list.instagram" target="_blank">
                 <InstagramIcon size="30" class="socilIcon">
                 </InstagramIcon>
               </a>
-              <a class="socilLink " href="https://github.com/1mdalamin1" target="_blank">
+              <a class="socilLink " :href="footer_data_list.github" target="_blank">
                 <GithubIcon size="30" class="socilIcon">
                 </GithubIcon>
               </a>
-              <a class="socilLink " href="https://vir-za.com/" target="_blank">
+              <a class="socilLink " :href="footer_data_list.web" target="_blank">
                 <GlobeIcon size="30" class="socilIcon">
                 </GlobeIcon>
               </a>
@@ -151,7 +154,8 @@
 
       <div class="container border-t border-gray-50">
         <div class="w-full text-center py-4 text-xs">
-          <a href="https://vue-feather-icons.egoist.sh/" target="_blank">@</a>2022 Copyright All Right Reserved by Bengal Shop
+          <a href="https://vue-feather-icons.egoist.sh/" target="_blank">@</a>{{ footer_data_list.copy_right }}
+          <!-- 2022 Copyright All Right Reserved by Bengal Shop -->
         </div>
       </div>
     </div>

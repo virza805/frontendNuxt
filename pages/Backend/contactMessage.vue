@@ -6,7 +6,7 @@
     <p class="text-center text-base">Hi, {{ $auth.user.name }} Your role is
       <UserRole />
     </p>
-    
+
 
     <div class="flex items-center justify-center py-12 lg:px-4 sm:px-6 mb-20 ">
       <div class="w-5/6 lg:w-11/12 flex flex-wrap flex-col-reverse lg:flex-row ">
@@ -59,6 +59,7 @@
 <Tanvir >
   <span>L</span>
   <span>O</span>
+  <span>A</span>
   <span>D</span>
   <span>i</span>
   <span>N</span>
