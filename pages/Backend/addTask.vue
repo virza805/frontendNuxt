@@ -135,11 +135,11 @@ export default {
           // toast massage show
 
           this.$store.commit("toaster/fire", {
-            text: e.response.data.message,
+            text: e.response.data.err_message,
             type: "error",
           });
 
-          this.errors = e.response.data?.errors || {};
+          this.errors = e.response.data?.data || {};
           this.loading = false;
 
         }

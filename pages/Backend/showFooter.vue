@@ -45,7 +45,6 @@
                 <tr  v-for="(book, index) in task_list" :key="book.id" class="border border-b border-green-200 ">
 
                   <td class="table-td">
-                    <p>Logo</p>
                     <p>copy_right</p>
                     <p>dec</p>
                     <p>phone</p>
@@ -59,10 +58,7 @@
                     <p>Web</p>
                   </td>
                   <td class="table-td pl-2">
-                    <p>{{ book.logo }} <img :src="'storage/' + book.logo" alt="Img">
-                    <img  :src="baseURL + 'storage/uploads' + book.logo" alt="" width="150px" height="150px">
-                    <img src="~/assets/img/vegetable-collection.png" alt="Phone" width="70">
-                    </p>
+
                     <!-- <a  class="underline text-primaryGreen " :href="`tel:`+book.phone">{{ book.phone }}</a> -->
                     <p>{{ book.copy_right }}</p>
                     <p>{{ book.dec }}</p>
@@ -77,12 +73,17 @@
                     <p>{{ book.web }}</p>
                   </td>
                   <td>
-                    <p>{{ book.id }}</p>
+                    <p>Id: {{ book.id }}</p>
                     <div class="flex my-1 lg:justify-between px-2">
 
                       <nuxt-link :to="`/backend/editTask/?id=${book.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
 
                       <form-button @click.prevent="delete_book(book,index)" class="bg-red-600 text-white " :loading="loading">Delete</form-button>
+                    </div>
+                    <div class="flex-col ">
+                    <p>Logo</p>
+                    <img :src="baseURL + '/storage/' + book.logo" :alt="book.logo" width="70px" height="70px">
+                    <img src="~/assets/img/vegetable-collection.png" alt="Phone" width="70">
                     </div>
                   </td>
                 </tr>
@@ -130,7 +131,7 @@
 
     data() {
       return {
-         baseURL: process.env.BASE_URL,
+        baseURL: "http://127.0.0.1:8000",
         task_list: {},
         // current_page: 1,
         page: 1,
