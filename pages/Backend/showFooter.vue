@@ -34,6 +34,7 @@
 <Tanvir >
   <span>L</span>
   <span>O</span>
+  <span>A</span>
   <span>D</span>
   <span>i</span>
   <span>N</span>
@@ -76,7 +77,7 @@
                     <p>Id: {{ book.id }}</p>
                     <div class="flex my-1 lg:justify-between px-2">
 
-                      <nuxt-link :to="`/backend/editTask/?id=${book.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
+                      <nuxt-link :to="`/backend/editFooter/?id=${book.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
 
                       <form-button @click.prevent="delete_book(book,index)" class="bg-red-600 text-white " :loading="loading">Delete</form-button>
                     </div>

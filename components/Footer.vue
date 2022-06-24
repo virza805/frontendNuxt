@@ -43,13 +43,17 @@
     </div>
     <div class="bg-gray-200 pt-20">
       <div class="container">
+
+        <div v-if="load" class=""> Loading ... .. .</div>
         <div class="lg:flex flex-wrap">
           <div class="w-full p-1 lg:w-1/4 my-5">
             <Logo />
-            <p class="my-4  text-sm  md:pr-10">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nihil enim illum, omnis dicta itaque?
-              Velit.
-            </p>
+
+            <!-- <p v-for="(book, index) in footer_data_list" :key="book.id" class="my-4  text-sm  md:pr-10"> {{ book.dec }} </p> -->
+            <p class="my-4  text-sm  md:pr-10"> {{ footer_data_list.dec }} </p>
+            <!-- <p>
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nihil enim illum, omnis dicta itaque? Velit.
+            </p> -->
             <!-- <div class="flex">
               <a href="/" class="mr-4"><img src="~/assets/img/playstore.png" alt=""></a>
               <a href="/"><img src="~/assets/img/appstore.png" alt=""></a>
@@ -146,7 +150,9 @@
       </div>
 
       <div class="container border-t border-gray-50">
-        <div class="w-full text-center py-4 text-xs"><a href="https://vue-feather-icons.egoist.sh/" target="_blank">@</a>2022 Copyright All Right Reserved by Bengal Shop</div>
+        <div class="w-full text-center py-4 text-xs">
+          <a href="https://vue-feather-icons.egoist.sh/" target="_blank">@</a>2022 Copyright All Right Reserved by Bengal Shop
+        </div>
       </div>
     </div>
 
@@ -254,13 +260,28 @@
     data() {
       return {
         modal: false,
-        product: ''
+        product: '',
+	      data: [],
+        errors: {},
+        loading: false,
+        load: false,
+        footer_data_list: {}
       }
+    },
+    created: function(){
+      this.getData();
     },
     methods: {
       modalClose() {
         this.$store.dispatch("product-details-modal/resetModal");
-      }
+      },
+      async getData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-footer')
+        this.footer_data_list = r.data;
+
+        this.load = false;
+      },
     },
     mounted() {
       this.$store.watch(
