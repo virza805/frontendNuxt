@@ -86,6 +86,7 @@ https://vue-feather-icons.egoist.sh/
 #========== => ## Footer Backend <= ==========#
 
 php artisan make:model Footer -mc
+php artisan make:model FooterTop -mc
 php artisan migrate || php artisan migrate:fresh --seed
 
 
@@ -102,7 +103,22 @@ php artisan migrate || php artisan migrate:fresh --seed
 
 
 
+Support
+Contact us 24 hours
+
+Products
+Contact us 24 hours
+
+Cecure Payment
+Contact us 24 hours
+
+Prices & Offers
+Contact us 24 hours
 
 
+Opening Hours
+Monday - Thursday: 9AM – 5PM
+Friday: 9AM – 5PM
+Saturday - Sunday: Closed
 
 */
