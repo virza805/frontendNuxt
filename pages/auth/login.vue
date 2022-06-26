@@ -13,9 +13,7 @@
         <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Sign in to your account</h2>
         <p class="mt-2 text-center text-sm text-gray-600">
-          Or
-          {{ ' ' }}
-          <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500"> start your 14-day free trial </a>
+          Or <nuxt-link to="/" class="font-medium text-indigo-600 hover:text-indigo-500">Go to Home Page</nuxt-link>
         </p>
       </div>
       <form
@@ -55,8 +53,11 @@
           </div>
         </div>
 
-        <div>
+        <div class="flex justify-between ">
           <form-button :loading="loading">Sign in</form-button>
+          <nuxt-link to="/auth/register"
+            class=" hover:bg-green-400 flex items-center justify-center py-1 px-3 rounded"><img
+              src="~/assets/img/user-plus.svg" alt=""> Register</nuxt-link>
         </div>
       </form>
     </div>

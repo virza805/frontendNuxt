@@ -14,7 +14,7 @@
             <div class="flex flex-col-reverse md:flex-row items-center">
               <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
                 <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-2xl md:text-5xl font-bold mb-4 text-gray-800">
+                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
                   Bengal Vegetable
                   farm Organic 100%
                 </h2>
@@ -31,7 +31,7 @@
             <div class="flex flex-col-reverse md:flex-row items-center">
               <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
                 <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-2xl md:text-5xl font-bold mb-4 text-gray-800">
+                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
                   Bengal Vegetable
                   farm Organic 100%
                 </h2>
@@ -48,7 +48,7 @@
             <div class="flex flex-col-reverse md:flex-row items-center">
               <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
                 <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-2xl md:text-5xl font-bold mb-4 text-gray-800">
+                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
                   Bengal Vegetable
                   farm Organic 100%
                 </h2>
@@ -62,7 +62,7 @@
       </vue-slick-carousel>
 
       <div class="container mb-24">
-        <h3 class="text-4xl mb-6 mt-6">Search by Category</h3>
+        <h3 class="text-xl md:text-4xl mb-6 mt-6">Search by Category</h3>
         <div class="flex items-center mb-10">
           <div style="height: 3px" class="w-32 bs-dark-green-bg"></div>
           <div style="height: 2px" class="w-full bg-gray-200"></div>
@@ -144,30 +144,40 @@
       </div>
 
       <div class="container">
-        <div class="flex flex-wrap md:-mx-6 mb-14">
-          <div class="w-full my-2 md:w-1/2 px-6">
-            <div class="promo-bg-1 bg-cover bg-gray-500 bg-center p-12 rounded">
-              <div class="w-2/3">
-                <p class="bs-dark-orange-color text-2xl mb-6">Buy 1 Get 1</p>
-                <h3 class="font-bold font-size-46 mb-8 leading-tight">Fresh Fruits Collection</h3>
+
+        <div class="flex flex-wrap md:-mx-6 mb-12">
+
+          <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+            <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
+              <div class="w-full md:w-1/2">
+                <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Buy 1 Get 1</p>
+                <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">Fresh Fruits Collection</h3>
                 <nuxt-link to="/" class="bs-white-btn">Order Now</nuxt-link>
+              </div>
+              <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
+                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
               </div>
             </div>
           </div>
-          <div class="w-full my-2 md:w-1/2 px-6">
-            <div class="promo-bg-2 bg-cover bg-gray-500 bg-center p-12 rounded">
-              <div class="w-2/3">
-                <p class="bs-dark-orange-color text-2xl mb-6">Buy 1 Get 1</p>
-                <h3 class="font-bold font-size-46 mb-8 leading-tight">Fresh Fruits Collection</h3>
+          <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+            <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
+              <div class="w-full md:w-1/2">
+                <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Buy 1 Get 1</p>
+                <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">Fresh Fruits Collection</h3>
                 <nuxt-link to="/" class="bs-white-btn">Order Now</nuxt-link>
+              </div>
+              <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
+                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
               </div>
             </div>
           </div>
+
         </div>
+
         <!--End now-->
 
 
-        <h3 class="text-4xl mb-6">Deals of the Week</h3>
+        <h3 class="text-xl md:text-4xl mb-6">Deals of the Week</h3>
         <div class="flex items-center mb-10">
           <div style="height: 3px" class="w-32 bs-dark-green-bg"></div>
           <div style="height: 2px" class="w-full bg-gray-200"></div>
@@ -180,7 +190,7 @@
         </vue-slick-carousel>
 
 
-        <h3 class="text-4xl mb-6">Popular Brands</h3>
+        <h3 class="text-xl md:text-4xl mb-6">Popular Brands</h3>
         <div class="flex items-center mb-10">
           <div style="height: 3px" class="w-32 bs-dark-green-bg"></div>
           <div style="height: 2px" class="w-full bg-gray-200"></div>
@@ -231,44 +241,45 @@
         </vue-slick-carousel>
 
         <div class="flex flex-wrap md:-mx-6 mb-12">
-          <div class="w-full my-2 md:w-1/3 px-6">
-            <div class="cta-1 flex p-6 rounded-xl">
-              <div class="w/1-2">
+          <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
+            <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
+              <div class="w-full md:w-2/3">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">Fresh Fruits Collection</h3>
-                <nuxt-link to="/" class="h-12 w-12 flex justify-center items-center rounded-full bg-white inline-block">
+                <nuxt-link to="/" class="round-link ">
                   <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
               </div>
-              <div class="w-1/2 flex justify-end">
+              <div class="w-full md:w-1/3 flex justify-end">
                 <img src="~/assets/img/fresh-fruit.png" alt="">
               </div>
             </div>
           </div>
 
-          <div class="w-full my-2 md:w-1/3 px-6">
-            <div class="cta-2 flex p-6 rounded-xl">
-              <div class="w/1-2">
+          <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
+            <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
+              <div class="w-full md:w-2/3">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">Vegetable Collection</h3>
-                <nuxt-link to="/" class="h-12 w-12 flex justify-center items-center rounded-full bg-white inline-block">
+                <nuxt-link to="/" class="round-link ">
                   <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
               </div>
-              <div class="w-1/2 flex justify-end">
+              <div class="w-full md:w-1/3 flex justify-end">
                 <img src="~/assets/img/vegetable-collection.png" alt="">
               </div>
             </div>
           </div>
 
-          <div class="w-full my-2 md:w-1/3 px-6">
-            <div class="cta-3 flex p-6 rounded-xl">
-              <div class="w/1-2">
-                <h3 class="font-size-32 leading-tight font-semibold mb-10">Grocery Items</h3>
-                <nuxt-link to="/" class="h-12 w-12 flex justify-center items-center rounded-full bg-white inline-block">
+          <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
+            <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
+              <div class="w-full md:w-2/3">
+                <h3 class="font-size-32 leading-tight font-semibold mb-10">Grocery Items Collection</h3>
+                <nuxt-link to="/" class="round-link ">
                   <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
               </div>
-              <div class="w-1/2 flex justify-end">
-                <img class="h-40" src="~/assets/img/grocery-items.png" alt="">
+              <div class="w-full md:w-1/3 flex justify-end">
+                <img class="" src="~/assets/img/grocery-items.png" alt="">
               </div>
             </div>
           </div>
+
         </div>
 
       </div>
@@ -366,6 +377,21 @@
   }
   .slick-list {
     overflow-x: hidden;
-}
+  }
+  .cat-item:nth-child(even) .category {
+    background: #fff0dc;
+  }
+  .cat-item:nth-child(odd) .category {
+    background: #ddf1d6;
+  }
+  .cat-item:nth-child(even) .buy-get {
+    background: #f2cddf;
+  }
+  .cat-item:nth-child(odd) .buy-get {
+    background: #beefbf;
+  }
+  .round-link {
+    @apply  h-12 w-12 flex justify-center items-center rounded-full bg-white
+  }
 
 </style>

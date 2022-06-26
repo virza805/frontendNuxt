@@ -87,6 +87,10 @@ https://vue-feather-icons.egoist.sh/
 
 php artisan make:model Footer -mc
 php artisan make:model FooterTop -mc
+php artisan make:model Categories -mc
+php artisan make:model SubCategories -mc
+php artisan make:model Slider -mc
+php artisan make:model Product -mc
 php artisan migrate || php artisan migrate:fresh --seed
 
 
