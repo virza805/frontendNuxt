@@ -17,6 +17,17 @@
         </ul>
       </li>
 
+      <li class="  ">
+        <a href="#" class="dropdown-btn active">Slider Data	&dArr;</a>
+        <ul class="     dropdown-container">
+          <li class=" ">
+            <nuxt-link to="/backend/showSlider"> Show Slider Data</nuxt-link>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/addSlider"> Add Slider</nuxt-link>
+          </li>
+        </ul>
+      </li>
 
       <li class="  ">
         <a href="#" class="dropdown-btn active">Task List 	&dArr;</a>
@@ -31,6 +42,7 @@
         </ul>
       </li>
 
+
       <li class="  ">
         <a href="#" class="dropdown-btn active">Footer Data	&dArr;</a>
         <ul class="     dropdown-container">
@@ -39,6 +51,9 @@
           </li>
           <li class=" ">
             <nuxt-link to="/backend/addFooter"> Add Footer</nuxt-link>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/addFooterTop"> Add Footer Top</nuxt-link>
           </li>
 
         </ul>

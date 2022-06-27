@@ -58,6 +58,23 @@ The passage experienced a surge in popularity during the 1960s when Letraset use
 
     <ContactInfo />
 
+<div class="container">
+  <div class="flex flex-wrap md:-mx-4 mb-10">
+    <!-- {{ footer_top_list.data }} -->
+        <!-- <div v-for="footer_top in footer_top_list.data" :key="footer_top.id" class="w-full my-2 lg:w-1/4 px-4 flex items-center">
+          <div class="min-w-max mr-4">
+            <img width="80" src="~/assets/img/customer-support.png" alt="">
+          </div>
+          <div class="w-full">
+            <h3 class="text-xl font-medium mb-2">{{ footer_top.title }}</h3>
+            {{ footer_top.dec }}
+          </div>
+        </div> -->
+
+
+  </div><!-- end 1 -->
+</div>
+
   </div>
 </template>
 
@@ -67,7 +84,31 @@ import ContactInfo from '../components/ContactInfo.vue';
     head: {
         title: "About",
     },
-    components: { ContactInfo }
+    components: { ContactInfo },
+
+    data() {
+      return {
+        footer_top_list: {},
+        data: [],
+      }
+    },
+    created: function(){
+      this.getTopData();
+    },
+
+    methods: {
+
+
+      async getTopData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-footer-top?page=')
+        this.footer_top_list = r.data;
+        // this.total = r.total;
+        // this.per_page = r.per_page;
+
+        this.load = false;
+      },
+    }
 }
 
 </script>

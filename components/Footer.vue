@@ -2,49 +2,24 @@
   <div>
     <div class="container">
       <div class="flex flex-wrap md:-mx-4 mb-10">
-        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
+        <div v-for="footer_top in footer_top_list.data" :key="footer_top.id" class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
             <img width="80" src="~/assets/img/customer-support.png" alt="">
           </div>
           <div class="w-full">
-            <h3 class="text-xl font-medium mb-2">Support</h3>
-            Contact us 24 hours
+            <h3 class="text-xl font-medium mb-2">{{ footer_top.title }}</h3>
+            {{ footer_top.dec }}
           </div>
         </div>
-        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
-          <div class="min-w-max mr-4">
-            <img width="80" src="~/assets/img/authentic-products.png" alt="">
-          </div>
-          <div class="w-full">
-            <h3 class="text-xl font-medium mb-2">Products</h3>
-            Contact us 24 hours
-          </div>
-        </div>
-        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
-          <div class="min-w-max mr-4">
-            <img width="80" src="~/assets/img/secure-payment.png" alt="">
-          </div>
-          <div class="w-full">
-            <h3 class="text-xl font-medium mb-2">Cecure Payment</h3>
-            Contact us 24 hours
-          </div>
-        </div>
-        <div class="w-full my-2 lg:w-1/4 px-4 flex items-center">
-          <div class="min-w-max mr-4">
-            <img width="80" src="~/assets/img/best-price.png" alt="">
-          </div>
-          <div class="w-full">
-            <h3 class="text-xl font-medium mb-2">Prices & Offers</h3>
-            Contact us 24 hours
-          </div>
-        </div>
+
+
       </div><!-- end 1 -->
 
     </div>
     <div class="bg-gray-200 pt-20">
       <div class="container">
 
-        <div v-if="load" class=""> Loading ... .. .</div>
+        <div v-if="load" class="text-xl text-red-400 font-medium text-center "> Loading ... .. .</div>
         <div class="lg:flex flex-wrap">
           <div class="w-full p-1 lg:w-1/4 my-5">
             <Logo />
@@ -63,16 +38,16 @@
             <h3 class="text-2xl mb-6">Quick Links</h3>
             <ul class="leading-loose text-sm ">
               <li>
-                <nuxt-link class="mt-2" to="/">About Karte</nuxt-link>
+                <nuxt-link class="mt-2" to="/about">About</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="mt-2" to="/">Contact</nuxt-link>
+                <nuxt-link class="mt-2" to="/contact">Contact</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="mt-2" to="/">Terms & Conditions</nuxt-link>
+                <nuxt-link class="mt-2" to="/category">Category</nuxt-link>
               </li>
               <li>
-                <nuxt-link class="mt-2" to="/">Category</nuxt-link>
+                <nuxt-link class="mt-2" to="/faq">Terms & Conditions</nuxt-link>
               </li>
             </ul>
           </div>
@@ -111,15 +86,10 @@
               <ClockIcon size="24" class="text-primaryGreen mt-2 mr-1"></ClockIcon> Opening Hours
             </h3>
             <ul class="leading-loose text-sm ">
-              <li>
-                <nuxt-link class="mt-2" to="/">Monday - Thursday: 9AM – 5PM</nuxt-link>
+              <li  v-for="open_hour in footer_open_time.data" :key="open_hour.id" >
+                <nuxt-link class="mt-2" to="/"><b>{{ open_hour.title }}</b>: {{ open_hour.dec }}</nuxt-link>
               </li>
-              <li>
-                <nuxt-link class="mt-2" to="/">Friday: 9AM – 5PM</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="mt-2" to="/">Saturday - Sunday: Closed</nuxt-link>
-              </li>
+
             </ul>
             <div class="flex flex-wrap">
               <a class="socilLink" href="https://www.facebook.com/virza.bd/" target="_blank">
@@ -269,16 +239,24 @@
         errors: {},
         loading: false,
         load: false,
-        footer_data_list: {}
+        footer_data_list: {},
+        footer_top_list: {},
+        footer_open_time: {},
+        page: 1,
+      	per_page: 0,
+      	total: 0,
       }
     },
     created: function(){
       this.getData();
+      this.getTopData();
+      this.getOpenTimeData();
     },
     methods: {
       modalClose() {
         this.$store.dispatch("product-details-modal/resetModal");
       },
+
       async getData() {
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-footer')
@@ -286,6 +264,24 @@
 
         this.load = false;
       },
+
+      async getTopData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-footer-top?page=')
+        this.footer_top_list = r.data;
+        this.load = false;
+      },
+
+      async getOpenTimeData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-footer-open-time')
+        this.footer_open_time = r.data;
+
+        console.log( r.data );
+
+        this.load = false;
+      },
+
     },
     mounted() {
       this.$store.watch(
