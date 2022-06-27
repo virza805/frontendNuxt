@@ -28,11 +28,43 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <form-input
 
-            label="title"
+            label="Title"
             v-model="form.title"
             :helperText="errorMsg('title')"
             :hasError="hasError('title')"
             placeholder="title"
+          />
+          <form-input
+
+            label="Sub Title"
+            v-model="form.sub"
+            :helperText="errorMsg('sub')"
+            :hasError="hasError('sub')"
+            placeholder="Sub title"
+          />
+
+          <form-input
+            type="file"
+            label="image"
+            v-model="form.image"
+            :helperText="errorMsg('image')"
+            :hasError="hasError('image')"
+            placeholder="image"
+          />
+          <form-input
+
+            label="Button"
+            v-model="form.btn"
+            :helperText="errorMsg('btn')"
+            :hasError="hasError('btn')"
+            placeholder="Enter button text"
+          />
+          <form-input
+            label="Button link"
+            v-model="form.btn_link"
+            :helperText="errorMsg('btn_link')"
+            :hasError="hasError('btn_link')"
+            placeholder="Enter button link"
           />
           <form-textarea
 
@@ -44,17 +76,6 @@
             rows="4"
             cols="20"
           ></form-textarea>
-
-          <!-- <form-input
-            type="file"
-            accept="image/*"
-            label="icon_img"
-            v-model="form.icon_img"
-            :helperText="errorMsg('icon_img')"
-            :hasError="hasError('icon_img')"
-            placeholder="icon_img"
-          /> -->
-
         </div>
 
 
@@ -85,8 +106,11 @@ export default {
       return{
         form:{
           title: "",
+          sub: "",
           des: "",
-          // icon_img: "",
+          image: "",
+          btn: "",
+          btn_link: "",
         },
         errors: {},
         loading: false,
@@ -105,10 +129,10 @@ export default {
           // toast massage show
 
           this.$store.commit("toaster/fire", {
-            text: "Successfully update Footer Data.",
+            text: "Successfully update slider Data.",
           });
 
-          this.$router.push("/backend/showFooter");
+          this.$router.push("/backend/showSlider");
 
         } catch (e) {
           console.log(e.response.data);
@@ -133,6 +157,11 @@ export default {
 
         this.form.title = editData.title;
         this.form.des = editData.des;
+        this.form.sub = editData.sub;
+        this.form.btn = editData.btn;
+        this.form.btn_link = editData.btn_link;
+        this.form.image = editData.image;
+        this.form.use = editData.use;
         // this.form.icon_img = editData.icon_img;
 
       },

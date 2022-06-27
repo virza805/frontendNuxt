@@ -48,9 +48,6 @@
 
         <div class="w-full p-3 mb-10 border-2 border-dashed rounded-sm border-green-400 -ml-2 mr-2">
           <div>
-
-            <h2 class="my-4 flex items-center font-bold text-center"><img class=" mx-auto" src="~/assets/img/carousel-img-2.png" alt="fish"></h2>
-
             <table class="table-auto sliderList">
               <thead class="bg-green-200 ">
                 <tr>
@@ -83,7 +80,7 @@
 
 </div>
               <tbody class="bg-green-50 p-2 ">
-                <tr  v-for="(slid, index) in slider_list" :key="slid.id" class="border border-b border-green-200 ">
+                <tr v-for="(slid, index) in slider_list" :key="slid.id" class="border border-b border-green-200 ">
                   <td class="table-td">
                     <input v-if="selected_data.includes(slid.id)" checked type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
                     <input v-else type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
@@ -128,8 +125,6 @@
     <!-- <pagination v-model="page" :options="pagination_option" :records="total" :per-page="per_page" @paginate="getData" /> -->
     <img class=" text-center mx-auto" src="~/assets/img/vegetable-collection.png" alt="Phone">
     <!-- Show slider List Start now -->
-
-    <ContactInfo />
   </div>
 </template>
 

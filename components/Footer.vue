@@ -92,7 +92,7 @@
 
             </ul>
             <div class="flex flex-wrap">
-              <a class="socilLink" href="https://www.facebook.com/virza.bd/" target="_blank">
+              <a class="socilLink" :href="footer_data_list.fb" target="_blank">
                 <FacebookIcon size="30" class="socilIcon">
                 </FacebookIcon>
               </a>
