@@ -93,7 +93,7 @@ php artisan make:model Slider -mc
 php artisan make:model Product -mc
 php artisan migrate || php artisan migrate:fresh --seed
 
-need work Slider -edit & show clint site.....
+need work Product.....
 
 
 

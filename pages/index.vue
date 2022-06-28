@@ -134,12 +134,36 @@
 
         <div class="flex flex-wrap md:-mx-6 mb-12">
 
-          <div  v-for=" slid  in slider_list" :key="slid.id"  class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+          <!-- <div  v-for=" slid  in slider_list" :key="slid.id"  class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
             <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
               <div class="w-full md:w-1/2">
                 <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">{{ slid.sub }}</p>
                 <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">{{ slid.title }}</h3>
                 <nuxt-link :to="slid.btn_link" class="bs-white-btn">{{ slid.btn }}</nuxt-link>
+              </div>
+              <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
+                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
+              </div>
+            </div>
+          </div> -->
+          <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+            <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
+              <div class="w-full md:w-1/2">
+                <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Get 1 Buy 1</p>
+                <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">Deals of the Week</h3>
+                <nuxt-link to="/" class="bs-white-btn">Order Now</nuxt-link>
+              </div>
+              <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
+                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
+              </div>
+            </div>
+          </div>
+          <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+            <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
+              <div class="w-full md:w-1/2">
+                <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Buy 2 Get 1</p>
+                <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">Deals of the Week</h3>
+                <nuxt-link to="/" class="bs-white-btn">Order Now</nuxt-link>
               </div>
               <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
                 <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
@@ -331,7 +355,7 @@
 
     created: function(){
       this.getData();
-      this.getSliderData();
+      // this.getSliderData();
     },
 
     methods: {
@@ -343,16 +367,16 @@
         this.load = false;
       },
 
-      async getSliderData() {
-        this.load = true;
-        let r = await this.$axios.$get('/api/all/client-slider')
-        this.hero_slider = r.data;
+      // async getSliderData() {
+      //   this.load = true;
+      //   let r = await this.$axios.$get('/api/all/client-slider')
+      //   this.hero_slider = r.data;
 
-        // console.log(this.hero_slider)
-        // this.total = r.total;
-        // this.per_page = r.per_page;
-        this.load = false;
-      },
+      //   // console.log(this.hero_slider)
+      //   // this.total = r.total;
+      //   // this.per_page = r.per_page;
+      //   this.load = false;
+      // },
     },
 
 

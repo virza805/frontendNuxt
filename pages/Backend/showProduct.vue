@@ -8,8 +8,8 @@
     ```
   -->
   <div class=" flex flex-col py-12 px-4">
-    <!-- Show slider List Start now -->
-    <h2 class="text-4xl text-red-500 font-bold text-center">Show Hero Slider & Buy-1 Get-1 Data</h2>
+    <!-- Show product List Start now -->
+    <h2 class="text-4xl text-red-500 font-bold text-center">Show All Product Data</h2>
     <p class="text-center text-base">Your role is
       <UserRole />
     </p>
@@ -38,7 +38,7 @@
       </label>
 
 
-      <nuxt-link to="/Backend/addSlider" class=" bg-green-500 text-white py-1 px-8">+ Add Slider</nuxt-link>
+      <nuxt-link to="/Backend/addProduct" class=" bg-green-500 text-white py-1 px-8">+ Add product</nuxt-link>
 
 
     </div>
@@ -48,7 +48,7 @@
 
         <div class="w-full p-3 mb-10 border-2 border-dashed rounded-sm border-green-400 -ml-2 mr-2">
           <div>
-            <table class="table-auto sliderList">
+            <table class="table-auto productList">
               <thead class="bg-green-200 ">
                 <tr>
                   <th>
@@ -80,7 +80,7 @@
 
 </div>
               <tbody class="bg-green-50 p-2 ">
-                <tr v-for="(slid, index) in slider_list" :key="slid.id" class="border border-b border-green-200 ">
+                <tr v-for="(slid, index) in product_list" :key="slid.id" class="border border-b border-green-200 ">
                   <td class="table-td">
                     <input v-if="selected_data.includes(slid.id)" checked type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
                     <input v-else type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
@@ -95,10 +95,10 @@
                   <td>
                     <div class="flex my-1 lg:justify-between px-2">
                       <p v-if="slid.use"  class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 ">☻buyGet</p>
-                      <!-- <form-button v-if="slid.use" @click.prevent="add_slider(r_slid)" class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 " :loading="loading">☻buyGet</form-button> -->
-                      <form-button v-else @click.prevent="success_slider(slid)" class="bg-blue-600 text-white " :loading="loading">Slid</form-button>
+                      <!-- <form-button v-if="slid.use" @click.prevent="add_product(r_slid)" class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 " :loading="loading">☻buyGet</form-button> -->
+                      <form-button v-else @click.prevent="success_product(slid)" class="bg-blue-600 text-white " :loading="loading">Slid</form-button>
 
-                      <nuxt-link :to="`/backend/editSlider/?id=${slid.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
+                      <nuxt-link :to="`/backend/editproduct/?id=${slid.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
 
 
                       <form-button @click.prevent="delete_slid(slid,index)" class="bg-red-600 text-white " :loading="loading">Delete</form-button>
@@ -110,7 +110,7 @@
             </table>
 
  <!-- {{ getData }} -->
-<!-- <Pagination :data="slider_list" @pagination-change-page="getData"></Pagination> -->
+<!-- <Pagination :data="product_list" @pagination-change-page="getData"></Pagination> -->
 <pagination  v-model="page" :records="total" :per-page="per_page" @paginate="getData"></pagination>
 
 
@@ -125,7 +125,7 @@
     <!-- <Pagination v-model="page" :records="total" :per-page="per_page" @paginate="getData" /> -->
     <!-- <pagination v-model="page" :options="pagination_option" :records="total" :per-page="per_page" @paginate="getData" /> -->
     <img class=" text-center mx-auto" src="~/assets/img/vegetable-collection.png" alt="Phone">
-    <!-- Show slider List Start now -->
+    <!-- Show product List Start now -->
   </div>
 </template>
 
@@ -140,7 +140,7 @@
     middleware: 'auth',
     layout: 'backend',
     head: {
-      title: "Show slider List",
+      title: "Show product List",
     },
     components: {
       Input,
@@ -151,7 +151,7 @@
 
     data() {
       return {
-        slider_list: {},
+        product_list: {},
         page: 1,
         data: [],
         per_page: 0,
@@ -182,8 +182,8 @@
     methods: {
       async getData(page = 1) {
         this.load = true;
-        let r = await this.$axios.$get('/api/user/slider/backend-slider-list?page='+ page)
-        this.slider_list = r.data;
+        let r = await this.$axios.$get('/api/user/product/backend-product-list?page='+ page)
+        this.product_list = r.data;
         this.total = r.total;
         this.per_page = r.per_page;
         this.load = false;
@@ -194,8 +194,8 @@
     async delete_slid(slid,index) {
       let con = confirm('Sure want to delete??');
       if(con) {
-         await this.$axios.$post('/api/user/slider/delete', {id: slid.id})
-          // this.slider_list.data.splice(index,1);
+         await this.$axios.$post('/api/user/product/delete', {id: slid.id})
+          // this.product_list.data.splice(index,1);
           this.getData(); // for show only 5 data
           // toast massage show
           this.$store.commit("toaster/fire", {
@@ -217,7 +217,7 @@
       console.log(this.selected_data);
     },
     check_all(){
-      this.slider_list.map(item=>{
+      this.product_list.map(item=>{
 
         this.selected_data.includes(item.id)
         ?
@@ -235,9 +235,9 @@
       let con = confirm('Are you Sure want to delete all selected item ??');
       if(con) {
         this.loading = true;
-         await this.$axios.$post('/api/user/slider/delete-multi', { ids: this.selected_data })
+         await this.$axios.$post('/api/user/product/delete-multi', { ids: this.selected_data })
           this.selected_data = [];
-          // this.slider_list.data.splice(index,1);
+          // this.product_list.data.splice(index,1);
           this.getData(); // for show only 5 data
 
           this.loading = false;
@@ -258,13 +258,13 @@
       this.getData();
     },
 
-    async success_slider(slid){
+    async success_product(slid){
 
-      let con = confirm('are you Sure this slid remove to slider & add Buy 1 Get 1 Section??');
+      let con = confirm('are you Sure this slid remove to product & add Buy 1 Get 1 Section??');
       if(con) {
           this.loading = true;
-          await this.$axios.$post(`/api/user/slider/add-buy-get`, {id: slid.id})
-  				slid.success_slider = 1;
+          await this.$axios.$post(`/api/user/product/add-buy-get`, {id: slid.id})
+  				slid.success_product = 1;
           this.loading = false;
 
           // toast massage show
@@ -277,13 +277,13 @@
 
     },
 
-    async add_slider(r_slid){
+    async add_product(r_slid){
 
       let con = confirm('are you Sure this slid remove to Buy 1 Get 1 Section??');
       if(con) {
           this.loading = true;
-          await this.$axios.$post(`/api/user/slider/remove-buy-get`, {id: slid.id})
-  				r_slid.add_slider = 0;
+          await this.$axios.$post(`/api/user/product/remove-buy-get`, {id: slid.id})
+  				r_slid.add_product = 0;
           this.loading = false;
 
           // toast massage show
