@@ -276,9 +276,6 @@
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-footer-open-time')
         this.footer_open_time = r.data;
-
-        console.log( r.data );
-
         this.load = false;
       },
 

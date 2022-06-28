@@ -27,19 +27,19 @@
         <div class="rounded-md shadow-sm -space-y-px">
           <form-input
 
-            label="Title"
-            v-model="form.title"
-            :helperText="errorMsg('title')"
-            :hasError="hasError('title')"
-            placeholder="title"
+            label="name"
+            v-model="form.name"
+            :helperText="errorMsg('name')"
+            :hasError="hasError('name')"
+            placeholder="name"
           />
           <form-input
 
-            label="Sub Title"
-            v-model="form.sub"
-            :helperText="errorMsg('sub')"
-            :hasError="hasError('sub')"
-            placeholder="Sub title"
+            label="category_id"
+            v-model="form.category_id"
+            :helperText="errorMsg('category_id')"
+            :hasError="hasError('category_id')"
+            placeholder="category_id"
           />
 
           <form-input
@@ -52,44 +52,41 @@
           />
           <form-input
 
-            label="Button"
-            v-model="form.btn"
-            :helperText="errorMsg('btn')"
-            :hasError="hasError('btn')"
-            placeholder="Enter button text"
+            label="price"
+            v-model="form.price"
+            :helperText="errorMsg('price')"
+            :hasError="hasError('price')"
+            placeholder="Enter price text"
           />
           <form-input
-            label="Button link"
-            v-model="form.btn_link"
-            :helperText="errorMsg('btn_link')"
-            :hasError="hasError('btn_link')"
-            placeholder="Enter button link"
+
+            label="sell_price"
+            v-model="form.sell_price"
+            :helperText="errorMsg('sell_price')"
+            :hasError="hasError('sell_price')"
+            placeholder="Enter sell_price text"
+          />
+          <form-input
+            label="Product Tag"
+            v-model="form.tag"
+            :helperText="errorMsg('tag')"
+            :hasError="hasError('tag')"
+            placeholder="Enter Product Tag"
           />
           <form-textarea
 
             label="Description"
-            v-model="form.des"
-            :helperText="errorMsg('des')"
-            :hasError="hasError('des')"
+            v-model="form.description"
+            :helperText="errorMsg('description')"
+            :hasError="hasError('description')"
             placeholder="Enter text here..."
             rows="4"
             cols="20"
           ></form-textarea>
         </div>
 
-        <!-- <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-            <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
-          </div>
-
-          <div class="text-sm">
-            <nuxt-link to="/auth/forgot-password" class="font-medium text-green-600 hover:text-green-800"> Forgot your password? </nuxt-link>
-          </div>
-        </div> -->
-
         <div>
-          <form-button :loading="loading">Update Now</form-button>
+          <form-button :loading="loading">Add New Product</form-button>
         </div>
       </form>
     </div>
@@ -106,7 +103,7 @@ export default {
     middleware: 'auth',
     layout: 'backend',
     head: {
-        title: "Add Task",
+        name: "Add Product",
     },
     components: { Input },
     mixins: [form],
@@ -114,12 +111,13 @@ export default {
     data() {
       return{
         form:{
-          title: "",
-          sub: "",
-          des: "",
+          name: "",
+          category_id: "",
+          description: "",
+          tag: "",
+          price: "",
+          sell_price: "",
           image: "",
-          btn: "",
-          btn_link: "",
         },
         errors: {},
         loading: false,
@@ -133,6 +131,8 @@ export default {
         try {
           this.loading = true;
           const res = await this.$axios.$post('/api/user/product/store', this.form)
+
+          console.log(res);
           this.loading = false;
 
           // toast massage show
@@ -141,7 +141,7 @@ export default {
             text: "Successfully created product data.",
           });
 
-          this.$router.push("/backend/showproduct");
+          this.$router.push("/backend/showProduct");
 
         } catch (e) {
           // console.log(e.response.data);

@@ -56,11 +56,12 @@
                   </th>
                   <th>#</th>
                   <!-- <th>Image</th> -->
-                  <th>Title</th>
-                  <th>SubTitle</th>
+                  <th>Name</th>
+                  <th>Category(id)</th>
                   <th>Description</th>
-                  <th>Button</th>
-                  <th>btnLink</th>
+                  <th>Tag</th>
+                  <th>Price</th>
+                  <th>Sell Price</th>
                   <th>img</th>
                   <th class="text-center col-span-3">
                     Action
@@ -86,11 +87,12 @@
                     <input v-else type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
                   </td>
                   <td class="table-td">{{ slid.id }}</td>
-                  <td class="table-td pl-2">{{ slid.title }}</td>
-                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.sub }}</td>
-                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.des }}</td>
-                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.btn }}</td>
-                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.btn_link }}</td>
+                  <td class="table-td pl-2">{{ slid.name }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.category_id }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.description }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.tag }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.price }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.sell_price }}</td>
                   <td class="table-td"><img src="~/assets/img/vegetable-collection.png" alt="Phone" width="70"></td>
                   <td>
                     <div class="flex my-1 lg:justify-between px-2">
@@ -98,7 +100,7 @@
                       <!-- <form-button v-if="slid.use" @click.prevent="add_product(r_slid)" class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 " :loading="loading">☻buyGet</form-button> -->
                       <form-button v-else @click.prevent="success_product(slid)" class="bg-blue-600 text-white " :loading="loading">Slid</form-button>
 
-                      <nuxt-link :to="`/backend/editproduct/?id=${slid.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
+                      <nuxt-link :to="`/backend/editProduct/?id=${slid.id}`" class="bg-yellow-600 py-1 px-2 mx-2 rounded text-center text-white ">Edit</nuxt-link>
 
 
                       <form-button @click.prevent="delete_slid(slid,index)" class="bg-red-600 text-white " :loading="loading">Delete</form-button>
@@ -109,8 +111,6 @@
               </tbody>
             </table>
 
- <!-- {{ getData }} -->
-<!-- <Pagination :data="product_list" @pagination-change-page="getData"></Pagination> -->
 <pagination  v-model="page" :records="total" :per-page="per_page" @paginate="getData"></pagination>
 
 
@@ -122,8 +122,6 @@
       </div>
     </div>
 
-    <!-- <Pagination v-model="page" :records="total" :per-page="per_page" @paginate="getData" /> -->
-    <!-- <pagination v-model="page" :options="pagination_option" :records="total" :per-page="per_page" @paginate="getData" /> -->
     <img class=" text-center mx-auto" src="~/assets/img/vegetable-collection.png" alt="Phone">
     <!-- Show product List Start now -->
   </div>
@@ -187,6 +185,8 @@
         this.total = r.total;
         this.per_page = r.per_page;
         this.load = false;
+
+        // console.log(this.product_list);
       },
 
 
