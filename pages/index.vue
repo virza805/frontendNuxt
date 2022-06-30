@@ -240,11 +240,12 @@
         </vue-slick-carousel>
 
         <div class="flex flex-wrap md:-mx-6 mb-12">
-          <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
+
+          <div v-for="cat in cat_list " :key="cat.id" class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
             <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
               <div class="w-full md:w-2/3">
-                <h3 class="font-size-32 leading-tight font-semibold mb-10">Fresh Fruits Collection</h3>
-                <nuxt-link to="/" class="round-link ">
+                <h3 class="font-size-32 leading-tight font-semibold mb-10">{{ cat.id }} = {{ cat.name }}</h3>
+                <nuxt-link  :to="`/cat/?id=${cat.id}`"  class="round-link ">
                   <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
@@ -253,7 +254,7 @@
             </div>
           </div>
 
-          <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
+          <!-- <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
             <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
               <div class="w-full md:w-2/3">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">Vegetable Collection</h3>
@@ -277,7 +278,7 @@
                 <img class="" src="~/assets/img/grocery-items.png" alt="">
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
 
@@ -349,12 +350,14 @@
 
         slider_list: {},
         hero_slider: {},
+        cat_list: {},
 
       }
     },
 
     created: function(){
       this.getData();
+      this.getCatData();
       // this.getSliderData();
     },
 
@@ -364,6 +367,13 @@
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-buy-get')
         this.slider_list = r.data;
+        this.load = false;
+      },
+
+      async getCatData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-categories')
+        this.cat_list = r.data;
         this.load = false;
       },
 

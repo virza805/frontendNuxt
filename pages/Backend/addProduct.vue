@@ -33,14 +33,26 @@
             :hasError="hasError('name')"
             placeholder="name"
           />
-          <form-input
-
+          <!-- <form-input
             label="category_id"
             v-model="form.category_id"
             :helperText="errorMsg('category_id')"
             :hasError="hasError('category_id')"
             placeholder="category_id"
-          />
+          /> -->
+          <label for="cars">Choose a Category</label>
+          <select
+          v-model="form.category_id"
+          name="cars" id="cars" form="carform"
+          class="input"
+          >
+            <option v-for="cat in cat_list " :key="cat.id" :value="cat.id">{{ cat.name }} ({{ cat.id }})</option>
+            <!-- <option value="2">Cat-2</option>
+            <option value="3">Cat-3</option>
+            <option value="4">Cat-4</option>
+            <option value="5">Cat-5</option>
+            <option value="6">Cat-6</option> -->
+          </select>
 
           <form-input
             type="file"
@@ -119,10 +131,16 @@ export default {
           sell_price: "",
           image: "",
         },
+        cat_list: {},
         errors: {},
         loading: false,
       };
     },
+
+    created: function(){
+      this.getData();
+    },
+
 
     methods: {
       // From submit async await
@@ -160,6 +178,13 @@ export default {
 
       },
 
+      async getData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/user/cat/backend-cat-list')
+        this.cat_list = r.data;
+        this.load = false;
+      },
+
 
     }
 };
@@ -167,5 +192,11 @@ export default {
 
 <style scoped>
 
+</style>
+
+<style>
+.input {
+  @apply appearance-none rounded-lg relative block w-full px-3 py-2 border placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm
+}
 </style>
 
