@@ -180,7 +180,7 @@ export default {
 
       async getData() {
         this.load = true;
-        let r = await this.$axios.$get('/api/user/cat/backend-cat-list')
+        let r = await this.$axios.$get('/api/all/client-categories')
         this.cat_list = r.data;
         this.load = false;
       },

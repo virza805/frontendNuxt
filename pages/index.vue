@@ -245,7 +245,7 @@
             <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
               <div class="w-full md:w-2/3">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">{{ cat.id }} = {{ cat.name }}</h3>
-                <nuxt-link  :to="`/cat/?id=${cat.id}`"  class="round-link ">
+                <nuxt-link :to="`/cat/?id=${cat.id}`" class="round-link ">
                   <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
               </div>
               <div class="w-full md:w-1/3 flex justify-end">

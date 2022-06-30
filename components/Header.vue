@@ -59,39 +59,10 @@
           <div v-bind:class="allCategoryMenu ? 'block visible' : 'hidden visible' "
             class="absolute bs-dark-green-bg z-10 w-full -mt-5 pt-6 pb-4 rounded-b-2xl">
             <ul>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Fruits</nuxt-link>
+              <li v-for="cat in cat_list " :key="cat.id" >
+                <nuxt-link class="block py-2 px-4 text-white hover:text-black" :to="`/cat/?id=${cat.id}`">{{ cat.name }}</nuxt-link>
               </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Vegetables</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Category</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
-              <li>
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" to="/">Lorem ispum</nuxt-link>
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -194,6 +165,10 @@
         count: 0
       }
     },
+    created: function(){
+      this.getData();
+    },
+
     methods: {
       menuClick() {
         this.allCategoryMenu = !this.allCategoryMenu;
@@ -222,7 +197,15 @@
         }
 
 
-      }
+      },
+
+      async getData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-categories')
+        this.cat_list = r.data;
+        this.load = false;
+      },
+
     },
     mounted() {
 
