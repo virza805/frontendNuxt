@@ -66,6 +66,13 @@
             :hasError="hasError('btn_link')"
             placeholder="Enter button link"
           />
+          <form-input
+            label="0 for slider & 1 for BuyGet"
+            v-model="form.use"
+            :helperText="errorMsg('use')"
+            :hasError="hasError('use')"
+            placeholder="BuyGet Or Slider"
+          />
           <form-textarea
 
             label="Description"
@@ -80,7 +87,7 @@
 
 
         <div>
-          <form-button :loading="loading">Update footer data</form-button>
+          <form-button :loading="loading">Update Slider data</form-button>
         </div>
       </form>
     </div>
@@ -111,6 +118,7 @@ export default {
           image: "",
           btn: "",
           btn_link: "",
+          use: "",
         },
         errors: {},
         loading: false,

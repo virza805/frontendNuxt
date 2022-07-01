@@ -134,7 +134,7 @@
 
         <div class="flex flex-wrap md:-mx-6 mb-12">
 
-          <!-- <div  v-for=" slid  in slider_list" :key="slid.id"  class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+          <div  v-for=" slid  in slider_list" :key="slid.id"  class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
             <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
               <div class="w-full md:w-1/2">
                 <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">{{ slid.sub }}</p>
@@ -145,8 +145,8 @@
                 <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
               </div>
             </div>
-          </div> -->
-          <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+          </div>
+          <!-- <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
             <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
               <div class="w-full md:w-1/2">
                 <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Get 1 Buy 1</p>
@@ -169,7 +169,7 @@
                 <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
               </div>
             </div>
-          </div>
+          </div> -->
 
         </div>
 
@@ -244,8 +244,8 @@
           <div v-for="cat in cat_list " :key="cat.id" class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
             <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
               <div class="w-full md:w-2/3">
-                <h3 class="font-size-32 leading-tight font-semibold mb-10">{{ cat.id }} = {{ cat.name }}</h3>
-                <nuxt-link :to="`/cat/?id=${cat.id}`" class="round-link ">
+                <h3 class="font-size-32 leading-tight font-semibold mb-10">{{ cat.name }}</h3>
+                <nuxt-link :to="`/category/?id=${cat.id}`" class="round-link ">
                   <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
@@ -253,32 +253,6 @@
               </div>
             </div>
           </div>
-
-          <!-- <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
-            <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
-              <div class="w-full md:w-2/3">
-                <h3 class="font-size-32 leading-tight font-semibold mb-10">Vegetable Collection</h3>
-                <nuxt-link to="/" class="round-link ">
-                  <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
-              </div>
-              <div class="w-full md:w-1/3 flex justify-end">
-                <img src="~/assets/img/vegetable-collection.png" alt="">
-              </div>
-            </div>
-          </div>
-
-          <div class="cat-item w-full my-2 md:w-1/3 px-2 md:px-6">
-            <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
-              <div class="w-full md:w-2/3">
-                <h3 class="font-size-32 leading-tight font-semibold mb-10">Grocery Items Collection</h3>
-                <nuxt-link to="/" class="round-link ">
-                  <img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
-              </div>
-              <div class="w-full md:w-1/3 flex justify-end">
-                <img class="" src="~/assets/img/grocery-items.png" alt="">
-              </div>
-            </div>
-          </div> -->
 
         </div>
 
@@ -351,6 +325,7 @@
         slider_list: {},
         hero_slider: {},
         cat_list: {},
+        cat_slider_list: {},
 
       }
     },
@@ -358,6 +333,7 @@
     created: function(){
       this.getData();
       this.getCatData();
+      this.getCatSliderData();
       // this.getSliderData();
     },
 
@@ -370,9 +346,17 @@
         this.load = false;
       },
 
-      async getCatData() {
+// for Category Slider Show data
+      async getCatSliderData() {
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-categories')
+        this.cat_slider_list = r.data;
+        this.load = false;
+      },
+// before footer Category Show data
+      async getCatData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-footer-top-cat')
         this.cat_list = r.data;
         this.load = false;
       },

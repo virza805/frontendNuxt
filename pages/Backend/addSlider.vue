@@ -88,7 +88,7 @@
         </div> -->
 
         <div>
-          <form-button :loading="loading">Update Now</form-button>
+          <form-button :loading="loading">+ Add Now</form-button>
         </div>
       </form>
     </div>

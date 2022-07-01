@@ -60,9 +60,9 @@
             class="absolute bs-dark-green-bg z-10 w-full -mt-5 pt-6 pb-4 rounded-b-2xl">
             <ul>
               <li v-for="cat in cat_list " :key="cat.id" >
-                <nuxt-link class="block py-2 px-4 text-white hover:text-black" :to="`/cat/?id=${cat.id}`">{{ cat.name }}</nuxt-link>
+                <nuxt-link class="block py-2 px-4 text-white hover:text-black" :to="`/category/?id=${cat.id}`">{{ cat.name }}</nuxt-link>
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -162,7 +162,8 @@
     data() {
       return {
         allCategoryMenu: false,
-        count: 0
+        count: 0,
+        cat_list: {}
       }
     },
     created: function(){

@@ -15,6 +15,10 @@
       <template slot="accordion-content">
         <div class="border border-t-0 border-gray-100 p-6">
           <ul class="leading-10">
+            <li v-for="cat in cat_list " :key="cat.id" >
+                <nuxt-link class="hover:text-green-600" :to="`/category/?id=${cat.id}`">{{ cat.name }}</nuxt-link>
+            </li>
+
             <li>
               <accordion>
                 <accordion-item :openByDefault="true">
@@ -29,19 +33,14 @@
 
                   <template slot="accordion-content">
                     <ul class="pl-4 text-sm leading-8 mb-4">
-                      <li><nuxt-link class="hover:text-green-600" to="/">Sub Category</nuxt-link></li>
-                      <li><nuxt-link class="hover:text-green-600" to="/">Sub Category</nuxt-link></li>
-                      <li><nuxt-link class="hover:text-green-600" to="/">Sub Category</nuxt-link></li>
-                      <li><nuxt-link class="hover:text-green-600" to="/">Sub Category</nuxt-link></li>
+                      <li><nuxt-link class="hover:text-green-600" to="/">Sub Category 1</nuxt-link></li>
+                      <li><nuxt-link class="hover:text-green-600" to="/">Sub Category 2</nuxt-link></li>
                     </ul>
                   </template>
                 </accordion-item>
               </accordion>
-
-
             </li>
-            <li><nuxt-link class="hover:text-green-600" to="/">Vagetables</nuxt-link></li>
-            <li><nuxt-link class="hover:text-green-600" to="/">Lorem category</nuxt-link></li>
+
           </ul>
         </div>
       </template>
@@ -58,6 +57,24 @@ export default {
   components: {
     Accordion,
     AccordionItem,
+  },
+  data() {
+    return {
+      cat_list:{}
+    }
+  },
+  created: function(){
+    this.getData();
+  },
+
+  methods: {
+
+    async getData() {
+      this.load = true;
+      let r = await this.$axios.$get('/api/all/client-categories')
+      this.cat_list = r.data;
+      this.load = false;
+    },
   },
 };
 </script>

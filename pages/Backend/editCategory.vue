@@ -36,11 +36,11 @@
           />
           <form-input
 
-            label="slug"
+            label="0 for show before footer"
             v-model="form.slug"
             :helperText="errorMsg('slug')"
             :hasError="hasError('slug')"
-            placeholder="slug"
+            placeholder="0 or other"
           />
 
           <form-input
@@ -55,7 +55,7 @@
 
 
         <div>
-          <form-button :loading="loading">Update footer data</form-button>
+          <form-button :loading="loading">Update Category data</form-button>
         </div>
       </form>
     </div>
