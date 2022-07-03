@@ -182,11 +182,45 @@
           <div style="height: 2px" class="w-full bg-gray-200"></div>
         </div>
 
-        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
-          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product"/>
+        <div class="flex flex-wrap ">
+          <div v-if="load" class="text-xl my-3 text-red-400 font-medium text-center "> Loading ... .. .</div>
 
-          <!-- <SingleProductBox v-for="product in 8" :key="product.id" :product="product" /> -->
-        </vue-slick-carousel>
+          <div v-for="product in product_list.data" :key="product.id" class="w-1/2 md:w-1/4 px-4 mb-10">
+
+            <div class="single-bs-product">
+              <div class="h-80  relative mb-6">
+                <div class="h-full bg-gray-50 flex justify-center items-center p-4">
+                  <img class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
+                </div>
+
+                <div class="product-img-hover absolute h-full w-full top-0 left-0 flex justify-center items-center">
+                  <div class="bg-black absolute h-full w-full opacity-60"></div>
+                  <button @click.prevent="productDetails"
+                    class=" absolute left-0 bottom-0 bg-gray-200 p-2 w-full flex items-center justify-center">Details
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                      stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </button>
+
+                </div>
+              </div>
+
+              <h4 class="text-xl mb-3">{{ product.name }}</h4>
+              <p><span class="font-medium bs-dark-orange-color">$ {{ product.price }} </span> <del
+                  class="text-gray-400">${{ product.sell_price }}</del></p>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center mb-10">
+          <pagination v-model="page" :records="total" :per-page="per_page" @paginate="getProductData"></pagination>
+        </div>
+        <!-- <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
+          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product"/>
+        </vue-slick-carousel> -->
 
 
         <h3 class="text-xl md:text-4xl mb-6">Popular Brands</h3>
@@ -326,6 +360,11 @@
         hero_slider: {},
         cat_list: {},
         cat_slider_list: {},
+        page: 1,
+        data: [],
+        per_page: 0,
+        total: 0,
+        product_list: {},
 
       }
     },
@@ -334,6 +373,7 @@
       this.getData();
       this.getCatData();
       this.getCatSliderData();
+      this.getProductData();
       // this.getSliderData();
     },
 
@@ -353,12 +393,24 @@
         this.cat_slider_list = r.data;
         this.load = false;
       },
+
 // before footer Category Show data
       async getCatData() {
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-footer-top-cat')
         this.cat_list = r.data;
         this.load = false;
+      },
+
+// Product Show with paginate data
+      async getProductData(page = 1) {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-product/?page=' + page)
+        this.product_list = r.data;
+        this.total = r.data.total;
+        this.per_page = r.data.per_page;
+        this.load = false;
+
       },
 
       // async getSliderData() {

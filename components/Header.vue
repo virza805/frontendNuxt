@@ -10,7 +10,12 @@
             <div class="min-w-max px-3">
               <img src="~/assets/img/search.png" alt="">
             </div>
-            <input type="search" class="w-full px-3 pxy-1 focus:outline-none" placeholder="Search here ...">
+            <input
+            type="search" class="w-full px-3 pxy-1 focus:outline-none"
+            placeholder="Search here ..."
+
+            >
+             <!-- @keyup="search($event.target.value)" -->
             <button class="bg-gray bs-button-bg px-6 rounded-full py-2 text-white" type="submit">Search</button>
           </div>
         </div>
@@ -168,6 +173,7 @@
     },
     created: function(){
       this.getData();
+      // this.getProductData();
     },
 
     methods: {
@@ -206,6 +212,28 @@
         this.cat_list = r.data;
         this.load = false;
       },
+
+// Product Show with paginate data
+    // async getProductData(page = 1) {
+    //   this.load = true;
+    //   let url = `/api/all/client-product/?page= ${page}`;
+    //   if(this.search_key.length > 0) {
+    //     url += `&key=${this.search_key}`;
+    //   }
+
+    //   let r = await this.$axios.$get(url)
+    //   this.product_list = r.data;
+    //   this.total = r.data.total;
+    //   this.per_page = r.data.per_page;
+    //   this.load = false;
+
+    // },
+
+    // search: function(key){
+    //   // console.log(key);
+    //   this.search_key = key;
+    //   this.getProductData();
+    // },
 
     },
     mounted() {
