@@ -1,12 +1,12 @@
 <template>
 <div class="p-8">
-  <h2 class=" text-4xl text-red-500 font-bold text-center">Show Search Product Result</h2>
-  <input
+  <h2 class="my-6 pb-8 text-4xl text-red-500 font-bold text-center">Now Search Product <input
     type="text"
-    class="form-control w-50 border border-red-600"
+    class="form-control w-50 border border-red-600 rounded-2xl"
     @keyup="search($event.target.value)"
     placeholder="search.."
-  />
+  /></h2>
+  
   <div class="container">
 
         <div class="flex flex-wrap ">

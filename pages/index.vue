@@ -176,7 +176,12 @@
         <!--End now-->
 
 
-        <h3 class="text-xl md:text-4xl mb-6">Deals of the Week</h3>
+        <h3 class="text-xl md:text-4xl mb-6">Deals of the Week <input
+    type="text"
+    class="form-control w-50 border border-green-600 rounded"
+    @keyup="search($event.target.value)"
+    placeholder="search.."
+  /></h3>
         <div class="flex items-center mb-10">
           <div style="height: 3px" class="w-32 bs-dark-green-bg"></div>
           <div style="height: 2px" class="w-full bg-gray-200"></div>
@@ -218,9 +223,9 @@
         <div class="text-center mb-10">
           <pagination v-model="page" :records="total" :per-page="per_page" @paginate="getProductData"></pagination>
         </div>
-        <!-- <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
+        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
           <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product"/>
-        </vue-slick-carousel> -->
+        </vue-slick-carousel>
 
 
         <h3 class="text-xl md:text-4xl mb-6">Popular Brands</h3>
@@ -365,6 +370,7 @@
         per_page: 0,
         total: 0,
         product_list: {},
+        search_key: '',
 
       }
     },
@@ -402,16 +408,27 @@
         this.load = false;
       },
 
-// Product Show with paginate data
-      async getProductData(page = 1) {
-        this.load = true;
-        let r = await this.$axios.$get('/api/all/client-product/?page=' + page)
-        this.product_list = r.data;
-        this.total = r.data.total;
-        this.per_page = r.data.per_page;
-        this.load = false;
 
-      },
+ // Product Show with Search & Paginate data
+    async getProductData(page = 1) {
+      this.load = true;
+      let url = `/api/all/client-product/?page= ${page}`;
+      if(this.search_key.length > 0) {
+        url += `&key=${this.search_key}`;
+      }
+
+      let r = await this.$axios.$get(url)
+      this.product_list = r.data;
+      this.total = r.data.total;
+      this.per_page = r.data.per_page;
+      this.load = false;
+
+    },
+    search: function(key){
+      // console.log(key);
+      this.search_key = key;
+      this.getProductData();
+    },
 
       // async getSliderData() {
       //   this.load = true;

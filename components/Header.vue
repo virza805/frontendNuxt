@@ -6,7 +6,7 @@
         <Logo />
 
         <div class="w-96 md:block hidden">
-          <div class="border border-gray-100 p-1 flex rounded-full items-center">
+          <nuxt-link to="/search" class="border border-gray-100 p-1 flex rounded-full items-center">
             <div class="min-w-max px-3">
               <img src="~/assets/img/search.png" alt="">
             </div>
@@ -17,7 +17,7 @@
             >
              <!-- @keyup="search($event.target.value)" -->
             <button class="bg-gray bs-button-bg px-6 rounded-full py-2 text-white" type="submit">Search</button>
-          </div>
+          </nuxt-link>
         </div>
 
         <div class="min-w-max flex items-center">
