@@ -44,9 +44,31 @@
           </div>
         </div>
 
+        <div v-for="hero in hero_slider" :key="hero.id" :hero="hero" class="slide-bg rounded-2xl pt-8">
+          <div class="container">
+            <div class="flex flex-col-reverse md:flex-row items-center">
+              <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
+                <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">{{ hero.sub }}</p>
+                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
+                  Bengal Vegetable
+                  farm Organic 100%
+                </h2>
+                <p class="mb-4 text-sm md:text-xl md:mb-8">Lorem ipsum, dolor sit amet con itae facere quisquam?</p>
+                <nuxt-link to="/" class="bs-button text-base">Shop Now</nuxt-link>
+              </div>
+              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
+            </div>
+          </div>
+        </div>
+
 
 
       </vue-slick-carousel>
+
+      <!-- <div v-for="hero in hero_slider" :key="hero.id"  class="tan">
+        <h2 class="text-2xl text-green-600">{{ hero.sub }}</h2>
+      </div> -->
+       <!-- {{ hero_slider.data }} -->
 
       <div class="container mb-24">
         <h3 class="text-xl md:text-4xl mb-6 mt-6">Search by Category</h3>
@@ -381,7 +403,7 @@
       this.getCatData();
       this.getCatSliderData();
       this.getProductData();
-      // this.getSliderData();
+      this.getSliderData();
     },
 
     methods: {
@@ -431,16 +453,16 @@
       this.getProductData();
     },
 
-      // async getSliderData() {
-      //   this.load = true;
-      //   let r = await this.$axios.$get('/api/all/client-slider')
-      //   this.hero_slider = r.data;
+      async getSliderData() {
+        this.load = true;
+        let r = await this.$axios.$get('/api/all/client-slider')
+        this.hero_slider = r.data;
 
-      //   // console.log(this.hero_slider)
-      //   // this.total = r.total;
-      //   // this.per_page = r.per_page;
-      //   this.load = false;
-      // },
+        // console.log(this.hero_slider)
+        // this.total = r.total;
+        // this.per_page = r.per_page;
+        this.load = false;
+      },
     },
 
 
