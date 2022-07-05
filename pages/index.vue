@@ -8,8 +8,8 @@
     </vue-slick-carousel> -->
     <div class="p-8 hero-slide">
 
-      <vue-slick-carousel class="" :arrows="false" :dots="true">
-
+      <vue-slick-carousel class="" :arrows="false" :dots="true" v-bind="slideSettings" v-if="hero_slider.length > 0">
+<!--
         <div class="slide-bg rounded-2xl pt-8">
           <div class="container">
             <div class="flex flex-col-reverse md:flex-row items-center">
@@ -26,23 +26,7 @@
             </div>
           </div>
         </div>
-
-        <div class="slide-bg rounded-2xl pt-8">
-          <div class="container">
-            <div class="flex flex-col-reverse md:flex-row items-center">
-              <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
-                <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
-                  Bengal Vegetable
-                  farm Organic 100%
-                </h2>
-                <p class="mb-4 text-sm md:text-xl md:mb-8">Lorem ipsum, dolor sit amet con itae facere quisquam?</p>
-                <nuxt-link to="/" class="bs-button text-base">Shop Now</nuxt-link>
-              </div>
-              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
-            </div>
-          </div>
-        </div>
+-->
 
         <div v-for="hero in hero_slider" :key="hero.id" :hero="hero" class="slide-bg rounded-2xl pt-8">
           <div class="container">
@@ -50,18 +34,15 @@
               <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
                 <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">{{ hero.sub }}</p>
                 <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
-                  Bengal Vegetable
-                  farm Organic 100%
+                  {{ hero.title }}
                 </h2>
-                <p class="mb-4 text-sm md:text-xl md:mb-8">Lorem ipsum, dolor sit amet con itae facere quisquam?</p>
-                <nuxt-link to="/" class="bs-button text-base">Shop Now</nuxt-link>
+                <p class="mb-4 text-sm md:text-xl md:mb-8">{{ hero.des }}</p>
+                <nuxt-link :to="hero.btn_link" class="bs-button text-base">{{ hero.btn }}</nuxt-link>
               </div>
               <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
             </div>
           </div>
         </div>
-
-
 
       </vue-slick-carousel>
 
@@ -342,6 +323,26 @@
     },
     data() {
       return {
+        slideSettings: {
+        //   responsive: [
+        //     {
+        //         breakpoint: 992,
+        //         settings: {
+        //             slidesToScroll: 1,
+        //             slidesToShow: 1
+        //         }
+        //     },
+        //     {
+        //         breakpoint: 768,
+        //         settings: {
+        //             slidesToScroll: 1,
+        //             slidesToShow: 1
+        //         }
+        //     }
+        // ],
+        //   'slidesToShow': 6,
+        //   'prevArrow': '>'
+        },
         categoryCarouselSettings: {
           responsive: [
             {
