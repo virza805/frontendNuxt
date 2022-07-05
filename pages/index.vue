@@ -9,24 +9,6 @@
     <div class="p-8 hero-slide">
 
       <vue-slick-carousel class="" :arrows="false" :dots="true" v-bind="slideSettings" v-if="hero_slider.length > 0">
-<!--
-        <div class="slide-bg rounded-2xl pt-8">
-          <div class="container">
-            <div class="flex flex-col-reverse md:flex-row items-center">
-              <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
-                <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
-                  Bengal Vegetable
-                  farm Organic 100%
-                </h2>
-                <p class="mb-4 text-sm md:text-xl md:mb-8">Lorem ipsum, dolor sit amet con itae facere quisquam?</p>
-                <nuxt-link to="/" class="bs-button text-base">Shop Now</nuxt-link>
-              </div>
-              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
-            </div>
-          </div>
-        </div>
--->
 
         <div v-for="hero in hero_slider" :key="hero.id" :hero="hero" class="slide-bg rounded-2xl pt-8">
           <div class="container">
@@ -46,11 +28,6 @@
 
       </vue-slick-carousel>
 
-      <!-- <div v-for="hero in hero_slider" :key="hero.id"  class="tan">
-        <h2 class="text-2xl text-green-600">{{ hero.sub }}</h2>
-      </div> -->
-       <!-- {{ hero_slider.data }} -->
-
       <div class="container mb-24">
         <h3 class="text-xl md:text-4xl mb-6 mt-6">Search by Category</h3>
         <div class="flex items-center mb-10">
@@ -58,62 +35,15 @@
           <div style="height: 2px" class="w-full bg-gray-200"></div>
         </div>
 
-        <vue-slick-carousel class="category-carousel" v-bind="categoryCarouselSettings">
+        <vue-slick-carousel class="category-carousel" v-bind="categoryCarouselSettings"  v-if="cat_slider_list.length > 0">
 
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-1.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries1</h4>
-          </div>
-
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-2.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-3.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-4.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-5.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-6.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-5.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-1.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
-          </div>
-          <div class="bg-gray-200 p-4">
-            <div class="h-32 flex justify-center items-center">
-              <img src="~/assets/img/carousel-img-5.png" alt="">
-            </div>
-            <h4 class="text-xl">Groceries</h4>
+          <div v-for="cat in cat_slider_list" :key="cat.id" class="bg-gray-200 p-4">
+            <nuxt-link :to="`/category/?id=${cat.id}`" >
+              <div class="h-32 flex justify-center items-center">
+                <img src="~/assets/img/carousel-img-2.png" alt="">
+              </div>
+              <h4 class="text-xl">{{ cat.name }}</h4>
+            </nuxt-link>
           </div>
 
           <!-- <template #prevArrow="arrowOption">
@@ -149,31 +79,7 @@
               </div>
             </div>
           </div>
-          <!-- <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
-            <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
-              <div class="w-full md:w-1/2">
-                <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Get 1 Buy 1</p>
-                <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">Deals of the Week</h3>
-                <nuxt-link to="/" class="bs-white-btn">Order Now</nuxt-link>
-              </div>
-              <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
-                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
-              </div>
-            </div>
-          </div>
-          <div class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
-            <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
-              <div class="w-full md:w-1/2">
-                <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">Buy 2 Get 1</p>
-                <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">Deals of the Week</h3>
-                <nuxt-link to="/" class="bs-white-btn">Order Now</nuxt-link>
-              </div>
-              <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
-                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
-              </div>
-            </div>
-          </div> -->
-
+          
         </div>
 
         <!--End now-->

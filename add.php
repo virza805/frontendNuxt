@@ -93,12 +93,9 @@ php artisan make:model Slider -mc
 php artisan make:model Product -mc
 php artisan migrate || php artisan migrate:fresh --seed
 
-need work Hero Slider .....
+need work Hero Slider .....https://github.com/gs-shop/vue-slick-carousel/issues/125 | <VueSlickCarousel v-bind="slideSettings" v-if="myData.length > 0">
 
-https://github.com/kenwheeler/slick/issues/3281
 
-https://github.com/gs-shop/vue-slick-carousel/issues/125
-<VueSlickCarousel v-bind="slideSettings" v-if="myData.length > 0">
 
 
 
