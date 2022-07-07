@@ -80,7 +80,7 @@
             </select>
           </div> -->
 
-          <form-input type="text" label="User Role" v-model="form.role"
+          <form-input type="number" label="User Role" v-model="form.role"
             :helperText="errorMsg('role')" :hasError="hasError('role')"
             class="mb-10 " />
 
@@ -140,8 +140,9 @@
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/update-profile', this.form);
-
+          let userId = this.$auth.user.id;
+          const res = await this.$axios.$put('/api/user/update-profile/'+ userId, this.form);
+console.log(userId);
           // await this.$auth.fetchUser();
 
           this.loading = false;
