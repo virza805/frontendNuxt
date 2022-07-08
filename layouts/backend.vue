@@ -58,9 +58,12 @@
             </div>
           </div>
         </a>
+
         <BackendLeftSidebarMenu></BackendLeftSidebarMenu>
 
         <BackendClock></BackendClock>
+
+        <button @click="handleLogouts" class="px-6 py-2 mx-4 my-2 text-center text-yellow-100 bg-red-600 hover:bg-red-900">Logout</button>
 
         <!-- sidebar menu the end -->
       </aside>

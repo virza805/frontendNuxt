@@ -2,7 +2,7 @@
   <div class="sidebar">
     <ul class="left_sidebar">
       <li class="  ">
-        <nuxtLink to="#" class="dropdown-btn active">Dashboard<img src="~/assets/img/chevron-down.png" alt=""></nuxtLink>
+        <nuxtLink to="#" class="dropdown-btn active flex">Dashboard <img src="~/assets/img/chevron-down.png" alt=""></nuxtLink>
 
         <ul class="dropdown-container">
           <li class=" ">
@@ -13,6 +13,18 @@
           </li>
           <li class=" ">
             <nuxt-link to="/backend/contactMessage"> All contactEmail</nuxt-link>
+          </li>
+        </ul>
+      </li>
+
+      <li class="  ">
+        <a href="#" class="dropdown-btn active">All user	&dArr;</a>
+        <ul class="     dropdown-container">
+          <li class=" ">
+            <nuxt-link to="/backend/showUser"> Show All user</nuxt-link>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/addUser"> Add User</nuxt-link>
           </li>
         </ul>
       </li>

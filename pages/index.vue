@@ -21,7 +21,8 @@
                 <p class="mb-4 text-sm md:text-xl md:mb-8">{{ hero.des }}</p>
                 <nuxt-link :to="hero.btn_link" class="bs-button text-base">{{ hero.btn }}</nuxt-link>
               </div>
-              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
+              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img
+                  class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
             </div>
           </div>
         </div>
@@ -35,10 +36,11 @@
           <div style="height: 2px" class="w-full bg-gray-200"></div>
         </div>
 
-        <vue-slick-carousel class="category-carousel" v-bind="categoryCarouselSettings"  v-if="cat_slider_list.length > 0">
+        <vue-slick-carousel class="category-carousel" v-bind="categoryCarouselSettings"
+          v-if="cat_slider_list.length > 0">
 
           <div v-for="cat in cat_slider_list" :key="cat.id" class="bg-gray-200 p-4">
-            <nuxt-link :to="`/category/?id=${cat.id}`" >
+            <nuxt-link :to="`/category/?id=${cat.id}`">
               <div class="h-32 flex justify-center items-center">
                 <img src="~/assets/img/carousel-img-2.png" alt="">
               </div>
@@ -67,7 +69,7 @@
 
         <div class="flex flex-wrap md:-mx-6 mb-12">
 
-          <div  v-for=" slid  in slider_list" :key="slid.id"  class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
+          <div v-for=" slid  in slider_list" :key="slid.id" class="cat-item w-full my-2 md:w-1/2 px-2 md:px-6">
             <div class="buy-get flex flex-col-reverse md:flex-row md:p-12 md:pr-2 p-4 rounded">
               <div class="w-full md:w-1/2">
                 <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">{{ slid.sub }}</p>
@@ -79,18 +81,23 @@
               </div>
             </div>
           </div>
-          
+
         </div>
 
         <!--End now-->
 
-
-        <h3 class="text-xl md:text-4xl mb-6">Deals of the Week <input
-    type="text"
-    class="form-control w-50 border border-green-600 rounded"
-    @keyup="search($event.target.value)"
-    placeholder="search.."
-  /></h3>
+        <div class="flex justify-between items-start ">
+          <h3 class="text-xl md:text-4xl mb-6">Deals of the Week</h3>
+          <label class="relative block">
+            <span class="sr-only">Search</span>
+            <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+              <img src="~/assets/img/search.png" alt="">
+            </span>
+            <input
+              class="placeholder:italic placeholder:text-red-400 block bg-green-100 w-full border border-red-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-500 focus:ring-1 sm:text-sm"
+              placeholder="Search for anything..." type="text" @keyup="search($event.target.value)" name="search" />
+          </label>
+        </div>
         <div class="flex items-center mb-10">
           <div style="height: 3px" class="w-32 bs-dark-green-bg"></div>
           <div style="height: 2px" class="w-full bg-gray-200"></div>
@@ -133,8 +140,9 @@
         <div class="text-center mb-10">
           <pagination v-model="page" :records="total" :per-page="per_page" @paginate="getProductData"></pagination>
         </div>
-        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
-          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product"/>
+        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center"
+          v-bind="productCarouselSettings">
+          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product" />
         </vue-slick-carousel>
 
 
@@ -194,7 +202,8 @@
             <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
               <div class="w-full md:w-2/3">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">{{ cat.name }}</h3>
-                <nuxt-link :to="`/category/?id=${cat.id}`" class="round-link "><img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
+                <nuxt-link :to="`/category/?id=${cat.id}`" class="round-link "><img src="~/assets/img/arrow-right.png"
+                    alt=""></nuxt-link>
 
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
@@ -230,62 +239,60 @@
     data() {
       return {
         slideSettings: {
-        //   responsive: [
-        //     {
-        //         breakpoint: 992,
-        //         settings: {
-        //             slidesToScroll: 1,
-        //             slidesToShow: 1
-        //         }
-        //     },
-        //     {
-        //         breakpoint: 768,
-        //         settings: {
-        //             slidesToScroll: 1,
-        //             slidesToShow: 1
-        //         }
-        //     }
-        // ],
-        //   'slidesToShow': 6,
-        //   'prevArrow': '>'
+          //   responsive: [
+          //     {
+          //         breakpoint: 992,
+          //         settings: {
+          //             slidesToScroll: 1,
+          //             slidesToShow: 1
+          //         }
+          //     },
+          //     {
+          //         breakpoint: 768,
+          //         settings: {
+          //             slidesToScroll: 1,
+          //             slidesToShow: 1
+          //         }
+          //     }
+          // ],
+          //   'slidesToShow': 6,
+          //   'prevArrow': '>'
         },
         categoryCarouselSettings: {
-          responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToScroll: 3,
-                    slidesToShow: 3
-                }
+          responsive: [{
+              breakpoint: 992,
+              settings: {
+                slidesToScroll: 3,
+                slidesToShow: 3
+              }
             },
             {
-                breakpoint: 768,
-                settings: {
-                    slidesToScroll: 2,
-                    slidesToShow: 2
-                }
+              breakpoint: 768,
+              settings: {
+                slidesToScroll: 2,
+                slidesToShow: 2
+              }
             }
-        ],
+          ],
           'slidesToShow': 6,
           'prevArrow': '>'
         },
         productCarouselSettings: {
-          responsive: [
-            {
-                breakpoint: 992,
-                settings: {
-                    slidesToScroll: 2,
-                    slidesToShow: 2
-                }
+          responsive: [{
+              breakpoint: 992,
+              settings: {
+                slidesToScroll: 2,
+                slidesToShow: 2
+              }
             },
             {
-                breakpoint: 768,
-                settings: {
-                    slidesToScroll: 1,
-                    slidesToShow: 1
-                }
+              breakpoint: 768,
+              settings: {
+                slidesToScroll: 1,
+                slidesToShow: 1
+              }
             }
-        ],
+          ],
           'slidesToShow': 4,
           'prevArrow': '>'
         },
@@ -305,7 +312,7 @@
       }
     },
 
-    created: function(){
+    created: function () {
       this.getData();
       this.getCatData();
       this.getCatSliderData();
@@ -322,7 +329,7 @@
         this.load = false;
       },
 
-// for Category Slider Show data
+      // for Category Slider Show data
       async getCatSliderData() {
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-categories')
@@ -330,7 +337,7 @@
         this.load = false;
       },
 
-// before footer Category Show data
+      // before footer Category Show data
       async getCatData() {
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-footer-top-cat')
@@ -339,26 +346,26 @@
       },
 
 
- // Product Show with Search & Paginate data
-    async getProductData(page = 1) {
-      this.load = true;
-      let url = `/api/all/client-product/?page= ${page}`;
-      if(this.search_key.length > 0) {
-        url += `&key=${this.search_key}`;
-      }
+      // Product Show with Search & Paginate data
+      async getProductData(page = 1) {
+        this.load = true;
+        let url = `/api/all/client-product/?page= ${page}`;
+        if (this.search_key.length > 0) {
+          url += `&key=${this.search_key}`;
+        }
 
-      let r = await this.$axios.$get(url)
-      this.product_list = r.data;
-      this.total = r.data.total;
-      this.per_page = r.data.per_page;
-      this.load = false;
+        let r = await this.$axios.$get(url)
+        this.product_list = r.data;
+        this.total = r.data.total;
+        this.per_page = r.data.per_page;
+        this.load = false;
 
-    },
-    search: function(key){
-      // console.log(key);
-      this.search_key = key;
-      this.getProductData();
-    },
+      },
+      search: function (key) {
+        // console.log(key);
+        this.search_key = key;
+        this.getProductData();
+      },
 
       async getSliderData() {
         this.load = true;
@@ -399,23 +406,29 @@
   .category-carousel button {
     margin-bottom: 20px;
   }
+
   .slick-list {
     overflow-x: hidden;
   }
+
   .cat-item:nth-child(even) .category {
     background: #fff0dc;
   }
+
   .cat-item:nth-child(odd) .category {
     background: #ddf1d6;
   }
+
   .cat-item:nth-child(even) .buy-get {
     background: #f2cddf;
   }
+
   .cat-item:nth-child(odd) .buy-get {
     background: #beefbf;
   }
+
   .round-link {
-    @apply  h-12 w-12 flex justify-center items-center rounded-full bg-white
+    @apply h-12 w-12 flex justify-center items-center rounded-full bg-white
   }
 
 </style>
