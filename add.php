@@ -93,35 +93,19 @@ php artisan make:model Slider -mc
 php artisan make:model Product -mc
 php artisan migrate || php artisan migrate:fresh --seed
 
-need work Hero Slider .....https://github.com/gs-shop/vue-slick-carousel/issues/125 | <VueSlickCarousel v-bind="slideSettings" v-if="myData.length > 0">
+Hero Slider .....https://github.com/gs-shop/vue-slick-carousel/issues/125 | <VueSlickCarousel v-bind="slideSettings" v-if="myData.length > 0">
 
 php artisan make:model AdminUser -c
+php artisan make:seeder Footer
+php artisan make:seeder FooterTop
+php artisan db:seed =>
+php artisan make:seeder Slider
+php artisan make:seeder Categories
+php artisan db:seed =>
 
 
 
 
-
-
-
-
-
-Support
-Contact us 24 hours
-
-Products
-Contact us 24 hours
-
-Cecure Payment
-Contact us 24 hours
-
-Prices & Offers
-Contact us 24 hours
-
-
-Opening Hours
-Monday - Thursday: 9AM – 5PM
-Friday: 9AM – 5PM
-Saturday - Sunday: Closed
 
 
 */

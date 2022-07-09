@@ -8,7 +8,7 @@
           </div>
           <div class="w-full">
             <h3 class="text-xl font-medium mb-2">{{ footer_top.title }}</h3>
-            {{ footer_top.dec }}
+            {{ footer_top.description }}
           </div>
         </div>
 
@@ -24,11 +24,9 @@
           <div class="w-full p-1 lg:w-1/4 my-5">
             <Logo />
 
-            <!-- <p v-for="(book, index) in footer_data_list" :key="book.id" class="my-4  text-sm  md:pr-10"> {{ book.dec }} </p> -->
-            <p class="my-4  text-sm  md:pr-10"> {{ footer_data_list.dec }} </p>
-            <!-- <p>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti nihil enim illum, omnis dicta itaque? Velit.
-            </p> -->
+            <p class="my-4  text-sm  md:pr-10"> {{ footer_data_list.description }} </p>
+
+
             <!-- <div class="flex">
               <a href="/" class="mr-4"><img src="~/assets/img/playstore.png" alt=""></a>
               <a href="/"><img src="~/assets/img/appstore.png" alt=""></a>
@@ -79,6 +77,7 @@
               <li>
                 <!-- <a  class="underline text-primaryGreen " :href="`tel:`+book.phone" target="_blank">{{ book.phone }}</a> -->
               </li>
+
             </ul>
           </div>
           <div class="w-full p-1 lg:w-1/4 my-5">
@@ -87,7 +86,9 @@
             </h3>
             <ul class="leading-loose text-sm ">
               <li  v-for="open_hour in footer_open_time.data" :key="open_hour.id" >
-                <nuxt-link class="mt-2" to="/"><b>{{ open_hour.title }}</b>: {{ open_hour.dec }}</nuxt-link>
+                <nuxt-link class="mt-2" to="/"><b>{{ open_hour.title }}</b>:
+                {{ open_hour.description }}
+                </nuxt-link>
               </li>
 
             </ul>
