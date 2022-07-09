@@ -27,10 +27,10 @@
         <div class="w-full lg:w-2/5 lg:order-1 order-2">
           <p><b>Name : </b>{{ $auth.user.name }}</p>
           <p><b>User Role : </b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
+            <b class="text-green-600 " v-if=" $auth.user.role == 1">superAdmin</b>
+            <b class="text-green-400 " v-if=" $auth.user.role == 2"> Admin</b>
+            <b class="text-green-200 " v-if=" $auth.user.role == 3"> Manager</b>
+            <b class="text-yellow-600 " v-if=" $auth.user.role == 4"> Other</b>
           </p>
           <p><b>User Id : </b>{{ $auth.user.id }}</p>
         </div>
@@ -80,9 +80,9 @@
             </select>
           </div> -->
 
-          <form-input type="number" label="User Role" v-model="form.role"
+          <!-- <form-input type="number" label="User Role" v-model="form.role"
             :helperText="errorMsg('role')" :hasError="hasError('role')"
-            class="mb-10 " />
+            class="mb-10 " /> -->
 
 
 

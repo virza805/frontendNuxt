@@ -47,7 +47,6 @@
           name="cars" id="cars" form="carform"
           class="input"
           >
-
             <option value="1">Super Admin</option>
             <option value="2">Admin</option>
             <option value="3">Manager</option>
@@ -108,7 +107,7 @@ export default {
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/cat/store', this.form)
+          const res = await this.$axios.$post('/api/user/s_admin/store', this.form)
           this.loading = false;
 
           // toast massage show

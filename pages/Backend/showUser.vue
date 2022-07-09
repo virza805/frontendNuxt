@@ -79,7 +79,8 @@
 
 </div>
               <tbody class="bg-green-50 p-2 ">
-                <tr v-for="(slid, index) in cat_list" :key="slid.id" class="border border-b border-green-200 ">
+                <!-- {{ cat_list.data }} -->
+                <tr v-for="(slid, index) in cat_list.data" :key="slid.id" class="border border-b border-green-200 ">
                   <td class="table-td">
                     <input v-if="selected_data.includes(slid.id)" checked type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
                     <input v-else type="checkbox" @change="add_to_selected(slid.id)" class="form-check" >
@@ -87,7 +88,10 @@
                   <td class="table-td">{{ slid.id }}</td>
                   <td class="table-td pl-2">{{ slid.name }}</td>
                   <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.email }}</td>
-                  <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.email_verified_at }}</td>
+                  <td class="table-td py-1 border-l border-green-200 px-2 ">
+                  <b class="text-red-600 " v-if=" slid.email_verified_at == null"> False</b>
+                   <b class="text-green-600 " v-else> Verified</b>
+                  </td>
                   <td class="table-td"><img src="~/assets/img/vegetable-collection.png" alt="Phone" width="70"></td>
                   <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.role }}</td>
                   <td>
@@ -102,7 +106,6 @@
             </table>
 
  <!-- {{ getData }} -->
-<!-- <Pagination :data="cat_list" @pagination-change-page="getData"></Pagination> -->
 <pagination  v-model="page" :records="total" :per-page="per_page" @paginate="getData"></pagination>
 
 
@@ -114,8 +117,6 @@
       </div>
     </div>
 
-    <!-- <Pagination v-model="page" :records="total" :per-page="per_page" @paginate="getData" /> -->
-    <!-- <pagination v-model="page" :options="pagination_option" :records="total" :per-page="per_page" @paginate="getData" /> -->
     <img class=" text-center mx-auto" src="~/assets/img/vegetable-collection.png" alt="Phone">
     <!-- Show cat List Start now -->
   </div>
@@ -125,7 +126,6 @@
 // import { mapGetters } from "vuex";
   import form from '../mixins/form';
   import Input from '../../components/Form/Input.vue';
-  // import LaravelVuePagination from 'laravel-vue-pagination';
   import Pagination from 'vue-pagination-2';
   export default {
     // middleware: ['auth'],
@@ -137,7 +137,6 @@
     components: {
       Input,
       Pagination
-      // 'Pagination': LaravelVuePagination
     },
     mixins: [form],
 
@@ -174,10 +173,15 @@
     methods: {
       async getData(page = 1) {
         this.load = true;
-        let r = await this.$axios.$get('/api/user/cat/backend-cat-list?page='+ page)
+        let url = `/api/user/s_admin/backend-user-list?page= ${page}`;
+        if (this.search_key.length > 0) {
+          url += `&key=${this.search_key}`;
+        }
+
+        let r = await this.$axios.$get(url)
         this.cat_list = r.data;
-        this.total = r.total;
-        this.per_page = r.per_page;
+        this.total = r.data.total;
+        this.per_page = r.data.per_page;
         this.load = false;
       },
 
@@ -186,7 +190,7 @@
     async delete_slid(slid,index) {
       let con = confirm('Sure want to delete??');
       if(con) {
-         await this.$axios.$post('/api/user/cat/delete', {id: slid.id})
+         await this.$axios.$post('/api/user/s_admin/delete', {id: slid.id})
           // this.cat_list.data.splice(index,1);
           this.getData(); // for show only 5 data
           // toast massage show
@@ -209,7 +213,7 @@
       console.log(this.selected_data);
     },
     check_all(){
-      this.cat_list.map(item=>{
+      this.cat_list.data.map(item=>{
 
         this.selected_data.includes(item.id)
         ?
@@ -227,7 +231,7 @@
       let con = confirm('Are you Sure want to delete all selected item ??');
       if(con) {
         this.loading = true;
-         await this.$axios.$post('/api/user/cat/delete-multi', { ids: this.selected_data })
+         await this.$axios.$post('/api/user/s_admin/delete-multi', { ids: this.selected_data })
           this.selected_data = [];
           // this.cat_list.data.splice(index,1);
           this.getData(); // for show only 5 data
@@ -250,43 +254,43 @@
       this.getData();
     },
 
-    async success_cat(slid){
+    // async success_cat(slid){
 
-      let con = confirm('are you Sure this slid remove to cat & add Buy 1 Get 1 Section??');
-      if(con) {
-          this.loading = true;
-          await this.$axios.$post(`/api/user/cat/add-buy-get`, {id: slid.id})
-  				slid.success_cat = 1;
-          this.loading = false;
+    //   let con = confirm('are you Sure this slid remove to cat & add Buy 1 Get 1 Section??');
+    //   if(con) {
+    //       this.loading = true;
+    //       await this.$axios.$post(`/api/user/cat/add-buy-get`, {id: slid.id})
+  	// 			slid.success_cat = 1;
+    //       this.loading = false;
 
-          // toast massage show
-          this.$store.commit("toaster/fire", {
-            text: "This slid add Buy 1 Get 1 Section Complete",
-          });
+    //       // toast massage show
+    //       this.$store.commit("toaster/fire", {
+    //         text: "This slid add Buy 1 Get 1 Section Complete",
+    //       });
 
-      }
-
-
-    },
-
-    async add_cat(r_slid){
-
-      let con = confirm('are you Sure this slid remove to Buy 1 Get 1 Section??');
-      if(con) {
-          this.loading = true;
-          await this.$axios.$post(`/api/user/cat/remove-buy-get`, {id: slid.id})
-  				r_slid.add_cat = 0;
-          this.loading = false;
-
-          // toast massage show
-          this.$store.commit("toaster/fire", {
-            text: "This slid Remove form Buy 1 Get 1 Section",
-          });
-
-      }
+    //   }
 
 
-    },
+    // },
+
+    // async add_cat(r_slid){
+
+    //   let con = confirm('are you Sure this slid remove to Buy 1 Get 1 Section??');
+    //   if(con) {
+    //       this.loading = true;
+    //       await this.$axios.$post(`/api/user/cat/remove-buy-get`, {id: slid.id})
+  	// 			r_slid.add_cat = 0;
+    //       this.loading = false;
+
+    //       // toast massage show
+    //       this.$store.commit("toaster/fire", {
+    //         text: "This slid Remove form Buy 1 Get 1 Section",
+    //       });
+
+    //   }
+
+
+    // },
 
   },
 

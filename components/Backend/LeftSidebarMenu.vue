@@ -17,14 +17,19 @@
         </ul>
       </li>
 
-      <li class="  ">
+      <li class="">
         <a href="#" class="dropdown-btn active">All user	&dArr;</a>
-        <ul class="     dropdown-container">
+        <ul v-if=" $auth.user.role == 1" class="dropdown-container">
           <li class=" ">
             <nuxt-link to="/backend/showUser"> Show All user</nuxt-link>
           </li>
           <li class=" ">
             <nuxt-link to="/backend/addUser"> Add User</nuxt-link>
+          </li>
+        </ul>
+        <ul v-else class="dropdown-container">
+          <li class=" ">
+            <h4 class="text-red-600 ">Only for Super Admin</h4>
           </li>
         </ul>
       </li>
@@ -81,7 +86,7 @@
 
       <li class="  ">
         <a href="#" class="dropdown-btn active">Footer Data	&dArr;</a>
-        <ul class="     dropdown-container">
+        <ul v-if=" $auth.user.role == 1" class="dropdown-container">
           <li class=" ">
             <nuxt-link to="/backend/showFooter"> Show Footer Data</nuxt-link>
           </li>
@@ -92,6 +97,11 @@
             <nuxt-link to="/backend/addFooterTop"> Add Footer Top</nuxt-link>
           </li>
 
+        </ul>
+        <ul v-else class="dropdown-container">
+          <li class=" ">
+            <h4 class="text-red-600 ">Only for Super Admin</h4>
+          </li>
         </ul>
       </li>
 

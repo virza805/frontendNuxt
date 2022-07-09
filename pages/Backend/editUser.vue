@@ -110,7 +110,7 @@ export default {
         try {
           this.loading = true;
           let editTaskIds = this.$route.query.id;
-          const res = await this.$axios.$put('/api/user/cat/update/'+editTaskIds, this.form)
+          const res = await this.$axios.$put('/api/user/s_admin/update/'+editTaskIds, this.form)
           this.loading = false;
           // toast massage show
 
@@ -139,11 +139,12 @@ export default {
 
       async getEditTask(){
         let editTaskId = this.$route.query.id;
-        let editData = await this.$axios.$get('/api/user/cat/get/'+editTaskId)
+        let editData = await this.$axios.$get('/api/user/s_admin/get/'+editTaskId)
 
         this.form.name = editData.name;
-        this.form.slug = editData.slug;
-        this.form.image = editData.image;
+        this.form.role = editData.role;
+        this.form.email = editData.email;
+        this.form.password = editData.password;
         // this.form.icon_img = editData.icon_img;
 
       },

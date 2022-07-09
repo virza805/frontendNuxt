@@ -95,7 +95,7 @@ php artisan migrate || php artisan migrate:fresh --seed
 
 need work Hero Slider .....https://github.com/gs-shop/vue-slick-carousel/issues/125 | <VueSlickCarousel v-bind="slideSettings" v-if="myData.length > 0">
 
-
+php artisan make:model AdminUser -c
 
 
 
