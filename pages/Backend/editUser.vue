@@ -1,12 +1,4 @@
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-gray-50">
-    <body class="h-full">
-    ```
-  -->
   <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
@@ -80,9 +72,9 @@
 import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
-    // middleware: ['auth'],
+    middleware: ['auth', 'super-admin'],
 
-    middleware: 'auth',
+    // middleware: 'auth',
     layout: 'backend',
     head: {
         name: "Edit User",

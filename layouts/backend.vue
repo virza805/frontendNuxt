@@ -49,10 +49,10 @@
             <img src="~/assets/img/Tanvir Md. Al-Amin.jpg" alt="Admin Img" style="opacity:1; width: 70px;">
             <div class="user_con">
               <h3><span style="font-size:10px ">User role</span>
-              <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
+              <b class="text-green-600 " v-if=" $auth.user.role == 1">superAdmin</b>
+              <b class="text-green-400 " v-if=" $auth.user.role == 2">Admin</b>
+              <b class="text-yellow-400 " v-if=" $auth.user.role == 3">Manager</b>
+              <b class="text-yellow-600 " v-if=" $auth.user.role == 4">Other</b>
               </h3>
               <h5>{{ $auth.user.name }}</h5>
             </div>
@@ -63,7 +63,7 @@
 
         <BackendClock></BackendClock>
 
-        <button @click="handleLogouts" class="px-6 py-2 mx-4 my-2 text-center text-yellow-100 bg-red-600 hover:bg-red-900">Logout</button>
+        <button @click="handleLogout" class="px-6 py-2 mx-4 my-2 text-center text-yellow-100 bg-red-600 hover:bg-red-900">Logout</button>
 
         <!-- sidebar menu the end -->
       </aside>

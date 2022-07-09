@@ -68,9 +68,6 @@
               </tbody>
             </table>
 
-<!-- <pagination  v-model="page" :records="total" :per-page="per_page" @paginate="getData"></pagination> -->
-
-
           </div>
 
         </div>
@@ -170,8 +167,8 @@
   // import LaravelVuePagination from 'laravel-vue-pagination';
   import Pagination from 'vue-pagination-2';
   export default {
-    // middleware: ['auth'],
-    middleware: 'auth',
+    middleware: ['auth', 'super-admin'],
+    // middleware: 'auth',
     layout: 'backend',
     head: {
       title: "Show Task List",

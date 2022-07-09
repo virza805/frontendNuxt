@@ -125,17 +125,6 @@
 
         </div>
 
-        <!-- <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-            <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
-          </div>
-
-          <div class="text-sm">
-            <nuxt-link to="/auth/forgot-password" class="font-medium text-green-600 hover:text-green-800"> Forgot your password? </nuxt-link>
-          </div>
-        </div> -->
-
         <div>
           <form-button :loading="loading">Submit Now</form-button>
         </div>
@@ -149,9 +138,9 @@
 import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
-    // middleware: ['auth'],
+    middleware: ['auth', 'super-admin'],
 
-    middleware: 'auth',
+    // middleware: 'auth',
     layout: 'backend',
     head: {
         title: "Add Task",

@@ -141,9 +141,9 @@
 import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
-    // middleware: ['auth'],
+    middleware: ['auth', 'super-admin'],
 
-    middleware: 'auth',
+    // middleware: 'auth',
     layout: 'backend',
     head: {
         title: "Edit Task",

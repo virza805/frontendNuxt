@@ -1,16 +1,7 @@
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-gray-50">
-    <body class="h-full">
-    ```
-  -->
   <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
         <Tanvir />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Add New User</h2>
 
@@ -78,9 +69,9 @@
 import form from '../mixins/form';
 import Input from '../../components/Form/Input.vue';
 export default {
-    // middleware: ['auth'],
+    middleware: ['auth', 'super-admin'],
 
-    middleware: 'auth',
+    // middleware: 'auth',
     layout: 'backend',
     head: {
         name: "Add User",

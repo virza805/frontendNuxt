@@ -18,45 +18,6 @@
   </div>
 </div>
 
-    <vue-slick-carousel class="" :arrows="false" :dots="true">
-
-        <!-- <div v-for="slider in hero_slider" :key="slider.id" class="slide-bg rounded-2xl pt-8">
-          <div class="container">
-            <div class="flex flex-col-reverse md:flex-row items-center">
-              <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
-                <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
-
-{{ slider.title }}
-                </h2>
-                <p class="mb-4 text-sm md:text-xl md:mb-8">Lorem ipsum, dolor sit amet con itae facere quisquam?</p>
-                <nuxt-link to="/" class="bs-button text-base">Shop Now</nuxt-link>
-              </div>
-              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
-            </div>
-          </div>
-        </div> -->
-
-
-        <div class="slide-bg rounded-2xl pt-8">
-          <div class="container">
-            <div class="flex flex-col-reverse md:flex-row items-center">
-              <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
-                <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">Save up 30% off</p>
-                <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
-Bengle Shop 100% peure
-                </h2>
-                <p class="mb-4 text-sm md:text-xl md:mb-8">Lorem ipsum, dolor sit amet con itae facere quisquam?</p>
-                <nuxt-link to="/" class="bs-button text-base">Shop Now</nuxt-link>
-              </div>
-              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
-            </div>
-          </div>
-        </div>
-
-
-
-      </vue-slick-carousel>
   </div>
 </template>
 
@@ -65,29 +26,7 @@ export default {
   head: {
     title: "Offers",
   },
-  data() {
-    return {
-      hero_slider: {},
-    }
-  },
 
-  created: function(){
-    this.getSliderData();
-  },
-
-  methods: {
-
-      async getSliderData() {
-        this.load = true;
-        let r = await this.$axios.$get('/api/all/client-slider')
-        this.hero_slider = r.data;
-
-        console.log(this.hero_slider)
-        // this.total = r.total;
-        // this.per_page = r.per_page;
-        this.load = false;
-      },
-  }
 
 }
 </script>

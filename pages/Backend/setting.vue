@@ -26,12 +26,7 @@
       <div class="flex flex-row justify-evenly items-center flex-wrap">
         <div class="w-full lg:w-2/5 lg:order-1 order-2">
           <p><b>Name : </b>{{ $auth.user.name }}</p>
-          <p><b>User Role : </b>
-            <b class="text-green-600 " v-if=" $auth.user.role == 1">superAdmin</b>
-            <b class="text-green-400 " v-if=" $auth.user.role == 2"> Admin</b>
-            <b class="text-green-200 " v-if=" $auth.user.role == 3"> Manager</b>
-            <b class="text-yellow-600 " v-if=" $auth.user.role == 4"> Other</b>
-          </p>
+          <p><b>User Role : </b> <UserRole /></p>
           <p><b>User Id : </b>{{ $auth.user.id }}</p>
         </div>
 
@@ -68,32 +63,8 @@
             :hasError="hasError('email')" />
 
 
-          <!-- <div class="col-span-6 sm:col-span-3">
-            <label for="country" class="block text-sm font-medium text-gray-700">User Role</label>
-            <select id="country" name="country" autocomplete="country-name"
-              class="mt-1 block w-full py-2 px-3 border border-gray-300 bg-white rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
-              <option> Select user role</option>
-              <option>Admin</option>
-              <option>Manager</option>
-              <option>Editor</option>
-              <option>user</option>
-            </select>
-          </div> -->
-
-          <!-- <form-input type="number" label="User Role" v-model="form.role"
-            :helperText="errorMsg('role')" :hasError="hasError('role')"
-            class="mb-10 " /> -->
-
-
-
           <form-input type="password" label="Password" v-model="form.password" :helperText="errorMsg('password')"
             :hasError="hasError('password')" />
-
-
-
-
-
-
 
           <div>
             <form-button :loading="loading">Update</form-button>

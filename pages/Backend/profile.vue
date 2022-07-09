@@ -11,12 +11,7 @@
           </div>
           <div>
             <p><b>Name : </b>{{ $auth.user.name }}</p>
-            <p><b>User Role : </b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 1">Admin</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 2"> Manager</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 3"> Editor</b>
-              <b class="text-green-600 " v-if=" $auth.user.role == 4"> User</b>
-            </p>
+            <p><b>User Role : </b> <UserRole /></p>
             <p><b>User Id : </b>{{ $auth.user.id }}</p>
 
             <p><b>Email : </b>{{ $auth.user.email }}</p>
