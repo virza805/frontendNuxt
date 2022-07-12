@@ -1,7 +1,7 @@
 <template>
   <div class="text-center my-12">
     <h2 class="text-4xl">Wellcome {{ $auth.user.name }} </h2>
-    <p>Your a
+    <p>You are a
       <UserRole />
     </p>
 

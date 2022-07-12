@@ -382,6 +382,35 @@ a.backendLogo img {
 }
 
 
+/* Mobile Layout 320px */
+
+@media only screen and (max-width:767px) {
+    .backend_layout_fixed .left_sidebar_show nav.backend_menu {
+        margin-left: 0;
+    }
+    .backend_layout_fixed .left_sidebar_show aside.main_sidebar {
+        width: 0;
+    }
+    .backend_layout_fixed .left_sidebar_hide aside.main_sidebar {
+        width: 250px;
+    }
+    .backend_layout_fixed .left_sidebar_show .backend_content_wrapper {
+        margin-left: 30px;
+    }
+    .backend_layout_fixed .left_sidebar_hide .backend_content_wrapper {
+        margin-left: 250px;
+    }
+    .backend_layout_fixed img.right_arrow {
+        margin-left: 250px;
+        width: 50px;
+        margin-right: 42px;
+    }
+    .backend_layout_fixed img.left_arrow {
+        width: 50px;
+    }
+}
+
+
 /* The end backend left sidebar */
 
 .backend_content_wrapper {

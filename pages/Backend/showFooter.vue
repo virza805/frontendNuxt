@@ -48,7 +48,7 @@
                     <b>{{ footer_top.title }}</b>
                   </td>
                   <td class="table-td pl-2">
-                    <p>{{ footer_top.dec }}</p>
+                    <p>{{ footer_top.description }}</p>
                   </td>
                   <td class="table-td pl-2">
                     <img src="~/assets/img/secure-payment.png" alt="secure-payment" width="70">
@@ -117,7 +117,7 @@
 
                     <!-- <a  class="underline text-primaryGreen " :href="`tel:`+book.phone">{{ book.phone }}</a> -->
                     <p>{{ book.copy_right }}</p>
-                    <p>{{ book.dec }}</p>
+                    <p>{{ book.description }}</p>
                     <p>{{ book.phone }}</p>
                     <p>{{ book.email }}</p>
                     <p>{{ book.address }}</p>

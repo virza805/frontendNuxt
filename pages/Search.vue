@@ -6,8 +6,11 @@
     @keyup="search($event.target.value)"
     placeholder="search.."
   /></h2>
-  
+
   <div class="container">
+    <div class="w-full p-3 mb-10 border-2 border-dashed shadow-sm rounded-2xl border-green-100 ">
+          <img class="w-full mx-auto rounded-2xl" src="~/assets/img/froots.png" alt="Thanks" />
+        </div>
 
         <div class="flex flex-wrap ">
           <div v-if="load" class="text-xl my-3 text-red-400 font-medium text-center "> Loading ... .. .</div>

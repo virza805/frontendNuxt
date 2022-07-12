@@ -19,7 +19,7 @@
   <div>
 
     <div class="bg-gray-400 mx-auto w-11/12  border shadow-sm rounded-2xl mb-8 ">
-      <img src="~/assets/img/cover.jpg" alt="" class="w-full rounded-2xl">
+      <img src="~/assets/img/work_bg.jpg" alt="" class="w-full rounded-2xl">
     </div>
 
     <div class="bg-gray-100 mx-auto w-3/5 border shadow-sm  mb-10 py-12 px-5 -mt-20 z-20 ">

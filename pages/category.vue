@@ -6,7 +6,7 @@
       </div>
       <div class="w-full md:w-3/4">
         <div class="w-full p-3 mb-10 border-2 border-dashed shadow-sm rounded-2xl border-green-100 ">
-          <img class="w-full mx-auto rounded-2xl" src="~/assets/img/cover.jpg" alt="Thanks" />
+          <img class="w-full mx-auto rounded-2xl" src="~/assets/img/cover.png" alt="Thanks" />
         </div>
 
         <div class="md:flex-row flex-col justify-between items-center mb-8">
