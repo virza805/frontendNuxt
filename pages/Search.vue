@@ -78,7 +78,7 @@ export default {
 // Product Show with paginate data
     async getProductData(page = 1) {
       this.load = true;
-      let url = `/api/all/client-product/?page= ${page}`;
+      let url = `/api/all/client-product?page=${page}`;
       if(this.search_key.length > 0) {
         url += `&key=${this.search_key}`;
       }
@@ -86,6 +86,7 @@ export default {
       let r = await this.$axios.$get(url)
       this.product_list = r.data;
       this.total = r.data.total;
+      // console.log(this.total)
       this.per_page = r.data.per_page;
       this.load = false;
 

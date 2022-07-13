@@ -349,7 +349,7 @@
       // Product Show with Search & Paginate data
       async getProductData(page = 1) {
         this.load = true;
-        let url = `/api/all/client-product/?page= ${page}`;
+        let url = `/api/all/client-product?page=${page}`;
         if (this.search_key.length > 0) {
           url += `&key=${this.search_key}`;
         }

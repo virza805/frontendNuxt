@@ -164,5 +164,5 @@ RewriteRule ^ /index.html [L]
 </IfModule>
 # php -- END cPanel-generated handler, do not edit
 
-icon_list
+yarn build
 */

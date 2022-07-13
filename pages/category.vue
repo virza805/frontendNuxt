@@ -97,9 +97,10 @@
       async getCatProductData(page = 1) {
         let categoryId = this.$route.query.id;
         this.load = true;
-        let r = await this.$axios.$get('/api/all/client-cat-product/' + categoryId + '/?page=' + page)
+        let r = await this.$axios.$get('/api/all/client-cat-product/'+categoryId+'?page='+page)
         this.cat_product_list = r.data;
         this.total = r.data.total;
+
         this.per_page = r.data.per_page;
         this.load = false;
 
