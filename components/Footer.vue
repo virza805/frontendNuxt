@@ -69,7 +69,7 @@
               <li>
                 <a class="mt-2 flex items-start hover:text-green-600 "
                   :href="footer_data_list.instagram" target="_blank">
-                  <HomeIcon size="30" class="text-primaryGreen mt-2 mr-1"></HomeIcon>
+                  <HomeIcon size="20" class="text-primaryGreen mt-2 mr-1"></HomeIcon>
                   <!-- <p class="">East Rajation Saver, Dhaka - 1340, Bangladesh.</p> -->
                   <p class="">{{ footer_data_list.address }}</p>
                 </a>

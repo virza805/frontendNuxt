@@ -106,6 +106,63 @@ php artisan db:seed =>
 
 
 
+api.vir-za.com
+
+backendLaravel
+
+You have successfully created a MySQL | info.
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pkleauia_backendLaravel
+DB_USERNAME=pkleauia_backendLaravel
+DB_PASSWORD=.7n26{fztE~q
 
 
+MAIL_MAILER=smtp
+MAIL_HOST=mail.vir-za.com
+MAIL_PORT=587
+MAIL_USERNAME=tanvir@vir-za.com
+MAIL_PASSWORD=yM$a;~ToT9(g
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="support@vir-za.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+
+
+.htaccess
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteCond %{REQUEST_URI} !^public
+RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php80” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+_______________________________The end Backend Laravel_________________________________________________
+https://raw.githubusercontent.com/mantrabrain/yatra/master/sample-data/sample-data.json
+
+.htaccess
+
+RewriteEngine On
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+RewriteRule ^ - [L]
+RewriteRule ^ /index.html [L]
+
+# php -- BEGIN cPanel-generated handler, do not edit
+# Set the “ea-php80” package as the default “PHP” programming language.
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php80___lsphp .php .php8 .phtml
+</IfModule>
+# php -- END cPanel-generated handler, do not edit
+
+icon_list
 */
