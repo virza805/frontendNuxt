@@ -166,4 +166,6 @@ RewriteRule ^ /index.html [L]
 
 yarn build |=> https://nuxtjs.org/docs/get-started/commands/
 yarn generate |=>
+
+https://serversideup.net/uploading-files-vuejs-axios/
 */
