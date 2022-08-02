@@ -168,4 +168,11 @@ yarn build |=> https://nuxtjs.org/docs/get-started/commands/
 yarn generate |=>
 
 https://serversideup.net/uploading-files-vuejs-axios/
+
+ |=> https://www.begueradj.com/file-upload-from-a-nuxt.js-client-to-an-adonisjs-restful-api-server-using-axios/
+
+ |=> https://blog.quickadminpanel.com/laravel-api-how-to-upload-file-from-vue-js/
+
+ |=> https://www.codegrepper.com/code-examples/javascript/axios+file+upload
+
 */

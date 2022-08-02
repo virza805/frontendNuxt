@@ -2,6 +2,22 @@
   <div class="sidebar">
     <ul class="left_sidebar">
       <li class="  ">
+        <nuxtLink to="/backend/abimg" class="dropdown-btn active flex">TestUploadImg <img src="~/assets/img/chevron-down.png" alt=""></nuxtLink>
+
+        <!-- <ul class="dropdown-container">
+          <li class=" ">
+            <nuxtLink to="/backend" > Dashboard </nuxtLink>
+          </li>
+          <li class=" ">
+            <nuxt-link class="" to="/backend/profile">My Profile</nuxt-link>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/contactMessage"> All contactEmail</nuxt-link>
+          </li>
+        </ul> -->
+      </li>
+
+      <li class="  ">
         <nuxtLink to="#" class="dropdown-btn active flex">Dashboard <img src="~/assets/img/chevron-down.png" alt=""></nuxtLink>
 
         <ul class="dropdown-container">
