@@ -29,6 +29,7 @@
                   </th>
                 </tr>
               </thead>
+
 <div v-if="load" class="">
 <Tanvir >
   <span>L</span>
@@ -49,9 +50,11 @@
                   </td>
                   <td class="table-td pl-2">
                     <p>{{ footer_top.description }}</p>
+
                   </td>
                   <td class="table-td pl-2">
                     <img src="~/assets/img/secure-payment.png" alt="secure-payment" width="70">
+                    <!-- <img src="~/assets/img/secure-payment.png" alt="secure-payment" width="70"> -->
                     <!-- <img :src="baseURL + '/storage/' + footer_top.logo" :alt="footer_top.logo" width="70px" height="70px"></img> -->
                   </td>
                   <td>

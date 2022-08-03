@@ -175,4 +175,8 @@ https://serversideup.net/uploading-files-vuejs-axios/
 
  |=> https://www.codegrepper.com/code-examples/javascript/axios+file+upload
 
+
+
+ https://laravel.com/docs/8.x/eloquent-resources
+
 */

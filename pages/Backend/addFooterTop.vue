@@ -109,23 +109,23 @@ export default {
 
     methods: {
 
-			// handleFileUpload( event ){
-			// 	this.icon_img = event.target.files[0];
-			// },
+			handleFileUpload( event ){
+				this.icon_img = event.target.files[0];
+			},
 
-			// submitFile(){
-			// 	let formData = new FormData();
-			// 	formData.append('file', this.icon_img);
-			// 	this.$axios.$post( '/api/user/footer-top/store', formData, {
-			// 			headers: {'Content-Type': 'multipart/form-data'}
-			// 		}
-			// 	).then(function(){
-			// 		console.log('SUCCESS!!');
-			// 	})
-			// 	.catch(function(){
-			// 		console.log('FAILURE!!');
-			// 	});
-			// },
+			submitFile(){
+				let formData = new FormData();
+				formData.append('icon_img', this.icon_img);
+				this.$axios.$post( '/api/user/footer-top/store', formData, {
+						headers: {'Content-Type': 'multipart/form-data'}
+					}
+				).then(function(){
+					console.log('SUCCESS!!');
+				})
+				.catch(function(){
+					console.log('FAILURE!!');
+				});
+			},
 
       // From submit async await
      async handleSubmit() {
