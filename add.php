@@ -175,7 +175,7 @@ https://serversideup.net/uploading-files-vuejs-axios/
 
  |=> https://www.codegrepper.com/code-examples/javascript/axios+file+upload
 
-
+ https://stackoverflow.com/questions/33507566/mixed-content-blocked-when-running-an-http-ajax-operation-in-an-https-page |=> <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
  https://laravel.com/docs/8.x/eloquent-resources
 
