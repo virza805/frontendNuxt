@@ -177,6 +177,10 @@ https://serversideup.net/uploading-files-vuejs-axios/
 
  https://stackoverflow.com/questions/33507566/mixed-content-blocked-when-running-an-http-ajax-operation-in-an-https-page |=> <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
+ npx browserslist@latest --update-db
+
  https://laravel.com/docs/8.x/eloquent-resources
 
+
+ blog_recipes
 */
