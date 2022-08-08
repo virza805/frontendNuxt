@@ -21,7 +21,7 @@ nav.backend_menu ul {
     display: flex;
     margin: 0;
     padding: 0;
-    margin-left: 60px;
+    margin-left: 52px;
 }
 
 nav.backend_menu ul li a {
@@ -151,6 +151,8 @@ aside.main_sidebar {
 .backend_layout_fixed aside.main_sidebar .profile_inf {
     display: flex;
     align-items: center;
+    justify-content: center;
+    align-content: center;
 }
 
 .backend_layout_fixed aside.main_sidebar .profile_inf img {
@@ -277,9 +279,61 @@ nav.backend_menu {
   background: #000000;
   margin: 20px !important;
   padding: 10px;
+  padding-left: 0;
 }
 
 div#backendWrapper {
   background: #1e1e1e;
 }
+.backend_content_wrapper .content-left-menu {
+  margin: 0;
+  padding: 0;
+  width: 60px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.content-wrapper {
+    width: calc(100% - 60px);
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.backend_content_wrapper {
+    display: flex;
+}
+
+.backend_content_wrapper .content-left-menu ul {
+    margin: 20px auto;
+    padding: 0;
+    text-align: center;
+}
+.backend_content_wrapper .content-left-menu ul li a {
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.backend_content_wrapper .content-left-menu ul li {
+  margin: 24px 0;
+}
+.backend_content_wrapper .content-left-menu ul li a.active{
+  background: #666666;
+}
+
+.backend_content_wrapper .content-left-menu ul li:hover a {
+  background: #666666;
+}
+li.round-logo:hover a {
+  background: none !important;
+}
+
+li.round-logo {
+  margin-bottom: 40px !important;
+}
+body.backend_layout_fixed {
+  background: #1e1e1e;
+}
