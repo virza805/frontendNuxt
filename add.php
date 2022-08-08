@@ -183,4 +183,15 @@ https://serversideup.net/uploading-files-vuejs-axios/
 
 
  blog_recipes
+
+ npm install -g @vue/cli || search on google } vue cli |-> https://cli.vuejs.org/guide/installation.html
+
+vue create project_dashboard |-> go to create project
+cd project_dashboard
+npm install vuex@next --save =>
+npm install vue-router@4 =>
+npm install =>
+npm run serve =>
+
+
 */

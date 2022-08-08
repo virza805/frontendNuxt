@@ -55,7 +55,10 @@ nav.backend_menu ul li:hover a {
     cursor: pointer;
 }
 
+
 /* The end backend nav bar */
+
+
 /* / Safari syntax / */
 
 li#fullScreen button {
@@ -66,17 +69,20 @@ li#fullScreen button {
     background-color: #efefed;
 }
 
+
 /* / IE11 / */
 
 :-ms-fullscreen {
     background-color: #efefed;
 }
 
+
 /* / Standard syntax / */
 
 :fullscreen {
     background-color: #efefed;
 }
+
 
 /* / Style the button / */
 
@@ -100,6 +106,7 @@ li#fullScreen button {
     text-decoration: none;
 }
 
+
 /* backend_layout footer style the end */
 
 .fullScreen_on_off .active_off {
@@ -117,6 +124,7 @@ li#fullScreen button {
 .fullScreen_on_off button {
     cursor: pointer;
 }
+
 
 /* backend left sidebar icon The End */
 
@@ -198,6 +206,7 @@ a.backendLogo img {
     margin-left: 10px;
 }
 
+
 /* The end backend left sidebar */
 
 .backend_content_wrapper {
@@ -268,32 +277,34 @@ a.backendLogo img {
     margin-bottom: -16px;
 }
 
+
 /*Add Dashboard Css Start Now*/
 
 nav.backend_menu {
-  background: #2c2c2c;
-  padding: 40px 0;
+    background: #2c2c2c;
+    padding: 40px 0;
 }
 
 .backend_content_wrapper {
-  background: #000000;
-  margin: 20px !important;
-  padding: 10px;
-  padding-left: 0;
+    background: #000000;
+    margin: 20px !important;
+    padding: 10px;
+    padding-left: 0;
 }
 
 div#backendWrapper {
-  background: #1e1e1e;
+    background: #1e1e1e;
 }
+
 .backend_content_wrapper .content-left-menu {
-  margin: 0;
-  padding: 0;
-  width: 60px;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  justify-content: space-between;
-  align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .content-wrapper {
@@ -312,28 +323,127 @@ div#backendWrapper {
     padding: 0;
     text-align: center;
 }
+
 .backend_content_wrapper .content-left-menu ul li a {
-  padding: 6px 12px;
-  border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 4px;
 }
 
 .backend_content_wrapper .content-left-menu ul li {
-  margin: 24px 0;
+    margin: 24px 0;
 }
-.backend_content_wrapper .content-left-menu ul li a.active{
-  background: #666666;
+
+.backend_content_wrapper .content-left-menu ul li a.active {
+    background: #666666;
 }
 
 .backend_content_wrapper .content-left-menu ul li:hover a {
-  background: #666666;
+    background: #666666;
 }
+
 li.round-logo:hover a {
-  background: none !important;
+    background: none !important;
 }
 
 li.round-logo {
-  margin-bottom: 40px !important;
+    margin-bottom: 40px !important;
 }
+
 body.backend_layout_fixed {
-  background: #1e1e1e;
+    background: #1e1e1e;
+}
+
+.count-box {
+    border: 1px solid #f3f2f2;
+    border-radius: 3px;
+    padding: 6px 10px;
+    margin: 20px 10px;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+}
+
+.count-box-wrap .count-left {
+    /* width: 65%; */
+    font-size: 14px;
+    color: #000;
+    line-height: 1.3;
+}
+
+.count-box-wrap .count-left p {
+    margin: 0;
+}
+
+.count-box-wrap .count-info {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.count-box-wrap {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.chart-menu {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chart-menu .chart-menu-right ul {
+    list-style: none;
+    display: flex;
+}
+
+.chart-menu .chart-menu-right ul li {
+    margin: 0 15px;
+}
+
+.chart-menu .chart-menu-right ul li:hover a,
+.chart-menu .chart-menu-right ul li.active a {
+    border-bottom: 2px solid #000;
+    padding-bottom: 4px;
+    color: #000000 !important;
+}
+
+.chart-menu-after {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.chart-menu-after .chart-menu-after-right {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.chart-menu-after .chart-menu-after-right .persent p {
+    margin: 0;
+}
+
+.chart-menu-after .chart-menu-after-right .persent p span {
+    color: green;
+}
+
+.chart-menu-after .chart-menu-after-right .persent {
+    padding-left: 6px;
+}
+
+.chart-menu-after .chart-menu-after-right .persent p {
+    font-size: 14px;
+}
+
+.chart-menu-after .chart-menu-after-right {
+    margin-left: 50px;
 }
