@@ -21,6 +21,7 @@ nav.backend_menu ul {
     display: flex;
     margin: 0;
     padding: 0;
+    margin-left: 60px;
 }
 
 nav.backend_menu ul li a {
@@ -263,5 +264,22 @@ a.backendLogo img {
 
 .home_icon_number .elementor-icon-box-icon {
     margin-bottom: -16px;
+}
+
+/*Add Dashboard Css Start Now*/
+
+nav.backend_menu {
+  background: #2c2c2c;
+  padding: 40px 0;
+}
+
+.backend_content_wrapper {
+  background: #000000;
+  margin: 20px !important;
+  padding: 10px;
+}
+
+div#backendWrapper {
+  background: #1e1e1e;
 }
 

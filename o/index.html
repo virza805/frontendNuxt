@@ -21,36 +21,29 @@
 
 <body class="backend_layout_fixed">
 
-  <div id="backendWrapper" class="left_sidebar_show">
+  <div id="backendWrapper" class="left_sidebar_hide">
     <nav class="backend_menu">
       <ul>
         <li>
-          <span onclick="backendSidebarOnOffFunction()">
-            <a href="#">onclick</a>
-            <img class="left_arrow" src="imgs/arrow-left.svg" alt="">
-            <img class="right_arrow" src="imgs/arrow-right.svg" alt="">
+          <span style="cursor: pointer;" onclick="backendSidebarOnOffFunction()">
+            <!-- <a href="#"></a> -->
+            <img src="img/bar.png" alt="onclick">
           </span>
         </li>
-        <!-- <li><span onclick="backendSidebarOnOffFunction()" id="togglebutton">Show/hide</span></li> -->
-        <li>
-          <a href="#">About</a>
-        </li>
+
       </ul>
 
-      <div class="clock">
-        <div id="clock">00:00:00</div>
+      <div class="clock text-center">
+        <div id="clock">
+          <img src="img/logo.png" alt="Logo">
+        </div>
       </div>
 
       <ul>
         <li class="fullScreen_on_off" id="fullScreen">
-          <button class="active_on" onclick="openFullscreen();"><img src="imgs/maximize-2.svg" alt="maximize"></button>
+          <!-- <button class="active_on" onclick="openFullscreen();"><img src="imgs/maximize-2.svg" alt="maximize"></button>
           <button class="active_off" onclick="closeFullscreen();"><img src="imgs/minimize-2.svg"
-              alt="minimize"></button>
-        </li>
-        <li>
-        </li>
-        <li>
-          <a class="backendLogo" href="#"><img src="imgs/virzaOk.gif" alt=""></a>
+              alt="minimize"></button> -->
         </li>
       </ul>
     </nav>
@@ -58,11 +51,7 @@
     <aside class="main_sidebar">
       <a href="#">
         <div class="profile_inf">
-          <img src="imgs/Tanvir Md. Al-Amin.jpg" alt="Admin Img" style="opacity:1; width: 70px;">
-          <div class="user_con">
-            <h3><span style="font-size:10px ;">User role</span> Admin</h3>
-            <h5>Tanvir</h5>
-          </div>
+          <h4>Admin</h4>
         </div>
       </a>
       <!-- Sidebar user profile information the end-->
