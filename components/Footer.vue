@@ -4,7 +4,11 @@
       <div class="flex flex-wrap md:-mx-4 mb-10">
         <div v-for="footer_top in footer_top_list.data" :key="footer_top.id" class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
-            <img width="80" src="~/assets/img/customer-support.png" alt="">
+            <!-- <div style="background-image: url({{'/storage/uploads/'. $gallery->name}})" class="single-gallery-item bg-cover bg-center"></div> -->
+            <!-- <img style="max-width: 100%; height: 70px; width: 100px;" src="{{'/storage/uploads/' .$property->featured_image}}" alt=""></img> -->
+            <!-- <img style="max-width: 100%; height: 70px; width: 100px;" src="{{ asset('/storage/uploads/' . $gallery->name) }}" alt=""></img> -->
+            <img width="80" :src="$axios.defaults.baseURL + '/storage/uploads/' + footer_top.icon_img" alt="">
+            <!-- <img width="80" src="~/assets/img/customer-support.png" alt=""> baseURL = http://127.0.0.1:8000-->
           </div>
           <div class="w-full">
             <h3 class="text-xl font-medium mb-2">{{ footer_top.title }}</h3>
@@ -12,8 +16,7 @@
           </div>
         </div>
 
-
-      </div><!-- end 1 -->
+      </div><!-- The End Footer Top -->
 
     </div>
     <div class="bg-gray-200 pt-20">
@@ -23,7 +26,6 @@
         <div class="lg:flex flex-wrap">
           <div class="w-full p-1 lg:w-1/4 my-5">
             <Logo />
-
             <p class="my-4  text-sm  md:pr-10"> {{ footer_data_list.description }} </p>
 
 
@@ -177,7 +179,7 @@
               </p>
               <p><span class="uppercase text-gray-400 w-20 inline-block">category:</span>
 
-                <span v-for="item in product.categories">
+                <span v-for="item in product.categories" :key="item.id">
                   <nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span
                     class="comma">, </span>
                 </span>
@@ -185,7 +187,7 @@
 
               <p><span class="uppercase text-gray-400 w-20 inline-block">tags:</span>
 
-                <span v-for="item in product.tags">
+                <span v-for="item in product.tags" :key="item.id">
                   <nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span
                     class="comma">, </span>
                 </span>

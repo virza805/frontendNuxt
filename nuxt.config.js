@@ -78,8 +78,8 @@ export default {
     },
 
     axios: {
-        baseURL: "https://api.vir-za.com/",
-        // baseURL: "http://127.0.0.1:8000",
+        // baseURL: "https://api.vir-za.com/",
+        baseURL: "http://127.0.0.1:8000",
     },
 
     auth: {

@@ -47,9 +47,9 @@
           <form-textarea
 
             label="Description"
-            v-model="form.dec"
-            :helperText="errorMsg('dec')"
-            :hasError="hasError('dec')"
+            v-model="form.description"
+            :helperText="errorMsg('description')"
+            :hasError="hasError('description')"
             placeholder="Enter text here..."
             rows="4"
             cols="20"
@@ -98,7 +98,7 @@ export default {
       return{
         form:{
           title: "",
-          dec: "",
+          description: "",
           icon_img: "",
         },
         icon_img: '',

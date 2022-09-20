@@ -47,15 +47,15 @@
           <form-textarea
 
             label="Description"
-            v-model="form.dec"
-            :helperText="errorMsg('dec')"
-            :hasError="hasError('dec')"
+            v-model="form.description"
+            :helperText="errorMsg('description')"
+            :hasError="hasError('description')"
             placeholder="Enter text here..."
             rows="4"
             cols="20"
           ></form-textarea>
 
-          <form-input
+          <!-- <form-input
             type="file"
             accept="image/*"
             label="icon_img"
@@ -63,9 +63,9 @@
             :helperText="errorMsg('icon_img')"
             :hasError="hasError('icon_img')"
             placeholder="icon_img"
-            @change="handleFileUpload( $event )"
-          />
+          /> -->
 <!-- <input type="file" id="icon_img" name="icon_img" required placeholder="icon_img" class="civanoglu-input" /> -->
+<input type="file" @change="handleFileUpload( $event )"/>
 <!-- <v-file-input type="file" label="Select a file"  id="icon_img" name="icon_img" accept="image/*" v-model="form.icon_img">
       File to upload to S3
     </v-file-input> -->
@@ -99,7 +99,7 @@ export default {
       return{
         form:{
           title: "",
-          dec: "",
+          description: "",
           icon_img: "",
         },
         icon_img: '',
@@ -114,34 +114,38 @@ export default {
 				this.icon_img = event.target.files[0];
 			},
 
-			// submitFile(){
-			// 	let formData = new FormData(this.form);
-			// 	formData.append('icon_img', this.icon_img);
-			// 	this.$axios.$post( '/api/user/footer-top/store', formData, { headers: {'Content-Type': 'multipart/form-data'} }
-			// 	).then(function(){
-			// 		console.log('SUCCESS!!');
-			// 	})
-			// 	.catch(function(){
-			// 		console.log('FAILURE!!');
-			// 	});
-			// },
+			submitFile(){
+				let formData = new FormData();
+				formData.append('icon_img', this.icon_img);
+				this.$axios.$post( '/api/user/footer-top/store', formData, {
+						headers: {'Content-Type': 'multipart/form-data'}
+					}
+				).then(function(){
+					console.log('SUCCESS!!');
+				})
+				.catch(function(){
+					console.log('FAILURE!!');
+				});
+			},
 
       // From submit async await
      async handleSubmit() {
-				let formData = new FormData(this.form);
-				formData.append('icon_img', this.icon_img);
         // api call
         try {
           this.loading = true;
               // this.form.append("files", this.icon_img, this.icon_img.name);
-          const res = await this.$axios.$post('/api/user/footer-top/store', formData, { headers: {'Content-Type': 'multipart/form-data'} })
+          const res = await this.$axios.$post('/api/user/footer-top/store', this.form)
+
+      //     formData.append("files", this.myFile, this.myFile.name);
+
+      // this.$http.put(myURL, formData)
 
           this.loading = false;
 
           // toast massage show
 
           this.$store.commit("toaster/fire", {
-            text: "Successfully created footer top data.",
+            text: "Successfully created footer data.",
           });
 
           this.$router.push("/backend/showFooter");
