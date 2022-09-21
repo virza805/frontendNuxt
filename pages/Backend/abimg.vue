@@ -55,17 +55,17 @@
             cols="20"
           ></form-textarea>
 
-          <!-- <form-input
-            type="file"
-            accept="image/*"
-            label="icon_img"
-            v-model="form.icon_img"
-            :helperText="errorMsg('icon_img')"
-            :hasError="hasError('icon_img')"
-            placeholder="icon_img"
-          /> -->
-<!-- <input type="file" id="icon_img" name="icon_img" required placeholder="icon_img" class="civanoglu-input" /> -->
-<input type="file" @change="handleFileUpload( $event )"/>
+          <form-input
+          type="file"
+          @change="handleFileUpload( $event )"
+
+          label="File Upload"
+          v-model="form.icon_img"
+          :helperText="errorMsg('icon_img')"
+          :hasError="hasError('icon_img')"
+          placeholder="icon_img"
+          />
+          <!-- <input type="file" @change="handleFileUpload( $event )"/> -->
 <!-- <v-file-input type="file" label="Select a file"  id="icon_img" name="icon_img" accept="image/*" v-model="form.icon_img">
       File to upload to S3
     </v-file-input> -->
@@ -135,10 +135,6 @@ export default {
           this.loading = true;
               // this.form.append("files", this.icon_img, this.icon_img.name);
           const res = await this.$axios.$post('/api/user/footer-top/store', this.form)
-
-      //     formData.append("files", this.myFile, this.myFile.name);
-
-      // this.$http.put(myURL, formData)
 
           this.loading = false;
 

@@ -41,9 +41,8 @@
               <p><span class="uppercase text-gray-400 w-20 inline-block">Sku:</span>
                 tag
               </p>
-              <p><span class="uppercase text-gray-400 w-20 inline-block">category:</span>
-
-                Category
+              <p><span class="uppercase text-gray-400 w-20 inline-block">category:</span> Category
+                <!-- {{ product_details.category.name }} -->
               </p>
 
               <p><span class="uppercase text-gray-400 w-20 inline-block">tags:</span>
