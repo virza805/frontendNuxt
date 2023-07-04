@@ -3,7 +3,9 @@
   <div class="single-bs-product">
     <div class="h-80  relative mb-6">
       <div class="h-full bg-gray-50 flex justify-center items-center p-4">
-        <img :src="product.image" alt="">
+        <img v-if="product.image" :src="'http://127.0.0.1:8000/storage/uploads/' + product.image" :alt="product.image" width="220">
+        <img v-else src="~/assets/img/fresh-fruit.png" alt="">
+        <!-- <img :src="product.image" alt=""> -->
       </div>
 
       <div class="product-img-hover absolute h-full w-full top-0 left-0 flex justify-center items-center">
@@ -34,7 +36,7 @@
     </div>
 
     <h4 class="text-xl mb-3">{{ product.name }}</h4>
-    <p><span class="font-medium bs-dark-orange-color">${{ product.sale }}</span> <del
+    <p><span class="font-medium bs-dark-orange-color">${{ product.sell_price }}</span> <del
         class="text-gray-400">${{ product.price }}</del></p>
 
   </div> <!-- end 1 product--->
@@ -52,7 +54,8 @@
     },
     methods: {
       productDetails() {
-        this.$store.dispatch("product-details-modal/triggerModal", this.product);
+        // this.$store.dispatch("product-details-modal/triggerModal", this.product);
+        this.$store.dispatch("products/triggerModal", this.product);
       },
       addToCart(product, type) {
         this.$store.dispatch("cart/addToCart", {

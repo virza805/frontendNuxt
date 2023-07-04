@@ -4,11 +4,7 @@
       <div class="flex flex-wrap md:-mx-4 mb-10">
         <div v-for="footer_top in footer_top_list.data" :key="footer_top.id" class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
-            <!-- <div style="background-image: url({{'/storage/uploads/'. $gallery->name}})" class="single-gallery-item bg-cover bg-center"></div> -->
-            <!-- <img style="max-width: 100%; height: 70px; width: 100px;" src="{{'/storage/uploads/' .$property->featured_image}}" alt=""></img> -->
-            <!-- <img style="max-width: 100%; height: 70px; width: 100px;" src="{{ asset('/storage/uploads/' . $gallery->name) }}" alt=""></img> -->
             <img width="80" :src="$axios.defaults.baseURL + '/storage/uploads/' + footer_top.icon_img" alt="">
-            <!-- <img width="80" src="~/assets/img/customer-support.png" alt=""> baseURL = http://127.0.0.1:8000-->
           </div>
           <div class="w-full">
             <h3 class="text-xl font-medium mb-2">{{ footer_top.title }}</h3>
@@ -62,7 +58,7 @@
                 </a>
               </li>
               <li>
-                <a class="mt-2 flex items-center hover:text-green-600 "    :href="`mailto:`+footer_data_list.email" target="_blank">
+                <a class="mt-2 flex items-center hover:text-green-600 " :href="`mailto:`+footer_data_list.email" target="_blank">
                   <MailIcon size="20" class="text-primaryGreen mr-1"></MailIcon>
                   <!-- <p class="">viza.bd@gmail.com</p> -->
                   <p class="">{{ footer_data_list.email }}</p>
@@ -134,7 +130,7 @@
     </div>
 
     <!-- Product details modal StartNow -->
-    <div v-if="modal" class="fixed w-full h-full min-h-screen z-30 top-0 left-0">
+    <div v-if="modalData.modal" class="fixed w-full h-full min-h-screen z-30 top-0 left-0">
       <div @click.prevent="modalClose" class="absolute bg-black opacity-60 h-full w-full top-0 left-0"></div>
       <div class="bs-modal-body bg-white rounded-2xl p-8 relative mx-auto z-30 my-10">
         <svg @click.prevent="modalClose" xmlns="http://www.w3.org/2000/svg"
@@ -145,20 +141,32 @@
 
         <div class="flex -mx-8">
           <div class="w-1/2 px-8">
-            <img :src="product.image" />
+            <!-- <img :src="product.image" /> -->
+            <img v-if="modalData.product.image" :src="'http://127.0.0.1:8000/storage/uploads/' + modalData.product.image" :alt="modalData.product.image" width="">
+            <img v-else src="~/assets/img/fresh-fruit.png" alt="">
           </div>
           <div class="w-1/2 px-8">
             <p class="text-sm mb-3"><span class="uppercase text-gray-400 pr-6">Status</span> <span
                 class="bs-dark-green-color">In Stock</span></p>
             <!-- <h3 class="text-2xl">{{product}}</h3> -->
-            <h3 class="text-2xl">{{product.name}}</h3>
-            <p class="text-xs text-gray-400 mb-4 mt-2"><b>7</b> items available.</p>
-            <p class="text-2xl font-bold">${{ product.sale }} <del
-                class="font-normal text-gray-400">${{ product.price }}</del></p>
+            <h3 class="text-2xl">{{modalData.product.name}}</h3>
+            <p class="text-xs text-gray-400 mb-4 mt-2"><b>{{ modalData.product.stock }}</b> items available.</p>
+            <p class="text-2xl font-bold">${{ modalData.product.sell_price }} <del
+                class="font-normal text-gray-400">${{ modalData.product.price }}</del></p>
+
             <div class="flex my-6">
-              <input type="number" class="w-10 border border-gray-200 mr-5 text-center" value="1">
-              <button class="bs-button">Add to cart</button>
+              <!-- <input type="number" class="w-10 border border-gray-200 mr-5 text-center" value=""> -->
+              <button @click="addProductToCart(modalData.product)" class="bs-button">Add to cart</button>
             </div>
+            <!-- <div class="flex my-6">
+              <div class="flex justify-center items-center">
+                <button @click.prevent="minus(modalData.product)" class="bg-gray-50 h-6 w-6 flex justify-center items-center rounded-full mr-3 font-bold">-</button>
+
+                  {{modalData.product.quantity}}
+
+                <button @click.prevent="plus(modalData.product)" class="bg-gray-50 h-6 w-6 flex justify-center items-center rounded-full ml-3 font-bold">+</button>
+              </div>
+            </div> -->
 
             <div class="flex border-b border-gray-200 justify-between text-sm pb-3 mb-8">
               <p class="flex items-center"><img src="~/assets/img/heart.png" class="w-4 mr-3" alt=""> Add to favourites
@@ -174,23 +182,23 @@
             </div>
 
             <div class="text-xs leading-loose">
-              <p><span class="uppercase text-gray-400 w-20 inline-block">Sku:</span>
-                {{ product.sku }}
-              </p>
+              <!-- <p><span class="uppercase text-gray-400 w-20 inline-block">Sku:</span>
+                {{ modalData.product.tag_name }}
+              </p> -->
               <p><span class="uppercase text-gray-400 w-20 inline-block">category:</span>
 
-                <span v-for="item in product.categories" :key="item.id">
-                  <nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span
-                    class="comma">, </span>
+                <span v-for="category in JSON.parse(modalData.product.categories)" :key="category.id">
+                  <nuxt-link class="bs-dark-green-color" :to="'category/?id=' + category.id">{{ category.name }}</nuxt-link><span class="comma">, </span>
                 </span>
+
               </p>
 
               <p><span class="uppercase text-gray-400 w-20 inline-block">tags:</span>
 
-                <span v-for="item in product.tags" :key="item.id">
-                  <nuxt-link class="bs-dark-green-color" :to="'category/' + item.name">{{item.name}}</nuxt-link><span
-                    class="comma">, </span>
+                <span v-for="tag in JSON.parse(modalData.product.tags)" :key="tag.id">
+                  <nuxt-link class="bs-dark-green-color" :to="'tag/?id=' + tag.id">{{ tag.name }}</nuxt-link><span class="comma">, </span>
                 </span>
+
               </p>
             </div>
           </div>
@@ -204,6 +212,7 @@
 </template>
 
 <script>
+  import { mapState,mapMutations } from 'vuex';
   import Logo from "./Logo.vue";
   import {
     MailIcon,
@@ -248,6 +257,7 @@
         page: 1,
       	per_page: 0,
       	total: 0,
+        matched: false,
       }
     },
     created: function(){
@@ -256,8 +266,42 @@
       this.getOpenTimeData();
     },
     methods: {
+      // ...mapActions('products', ['addProductToCart']),
+
+    ...mapMutations('products', ['incrementItemQuantity', 'decrementItemQuantity', 'checkProductInCart', 'setCartItems']),
+
+    minus(item){
+      this.decrementItemQuantity(item)
+    },
+    plus(item){checkProduct
+      this.incrementItemQuantity(item)
+    },
+    checkProduct(pro){
+      // this.checkProductInCart(item)
+        const product = this.cart.find(item => item.id === pro.id)
+        // console.log(product.stock)
+
+        if(product){
+          this.matched = true;
+        } else {
+          this.matched = false;
+        }
+
+        // return matched;
+
+    },
+    // remove(id){
+    //   this.removeProductToCart(id) // delete from state | mapMutations requerd
+
+    // },
+      addProductToCart(ss) {
+
+        // this.addProductToCart(ss);
+        this.$store.dispatch('products/addProductToCart', ss)
+        localStorage.setItem("products:cart", JSON.stringify(this.cart))
+      },
       modalClose() {
-        this.$store.dispatch("product-details-modal/resetModal");
+        this.$store.dispatch("products/resetModal");
       },
 
       async getData() {
@@ -281,9 +325,24 @@
         this.footer_open_time = r.data;
         this.load = false;
       },
+      catLink(){
+        let catText = this.modalData.product.category_name;
+        let catIds = this.modalData.product.category_id;
+        const nameArray = catText.split(",");
+        const idsArray = catIds.split(",");
+      }
 
     },
+
+    computed:{
+      ...mapState('products', ['modalData', 'cart'])
+    },
+
     mounted() {
+      
+      const cartItems = JSON.parse(localStorage.getItem("products:cart")) || []
+      this.setCartItems(cartItems)
+      
       this.$store.watch(
         () => {
           return this.$store.getters["product-details-modal/getModal"]

@@ -9,19 +9,21 @@
 
         <div class="flex flex-wrap">
           <div class="w-1/2 px-8">
-            <!-- <img :src="product.image" /> -->
-            <img class="h-48 w-full object-cover md:h-full md:w-48" src="~/assets/img/Thanks.jpg" alt="Man looking at item at a store">
+            <img v-if="product_details.image" :src="$axios.defaults.baseURL + '/storage/uploads/' + product_details.image" alt="" class="mx-auto w-auto" >
+            <img v-else class="mx-auto w-auto" src="~/assets/img/Thanks.jpg" alt="Workflow" />
           </div>
           <div class="w-1/2 px-8">
-            <p class="text-sm mb-3"><span class="uppercase text-gray-400 pr-6">Status</span> <span
-                class="bs-dark-green-color">In Stock</span></p>
+            <p class="text-sm mb-3"><span class="uppercase text-gray-400 pr-6">Status</span>
+              <span v-if="product_details.status===1" class="bs-dark-green-color">In Stock</span>
+              <span v-else class="bs-dark-orange-color">out of Stock</span>
+            </p>
             <h3 class="text-2xl">{{ product_details.name }}</h3>
-            <p class="text-xs text-gray-400 mb-4 mt-2"><b>7</b> items available.</p>
+            <p class="text-xs text-gray-400 mb-4 mt-2"><b>{{ product_details.stock }}</b> items available.</p>
             <p class="text-2xl font-bold">$ {{ product_details.sell_price }}  <del
                 class="font-normal text-gray-400">$ {{ product_details.price }} </del></p>
             <div class="flex my-6">
-              <input type="number" class="w-10 border border-gray-200 mr-5 text-center" value="1">
-              <button class="bs-button">Add to cart</button>
+              <!-- <input type="number" class="w-10 border border-gray-200 mr-5 text-center" value="1"> -->
+              <button @click="addProductToCart(product_details)" class="bs-button">Add to cart</button>
             </div>
 
             <div class="flex border-b border-gray-200 justify-between text-sm pb-3 mb-8">
@@ -38,17 +40,24 @@
             </div>
 
             <div class="text-xs leading-loose">
-              <p><span class="uppercase text-gray-400 w-20 inline-block">Sku:</span>
-                tag
-              </p>
-              <p><span class="uppercase text-gray-400 w-20 inline-block">category:</span> Category
-                <!-- {{ product_details.category.name }} -->
-              </p>
+              <p>
+                <span class="uppercase text-gray-400 w-20 inline-block">category:</span>
 
-              <p><span class="uppercase text-gray-400 w-20 inline-block">tags:</span>
-
-                tag
+                <span v-if="product_details.categories">
+                  <span v-for="category in JSON.parse(product_details.categories)" :key="category.id">
+                    <nuxt-link class="bs-dark-green-color" :to="'/category/?id=' + category.id">{{ category.name }}</nuxt-link><span class="comma">, </span>
+                  </span>
+                </span>
               </p>
+              <p>
+                <span class="uppercase text-gray-400 w-20 inline-block">tags:</span>
+                <span v-if="product_details.tags">
+                  <span v-for="tag in JSON.parse(product_details.tags)" :key="tag.id">
+                    <nuxt-link class="bs-dark-green-color" :to="'/tag/?id=' + tag.id">{{ tag.name }}</nuxt-link><span class="comma">, </span>
+                  </span>
+                </span>
+
+              </p> 
             </div>
           </div>
           <div class="flex-wrap my-5 ">
@@ -99,8 +108,16 @@
         let productData = await this.$axios.$get('/api/all/client-product-detail/' + productId)
         this.product_details = productData;
         this.load = false;
+      // console.log(product_details);
 
       },
+      
+      addProductToCart(ss) {
+        // this.addProductToCart(ss);
+        this.$store.dispatch('products/addProductToCart', ss)
+        localStorage.setItem("products:cart", JSON.stringify(this.cart))
+      },
+
     },
     // watch: {
     //   '$route.query': '$fetch'

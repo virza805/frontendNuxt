@@ -121,6 +121,31 @@
         </ul>
       </li>
 
+      <li class="  ">
+        <a href="#" class="dropdown-btn active">Order	&dArr;</a>
+        <ul v-if=" $auth.user.role == 1" class="dropdown-container">
+          <li class=" ">
+            <nuxt-link to="/backend/showOrder"> Show All Order</nuxt-link>
+          </li>
+          <!-- <li class=" ">
+            <nuxt-link to="/backend/addFooter"> Add Footer</nuxt-link>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/addFooterTop"> Add Footer Top</nuxt-link>
+          </li> -->
+
+        </ul>
+        <ul v-else class="dropdown-container">
+          <li class=" ">
+            <h4 class="text-red-600 ">Show Your Order</h4>
+          </li>
+          <li class=" ">
+            <nuxt-link to="/backend/showOrder"> Your Order</nuxt-link>
+          </li>
+
+        </ul>
+      </li>
+
     </ul>
   </div>
 </template>

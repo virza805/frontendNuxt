@@ -1,19 +1,13 @@
 <template>
   <div class="tanvir">
-    <!-- <vue-slick-carousel :arrows="true" :dots="false">
-      <div>1</div>
-      <div>2</div>
-      <div>3</div>
-      <div>4</div>
-    </vue-slick-carousel> -->
     <div class="p-8 hero-slide">
 
-      <vue-slick-carousel class="" :arrows="false" :dots="true" v-bind="slideSettings" v-if="hero_slider.length > 0">
+      <vue-slick-carousel :arrows="false" :dots="true" v-bind="slideSettings" v-if="hero_slider.length > 0">
 
         <div v-for="hero in hero_slider" :key="hero.id" :hero="hero" class="slide-bg rounded-2xl pt-8">
           <div class="container">
             <div class="flex flex-col-reverse md:flex-row items-center">
-              <div class="w-full md:w-1/2 p-2 mb-5 md:mr-6 font-size-22">
+              <div class="w-full md:w-1/2 pl-3 mb-5 md:mr-6 font-size-22">
                 <p class="bs-dark-green-color text-sm lg:text-2xl md:font-size-32 mb-4">{{ hero.sub }}</p>
                 <h2 class="text-xl md:text-5xl font-bold mb-4 text-gray-800">
                   {{ hero.title }}
@@ -21,8 +15,10 @@
                 <p class="mb-4 text-sm md:text-xl md:mb-8">{{ hero.des }}</p>
                 <nuxt-link :to="hero.btn_link" class="bs-button text-base">{{ hero.btn }}</nuxt-link>
               </div>
-              <div class="w-full md:w-1/2 flex items-center justify-center pb-3 md:justify-end"><img
-                  class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt=""></div>
+              <div class="w-full md:w-1/2 flex items-center justify-center pr-3 md:justify-end">
+                <img v-if="hero.image" class="w-56 md:w-11/12" :src="$axios.defaults.baseURL + '/storage/uploads/' + hero.image" alt="">
+                <img v-else class="w-56 md:w-11/12" src="~/assets/img/hero.png" alt="">
+              </div>
             </div>
           </div>
         </div>
@@ -36,32 +32,19 @@
           <div style="height: 2px" class="w-full bg-gray-200"></div>
         </div>
 
-        <vue-slick-carousel class="category-carousel" v-bind="categoryCarouselSettings"
-          v-if="cat_slider_list.length > 0">
+        <vue-slick-carousel class="category-carousel" v-bind="categoryCarouselSettings" v-if="cat_slider_list.length > 0">
 
           <div v-for="cat in cat_slider_list" :key="cat.id" class="bg-gray-200 p-4">
             <nuxt-link :to="`/category/?id=${cat.id}`">
               <div class="h-32 flex justify-center items-center">
-                <img src="~/assets/img/carousel-img-2.png" alt="">
+                <img v-if="cat.image" :src="$axios.defaults.baseURL + '/storage/uploads/' + cat.image" :alt="cat.image" width="120">
+                <img v-else src="~/assets/img/carousel-img-2.png" alt="">
               </div>
-              <h4 class="text-xl">{{ cat.name }}</h4>
+              <h4 class="text-xl text-center">{{ cat.name }}</h4>
             </nuxt-link>
           </div>
 
-          <!-- <template #prevArrow="arrowOption">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </template>
-
-          <template #nextArrow="arrowOption">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </template> -->
-
         </vue-slick-carousel>
-
 
       </div>
 
@@ -74,10 +57,11 @@
               <div class="w-full md:w-1/2">
                 <p class="bs-dark-orange-color md:text-2xl text-xl mb-6 mt-2">{{ slid.sub }}</p>
                 <h3 class="md:text-4xl text-2xl leading-relaxed font-bold mb-10">{{ slid.title }}</h3>
-                <nuxt-link :to="slid.btn_link" class="bs-white-btn">{{ slid.btn }}</nuxt-link>
+                <a class="bs-white-btn " :href="slid.btn_link" target="_blank">{{ slid.btn }}</a>
               </div>
               <div class="w-full m-0 p-0 md:w-1/2 flex justify-center md:justify-end">
-                <img class=" m-0 p-0" src="~/assets/img/buyGet.png" alt="">
+                <img v-if="slid.image"  class="m-0 p-0" :src="$axios.defaults.baseURL + '/storage/uploads/' + slid.image" alt="">
+                <img v-else class="m-0 p-0" src="~/assets/img/buyGet.png" alt="">
               </div>
             </div>
           </div>
@@ -95,7 +79,7 @@
             </span>
             <input
               class="placeholder:italic placeholder:text-red-400 block bg-green-100 w-full border border-red-300 rounded-md py-2 pl-9 pr-3 shadow-sm focus:outline-none focus:border-green-500 focus:ring-green-500 focus:ring-1 sm:text-sm"
-              placeholder="Search for anything..." type="text" @keyup="search($event.target.value)" name="search" />
+              placeholder="Search for product..." type="text" @keyup="search($event.target.value)" name="search" />
           </label>
         </div>
         <div class="flex items-center mb-10">
@@ -103,47 +87,24 @@
           <div style="height: 2px" class="w-full bg-gray-200"></div>
         </div>
 
+        
         <div class="flex flex-wrap ">
           <div v-if="load" class="text-xl my-3 text-red-400 font-medium text-center "> Loading ... .. .</div>
 
-          <div v-for="product in product_list.data" :key="product.id" class="w-1/2 md:w-1/4 px-4 mb-10">
+          <ProductBox v-for="product in products" :key="product.id" :product="product" />
 
-            <div class="single-bs-product">
-              <div class="h-80  relative mb-6">
-                <div class="h-full bg-gray-50 flex justify-center items-center p-4">
-                  <img class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
-                </div>
-
-                <div class="product-img-hover absolute h-full w-full top-0 left-0 flex justify-center items-center">
-                  <div class="bg-black absolute h-full w-full opacity-60"></div>
-                  <nuxt-link :to="`/productDetails/?id=${product.id}`"
-                    class=" absolute left-0 bottom-0 bg-gray-200 p-2 w-full flex items-center justify-center">Details
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                      stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </nuxt-link>
-                  <!-- <nuxt-link :to="`/productDetails/?id=${cat.id}`" class="round-link "><img src="~/assets/img/arrow-right.png" alt=""></nuxt-link> -->
-
-                </div>
-              </div>
-
-              <h4 class="text-xl mb-3">{{ product.name }}</h4>
-              <p><span class="font-medium bs-dark-orange-color">$ {{ product.price }} </span> <del
-                  class="text-gray-400">${{ product.sell_price }}</del></p>
-
-            </div>
-          </div>
         </div>
-
+        
         <div class="text-center mb-10">
-          <pagination v-model="page" :records="total" :per-page="per_page" @paginate="getProductData"></pagination>
+          <pagination v-model="page" :records="total" :per-page="per_page" @paginate="productsGet"></pagination>
+          <!-- <pagination v-model="page" :records="products.total" :per-page="products.per_page" @paginate="productsGet"></pagination> -->
         </div>
-        <vue-slick-carousel v-if="dealsOfTheDayProducts.length" class="category-carousel mb-16 text-center"
-          v-bind="productCarouselSettings">
-          <SingleProductBox v-for="product in dealsOfTheDayProducts" :key="product.id" :product="product" />
-        </vue-slick-carousel>
+
+
+
+        <!-- <vue-slick-carousel v-if="products.length" class="category-carousel mb-16 text-center" v-bind="productCarouselSettings">
+          <SingleProductBox v-for="product in products" :key="product.id" :product="product" />
+        </vue-slick-carousel> -->
 
 
         <h3 class="text-xl md:text-4xl mb-6">Popular Brands</h3>
@@ -202,17 +163,22 @@
             <div class="category flex flex-col-reverse md:flex-row p-6 rounded-xl">
               <div class="w-full md:w-2/3">
                 <h3 class="font-size-32 leading-tight font-semibold mb-10">{{ cat.name }}</h3>
-                <nuxt-link :to="`/category/?id=${cat.id}`" class="round-link "><img src="~/assets/img/arrow-right.png"
-                    alt=""></nuxt-link>
+                <nuxt-link :to="`/category/?id=${cat.id}`" class="round-link "><img src="~/assets/img/arrow-right.png" alt=""></nuxt-link>
 
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
-                <img src="~/assets/img/fresh-fruit.png" alt="">
+                <img v-if="cat.image" :src="'http://127.0.0.1:8000/storage/uploads/' + cat.image" :alt="cat.image" width="120">
+                <img v-else src="~/assets/img/fresh-fruit.png" alt="">
               </div>
             </div>
           </div>
 
         </div>
+
+
+
+
+
 
       </div>
     </div>
@@ -223,6 +189,9 @@
   import Footer from '../components/Footer.vue'
   import Header from '../components/Header.vue'
   import SingleProductBox from '../components/SingleProductBox.vue'
+  import ProductBox from '../components/ProductBox.vue'
+
+  import { mapState, mapActions, mapMutations } from 'vuex';
 
   import dealsOfTheDayProducts from '../assets/css/deals-of-the-day-products.json'
 
@@ -234,7 +203,8 @@
     components: {
       Header,
       Footer,
-      SingleProductBox
+      SingleProductBox,
+      ProductBox
     },
     data() {
       return {
@@ -302,8 +272,8 @@
         hero_slider: {},
         cat_list: {},
         cat_slider_list: {},
-        page: 1,
         data: [],
+        page: 1,
         per_page: 0,
         total: 0,
         product_list: {},
@@ -353,37 +323,47 @@
         if (this.search_key.length > 0) {
           url += `&key=${this.search_key}`;
         }
-
         let r = await this.$axios.$get(url)
         this.product_list = r.data;
         this.total = r.data.total;
         this.per_page = r.data.per_page;
         this.load = false;
-
       },
       search: function (key) {
         // console.log(key);
         this.search_key = key;
         this.getProductData();
+        this.productsGet();
       },
-
       async getSliderData() {
         this.load = true;
         let r = await this.$axios.$get('/api/all/client-slider')
         this.hero_slider = r.data;
-
-        // console.log(this.hero_slider)
-        // this.total = r.total;
-        // this.per_page = r.per_page;
         this.load = false;
       },
+      ...mapActions('products', ['fetchProduct']),
+      productsGet(page = 1){
+          // this.deleteProduct(this.product.id) // delete from state | mapMutations requerd
+          // this.fetchProduct(1); // mapActions requerd
+          
+          this.$store.dispatch('products/fetchProduct', page) ;// mapActions no need
+
+      },
+
+      // ...mapMutations('products', ['setCartItems'])
     },
 
-
+    computed:{
+      ...mapState('products', ['products']) // , 'per_page', 'total', 'page'
+    },
     mounted() {
       this.dealsOfTheDayProducts = dealsOfTheDayProducts;
-      console.log(this.dealsOfTheDayProducts)
-    }
+      // console.log(this.dealsOfTheDayProducts)
+      if (!this.products.length) { // Check if the blogs data is not available
+        this.$store.dispatch('products/fetchProduct', this.page);
+      }
+
+    },
 
   }
 

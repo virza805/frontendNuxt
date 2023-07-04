@@ -3,13 +3,10 @@ export const state = () => ({
   cart: []
 });
 
-
-
 export const mutations = {
   ADD_TO_CART(state, data) {
 
     // save in localStorage
-
     let getProductsLocalStorage = JSON.parse(localStorage.getItem('cart'));
 
     let newProduct = true;
@@ -41,12 +38,10 @@ export const mutations = {
     }
     localStorage.setItem('cart', JSON.stringify(getProductsLocalStorage))
 
-
     // save in store
     state.cart = getProductsLocalStorage;
 
     // save in user database
-
     this.$toast.success('Added to Cart!');
 
   },
@@ -62,9 +57,7 @@ export const mutations = {
     }
 
     localStorage.setItem('cart', JSON.stringify(getProductsLocalStorage))
-
     state.cart = getProductsLocalStorage;
-
     this.$toast.info('Remove this Cart!');
     // this.$toast.dan('Removed from cart!');
   }
@@ -82,7 +75,6 @@ export const actions = {
 
 export const getters = {
   getCart(state) {
-
     return state.cart
   }
 }

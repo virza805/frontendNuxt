@@ -25,14 +25,22 @@
               class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
                 src="~/assets/img/heart.png" alt=""></span></nuxt-link>
 
-          <nuxt-link class="relative mx-4" to="/cart"><span
+          <nuxt-link class="relative mx-4" to="/carts"><span
+              class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
+                src="~/assets/img/u_shopping-bag.png" alt=""></span> <span
+              class="absolute bg-green-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">
+              {{ cartQty }}
+
+            </span>
+          </nuxt-link>
+          <!-- <nuxt-link class="relative mx-4" to="/cart"><span
               class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img
                 src="~/assets/img/u_shopping-bag.png" alt=""></span> <span
               class="absolute bg-red-600 px-1 h-4 top-0 right-0 rounded-full text-xs flex justify-center items-center text-white">
               {{ count }}
 
             </span>
-          </nuxt-link>
+          </nuxt-link> -->
 
           <!-- <nuxt-link to="/my-account" class="flex items-center"><span class="bs-icon-box rounded-full hover:bg-gray-200 inline-block flex items-center justify-center"><img src="~/assets/img/user.png" alt=""></span> <span>Account </span></nuxt-link> -->
 
@@ -152,6 +160,7 @@
 </template>
 
 <script>
+  import { mapGetters } from 'vuex'
   import {
     MenuIcon,
     SearchIcon
@@ -174,6 +183,10 @@
     created: function(){
       this.getData();
       // this.getProductData();
+    },
+
+    computed:{
+        ...mapGetters('products', ['cartQty'])
     },
 
     methods: {
@@ -212,28 +225,6 @@
         this.cat_list = r.data;
         this.load = false;
       },
-
-// Product Show with paginate data
-    // async getProductData(page = 1) {
-    //   this.load = true;
-    //   let url = `/api/all/client-product/?page= ${page}`;
-    //   if(this.search_key.length > 0) {
-    //     url += `&key=${this.search_key}`;
-    //   }
-
-    //   let r = await this.$axios.$get(url)
-    //   this.product_list = r.data;
-    //   this.total = r.data.total;
-    //   this.per_page = r.data.per_page;
-    //   this.load = false;
-
-    // },
-
-    // search: function(key){
-    //   // console.log(key);
-    //   this.search_key = key;
-    //   this.getProductData();
-    // },
 
     },
     mounted() {

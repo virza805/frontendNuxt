@@ -1,16 +1,8 @@
 <template>
-  <!--
-    This example requires updating your template:
-
-    ```
-    <html class="h-full bg-gray-50">
-    <body class="h-full">
-    ```
-  -->
   <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
+        <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" />
         <Tanvir />
         <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Add Hero Slider & Buy-1 Get-1 Data</h2>
 
@@ -21,8 +13,9 @@
       @submit.prevent="handleSubmit"
       method="POST"
       enctype="multipart/form-data"
+      id="slider_buy_get"
       >
-        <input type="hidden" name="remember" value="true" />
+      
         <div class="rounded-md shadow-sm -space-y-px">
           <form-input
 
@@ -31,6 +24,7 @@
             :helperText="errorMsg('title')"
             :hasError="hasError('title')"
             placeholder="title"
+            name="title"
           />
           <form-input
 
@@ -39,6 +33,7 @@
             :helperText="errorMsg('sub')"
             :hasError="hasError('sub')"
             placeholder="Sub title"
+            name="sub"
           />
 
           <form-input
@@ -48,6 +43,7 @@
             :helperText="errorMsg('image')"
             :hasError="hasError('image')"
             placeholder="image"
+            name="image"
           />
           <form-input
 
@@ -56,6 +52,7 @@
             :helperText="errorMsg('btn')"
             :hasError="hasError('btn')"
             placeholder="Enter button text"
+            name="btn"
           />
           <form-input
             label="Button link"
@@ -63,6 +60,7 @@
             :helperText="errorMsg('btn_link')"
             :hasError="hasError('btn_link')"
             placeholder="Enter button link"
+            name="btn_link"
           />
           <form-textarea
 
@@ -73,19 +71,9 @@
             placeholder="Enter text here..."
             rows="4"
             cols="20"
+            name="des"
           ></form-textarea>
         </div>
-
-        <!-- <div class="flex items-center justify-between">
-          <div class="flex items-center">
-            <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded" />
-            <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Remember me </label>
-          </div>
-
-          <div class="text-sm">
-            <nuxt-link to="/auth/forgot-password" class="font-medium text-green-600 hover:text-green-800"> Forgot your password? </nuxt-link>
-          </div>
-        </div> -->
 
         <div>
           <form-button :loading="loading">+ Add Now</form-button>
@@ -127,26 +115,48 @@ export default {
 
     methods: {
       // From submit async await
+    //  async handleSubmit() {
+    //     // api call
+    //     try {
+    //       this.loading = true;
+    //       const res = await this.$axios.$post('/api/user/slider/store', this.form)
+    //       this.loading = false;
+
+    //       // toast massage show
+    //       this.$store.commit("toaster/fire", {
+    //         text: "Successfully created slider data.",
+    //       });
+    //       this.$router.push("/backend/showSlider");
+
+    //     } catch (e) {
+    //       // toast massage show
+    //       this.$store.commit("toaster/fire", {
+    //         text: e.response.data.err_message,
+    //         type: "error",
+    //       });
+
+    //       this.errors = e.response.data?.data || {};
+    //       this.loading = false;
+
+    //     }
+    //   },
+      
      async handleSubmit() {
+      let form_data = new FormData(document.getElementById("slider_buy_get"));
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/slider/store', this.form)
+          const res = await this.$axios.$post('/api/user/slider/store', form_data)
           this.loading = false;
 
           // toast massage show
-
           this.$store.commit("toaster/fire", {
             text: "Successfully created slider data.",
           });
-
           this.$router.push("/backend/showSlider");
 
         } catch (e) {
-          // console.log(e.response.data);
-
           // toast massage show
-
           this.$store.commit("toaster/fire", {
             text: e.response.data.err_message,
             type: "error",
@@ -154,9 +164,7 @@ export default {
 
           this.errors = e.response.data?.data || {};
           this.loading = false;
-
         }
-
       },
 
 

@@ -18,19 +18,22 @@
       <form
       class="mt-8 space-y-6"
       action="#"
-       @submit.prevent="handleSubmit"
+      @submit.prevent="handleSubmit"
       method="POST"
       enctype="multipart/form-data"
+      id="product_cat_data"
       >
-        <input type="hidden" name="remember" value="true" />
+
         <div class="rounded-md shadow-sm -space-y-px">
           <form-input
 
+            type="text"
             label="name"
             v-model="form.name"
             :helperText="errorMsg('name')"
             :hasError="hasError('name')"
             placeholder="name"
+            name="name"
           />
           <form-input
 
@@ -39,6 +42,7 @@
             :helperText="errorMsg('slug')"
             :hasError="hasError('slug')"
             placeholder="0 or other"
+            name="slug"
           />
 
           <form-input
@@ -48,6 +52,7 @@
             :helperText="errorMsg('image')"
             :hasError="hasError('image')"
             placeholder="image"
+            name="image"
           />
 
         </div>
@@ -91,25 +96,21 @@ export default {
     methods: {
       // From slugmit async await
      async handleSubmit() {
+      let form_data = new FormData(document.getElementById("product_cat_data"));
         // api call
         try {
           this.loading = true;
-          const res = await this.$axios.$post('/api/user/cat/store', this.form)
+          const res = await this.$axios.$post('/api/user/cat/store', form_data)
           this.loading = false;
 
           // toast massage show
-
           this.$store.commit("toaster/fire", {
             text: "Successfully created Category.",
           });
-
           this.$router.push("/backend/showCategory");
 
         } catch (e) {
-          // console.log(e.response.data);
-
           // toast massage show
-
           this.$store.commit("toaster/fire", {
             text: e.response.data.err_message,
             type: "error",
@@ -117,7 +118,6 @@ export default {
 
           this.errors = e.response.data?.data || {};
           this.loading = false;
-
         }
 
       },

@@ -91,7 +91,10 @@
                   <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.des }}</td>
                   <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.btn }}</td>
                   <td class="table-td py-1 border-l border-green-200 px-2 ">{{ slid.btn_link }}</td>
-                  <td class="table-td"><img src="~/assets/img/vegetable-collection.png" alt="Phone" width="70"></td>
+                  <td class="table-td">
+                    <img v-if="slid.image" width="80" :src="$axios.defaults.baseURL + '/storage/uploads/' + slid.image" alt="">
+                    <img v-else src="~/assets/img/vegetable-collection.png" alt="Phone" width="70">
+                  </td>
                   <td>
                     <div class="flex my-1 lg:justify-between px-2">
                       <p v-if="slid.use"  class="bg-green-600 py-1 px-2 rounded text-center text-yellow-50 ">☻buyGet</p>

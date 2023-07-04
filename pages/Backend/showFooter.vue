@@ -53,9 +53,8 @@
 
                   </td>
                   <td class="table-td pl-2">
-                    <img src="~/assets/img/secure-payment.png" alt="secure-payment" width="70">
-                    <!-- <img src="~/assets/img/secure-payment.png" alt="secure-payment" width="70"> -->
-                    <!-- <img :src="baseURL + '/storage/' + footer_top.logo" :alt="footer_top.logo" width="70px" height="70px"></img> -->
+                    <img v-if="footer_top.icon_img" width="80" :src="$axios.defaults.baseURL + '/storage/uploads/' + footer_top.icon_img" alt="">
+                    <img v-else src="~/assets/img/secure-payment.png" alt="secure-payment" width="70">
                   </td>
                   <td>
                     <p>Id: {{ footer_top.id }}</p>

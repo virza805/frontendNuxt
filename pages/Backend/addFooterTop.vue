@@ -10,7 +10,8 @@
   <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <!-- <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> -->
+        <img class="mx-auto h-12 w-auto" src="~/assets/img/virzaOk.gif" alt="Workflow" /> 
+        <!-- 
         <div class="container">
           <div>
             <h2 class="mt-6 text-center text-3xl font-extrabold text-green-600">Single File</h2>
@@ -21,7 +22,7 @@
             <br>
             <button v-on:click="submitFile()">Submit</button>
           </div>
-        </div>
+        </div>-->
 
 
         <h2 class="mt-6 text-center text-3xl font-extrabold text-yellow-600">Add Footer Top Data</h2>
@@ -33,8 +34,9 @@
       @submit.prevent="handleSubmit"
       method="POST"
       enctype="multipart/form-data"
+      id="footer_top_data"
       >
-        <input type="hidden" name="remember" value="true" />
+      
         <div class="rounded-md shadow-sm -space-y-px">
           <form-input
 
@@ -43,6 +45,7 @@
             :helperText="errorMsg('title')"
             :hasError="hasError('title')"
             placeholder="title"
+            name="title"
           />
           <form-textarea
 
@@ -53,9 +56,10 @@
             placeholder="Enter text here..."
             rows="4"
             cols="20"
+            name="description"
           ></form-textarea>
 
-          <!-- <form-input
+          <form-input
             type="file"
             accept="image/*"
             label="icon_img"
@@ -63,8 +67,10 @@
             :helperText="errorMsg('icon_img')"
             :hasError="hasError('icon_img')"
             placeholder="icon_img"
-          /> -->
-<input type="file" id="icon_img" name="icon_img" required placeholder="icon_img" class="civanoglu-input" />
+            id="icon_img"
+            name="icon_img"
+          />
+<!-- <input type="file" id="icon_img" name="icon_img" required placeholder="icon_img" class="civanoglu-input" /> -->
 <!-- <v-file-input type="file" label="Select a file"  id="icon_img" name="icon_img" accept="image/*" v-model="form.icon_img">
       File to upload to S3
     </v-file-input> -->
@@ -98,7 +104,7 @@ export default {
       return{
         form:{
           title: "",
-          description: "",
+          dec: "",
           icon_img: "",
         },
         icon_img: '',
@@ -108,52 +114,23 @@ export default {
     },
 
     methods: {
-
-			handleFileUpload( event ){
-				this.icon_img = event.target.files[0];
-			},
-
-			submitFile(){
-				let formData = new FormData();
-				formData.append('icon_img', this.icon_img);
-				this.$axios.$post( '/api/user/footer-top/store', formData, {
-						headers: {'Content-Type': 'multipart/form-data'}
-					}
-				).then(function(){
-					console.log('SUCCESS!!');
-				})
-				.catch(function(){
-					console.log('FAILURE!!');
-				});
-			},
-
-      // From submit async await
+    
      async handleSubmit() {
+      let form_data = new FormData(document.getElementById("footer_top_data"));
         // api call
         try {
           this.loading = true;
-              // this.form.append("files", this.icon_img, this.icon_img.name);
-          const res = await this.$axios.$post('/api/user/footer-top/store', this.form)
-
-      //     formData.append("files", this.myFile, this.myFile.name);
-
-      // this.$http.put(myURL, formData)
-
+          const res = await this.$axios.$post('/api/user/footer-top/store', form_data)
           this.loading = false;
 
           // toast massage show
-
           this.$store.commit("toaster/fire", {
-            text: "Successfully created footer data.",
+            text: "Successfully created Footer top data.",
           });
-
           this.$router.push("/backend/showFooter");
 
         } catch (e) {
-          // console.log(e.response.data);
-
           // toast massage show
-
           this.$store.commit("toaster/fire", {
             text: e.response.data.err_message,
             type: "error",
@@ -161,11 +138,8 @@ export default {
 
           this.errors = e.response.data?.data || {};
           this.loading = false;
-
         }
-
       },
-
 
     }
 };

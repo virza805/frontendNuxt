@@ -81,6 +81,9 @@ export default {
         // baseURL: "https://api.vir-za.com/",
         baseURL: "http://127.0.0.1:8000",
     },
+    env: {
+        apiBaseUrl: process.env.API_BASE_URL || 'http://127.0.0.1:8000'
+    },
 
     auth: {
         redirect: {

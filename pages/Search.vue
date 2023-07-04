@@ -20,19 +20,20 @@
             <div class="single-bs-product">
               <div class="h-80  relative mb-6">
                 <div class="h-full bg-gray-50 flex justify-center items-center p-4">
-                  <img class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
+                  <img v-if="product.image" :src="$axios.defaults.baseURL + '/storage/uploads/' + product.image" alt="" class="mx-auto w-auto" >
+                  <img v-else class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
                 </div>
 
                 <div class="product-img-hover absolute h-full w-full top-0 left-0 flex justify-center items-center">
                   <div class="bg-black absolute h-full w-full opacity-60"></div>
-                  <button @click.prevent="productDetails"
+                  <nuxt-link :to="`/productDetails/?id=${product.id}`"
                     class=" absolute left-0 bottom-0 bg-gray-200 p-2 w-full flex items-center justify-center">Details
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                       stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </nuxt-link>
 
                 </div>
               </div>
