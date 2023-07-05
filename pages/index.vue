@@ -167,7 +167,7 @@
 
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
-                <img v-if="cat.image" :src="'http://127.0.0.1:8000/storage/uploads/' + cat.image" :alt="cat.image" width="120">
+                <img v-if="cat.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + cat.image" :alt="cat.image" width="120">
                 <img v-else src="~/assets/img/fresh-fruit.png" alt="">
               </div>
             </div>

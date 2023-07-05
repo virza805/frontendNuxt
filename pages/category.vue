@@ -6,7 +6,7 @@
       </div>
       <div class="w-full md:w-3/4">
         <div class="w-full p-3 mb-10 border-2 border-dashed shadow-sm rounded-2xl border-green-100 ">
-          <img v-if="category.image" :src="$axios.defaults.baseURL + '/storage/uploads/' + category.image" alt="" class="w-auto mx-full rounded-2xl" >
+          <img v-if="category.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + category.image" alt="" class="w-auto mx-full rounded-2xl" >
 
           <img v-else class="w-auto mx-full rounded-2xl" src="~/assets/img/cover.png" alt="Thanks" />
 
@@ -27,7 +27,7 @@
             <div class="single-bs-product">
               <div class="h-80  relative mb-6">
                 <div class="h-full bg-gray-50 flex justify-center items-center p-4">
-                  <img v-if="product.image" :src="$axios.defaults.baseURL + '/storage/uploads/' + product.image" alt="" class="mx-auto w-auto" >
+                  <img v-if="product.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + product.image" alt="" class="mx-auto w-auto" >
                   <img v-else class="mx-auto w-auto" src="~/assets/img/carousel-img-1.png" alt="Workflow" />
                 </div>
 
@@ -68,7 +68,7 @@
 
               </div>
               <div class="w-full md:w-1/3 flex justify-end">
-                <img v-if="cat.image" :src="'http://127.0.0.1:8000/storage/uploads/' + cat.image" :alt="cat.image" width="120">
+                <img v-if="cat.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + cat.image" :alt="cat.image" width="120">
                 <img v-else src="~/assets/img/fresh-fruit.png" alt="">
               </div>
             </div>

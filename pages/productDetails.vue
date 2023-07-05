@@ -9,7 +9,7 @@
 
         <div class="flex flex-wrap">
           <div class="w-1/2 px-8">
-            <img v-if="product_details.image" :src="$axios.defaults.baseURL + '/storage/uploads/' + product_details.image" alt="" class="mx-auto w-auto" >
+            <img v-if="product_details.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + product_details.image" alt="" class="mx-auto w-auto" >
             <img v-else class="mx-auto w-auto" src="~/assets/img/Thanks.jpg" alt="Workflow" />
           </div>
           <div class="w-1/2 px-8">

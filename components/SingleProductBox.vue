@@ -3,7 +3,7 @@
   <div class="single-bs-product">
     <div class="h-80  relative mb-6">
       <div class="h-full bg-gray-50 flex justify-center items-center p-4">
-        <img v-if="product.image" :src="'http://127.0.0.1:8000/storage/uploads/' + product.image" :alt="product.image" width="220">
+        <img v-if="product.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + product.image" :alt="product.image" width="220">
         <img v-else src="~/assets/img/fresh-fruit.png" alt="">
         <!-- <img :src="product.image" alt=""> -->
       </div>

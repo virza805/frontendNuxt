@@ -4,7 +4,7 @@
       <div class="flex flex-wrap md:-mx-4 mb-10">
         <div v-for="footer_top in footer_top_list.data" :key="footer_top.id" class="w-full my-2 lg:w-1/4 px-4 flex items-center">
           <div class="min-w-max mr-4">
-            <img width="80" :src="$axios.defaults.baseURL + '/storage/uploads/' + footer_top.icon_img" alt="">
+            <img width="80" :src="$axios.defaults.baseURL + 'storage/uploads/' + footer_top.icon_img" alt="">
           </div>
           <div class="w-full">
             <h3 class="text-xl font-medium mb-2">{{ footer_top.title }}</h3>
@@ -22,11 +22,11 @@
         <div class="lg:flex flex-wrap">
           <div class="w-full p-1 lg:w-1/4 my-5">
             <Logo />
-            <p class="my-4  text-sm  md:pr-10"> {{ footer_data_list.description }} </p>
+            <p class="my-4  text-sm  md:pr-10"> {{ footer_data_list.description }} <a href="https://www.fiverr.com/share/4Y1RVk" class=" text-red-400">Work with me</a></p>
 
 
             <!-- <div class="flex">
-              <a href="/" class="mr-4"><img src="~/assets/img/playstore.png" alt=""></a>
+              <a href="https://www.fiverr.com/share/4Y1RVk" class="mr-4">Work with me</a>
               <a href="/"><img src="~/assets/img/appstore.png" alt=""></a>
             </div> -->
           </div>
@@ -142,7 +142,7 @@
         <div class="flex -mx-8">
           <div class="w-1/2 px-8">
             <!-- <img :src="product.image" /> -->
-            <img v-if="modalData.product.image" :src="'http://127.0.0.1:8000/storage/uploads/' + modalData.product.image" :alt="modalData.product.image" width="">
+            <img v-if="modalData.product.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + modalData.product.image" :alt="modalData.product.image" width="">
             <img v-else src="~/assets/img/fresh-fruit.png" alt="">
           </div>
           <div class="w-1/2 px-8">

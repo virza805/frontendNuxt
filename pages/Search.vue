@@ -34,6 +34,11 @@
                         d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
                   </nuxt-link>
+                  
+        <div v-if="!matched" class="relative z-10">
+          <button @click.prevent="addProductToCart(product)" class=" text-white text-2xl">Add to Card</button>
+        </div>
+
 
                 </div>
               </div>
@@ -93,6 +98,14 @@ export default {
 
     },
 
+    addProductToCart(ss) {
+      this.$store.dispatch('products/addProductToCart', ss)
+      // this.addProductToCart(item) // Use mapMutation requerd
+      localStorage.setItem("products:cart", JSON.stringify(this.cart))
+      // localStorage.setItem("products:cart", JSON.stringify(state.products.cart));
+
+    },
+    
     search: function(key){
       // console.log(key);
       this.search_key = key;

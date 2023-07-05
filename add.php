@@ -194,4 +194,6 @@ npm install =>
 npm run serve =>
 
 yarn dev
+yarn build |=> https://nuxtjs.org/docs/get-started/commands/
+yarn generate |=>
 */

@@ -23,7 +23,7 @@
           </button>
         </td>
         <td class="border px-4 py-2">
-          <img v-if="product.image" :src="'http://127.0.0.1:8000/storage/uploads/' + product.image" :alt="product.image" width="120">
+          <img v-if="product.image" :src="$axios.defaults.baseURL + 'storage/uploads/' + product.image" :alt="product.image" width="120">
           <img v-else src="~/assets/img/fresh-fruit.png" width="50" alt="">
         </td>
         <td class="border px-4 py-2">{{product.name}}</td>
