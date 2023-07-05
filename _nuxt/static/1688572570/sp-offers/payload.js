@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/sp-offers", {data:[{}],fetch:{},mutations:[]});

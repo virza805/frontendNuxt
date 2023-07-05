@@ -1,0 +1,1 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{513:function(e,n,t){"use strict";t.r(n);var c={},r=t(8),component=Object(r.a)(c,(function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)}),[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",[t("h2",[e._v("Backend Header")])])}],!1,null,"6722234c",null);n.default=component.exports}}]);

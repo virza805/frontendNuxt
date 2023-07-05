@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/category", (function(a,b){return {data:[{}],fetch:{"data-v-66db7185:0":{cat_product_list:{},cat_slider_list:{},page:1,data:[],per_page:a,total:a,categoryId:b,category:b}},mutations:[]}}(0,"")));
